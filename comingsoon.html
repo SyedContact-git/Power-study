@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Power Study - Under Maintenance</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #000;
+      color: #FFD700;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 60px;
+      margin-bottom: 10px;
+      text-shadow: 0 0 20px #FFD700, 0 0 40px #FFD70088;
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    p {
+      font-size: 20px;
+      color: #f0f0f0;
+      max-width: 600px;
+      margin: 20px;
+      text-shadow: 0 0 10px #FFD70033;
+    }
+
+    @keyframes pulse {
+      0% { text-shadow: 0 0 10px #FFD700; }
+      50% { text-shadow: 0 0 30px #FFD700; }
+      100% { text-shadow: 0 0 10px #FFD700; }
+    }
+
+    .loader {
+      border: 5px solid #333;
+      border-top: 5px solid #FFD700;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+      margin: 40px 0;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .btn {
+      background-color: #FFD700;
+      color: black;
+      padding: 12px 25px;
+      font-weight: bold;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #e6c200;
+      transform: scale(1.05);
+    }
+
+    footer {
+      position: absolute;
+      bottom: 20px;
+      font-size: 14px;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Power Study</h1>
+  <p>We're currently upgrading our platform to serve you better. Please check back soon!</p>
+  <div class="loader"></div>
+  <a href="batches.html" class="btn">Back to Home</a>
+
+  <footer>© 2025 Power Study | All Rights Reserved</footer>
+
+</body>
+</html>

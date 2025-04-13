@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Power Study</title>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: #000;
+      color: #fff;
+      overflow-x: hidden;
+      text-align: center;
+    }
+
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    header {
+      background: #000;
+      backdrop-filter: blur(8px);
+      color: #FFD700;
+      padding: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      text-shadow: 0 0 15px #FFD700;
+      box-shadow: 0 0 15px #FFD700;
+      border-bottom: 2px solid rgba(255, 215, 0, 0.2);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+    }
+
+    .content {
+      padding-top: 120px;
+    }
+
+    .filter-container {
+      margin: 30px auto;
+    }
+
+    select {
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 30px;
+      border: none;
+      background: #111;
+      color: #FFD700;
+      box-shadow: 0 0 10px #FFD700;
+      transition: 0.3s;
+    }
+
+    select:focus {
+      outline: none;
+      box-shadow: 0 0 15px #ffcc00;
+    }
+
+    .batch-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .batch-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      width: 300px;
+      padding: 15px;
+      color: white;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+      transition: transform 0.3s ease;
+      position: relative;
+    }
+
+    .batch-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
+    }
+
+    .batch-thumbnail {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .batch-title {
+      font-size: 18px;
+      margin: 15px 0;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .button {
+      background: linear-gradient(45deg, #FFD700, #FFB300);
+      color: #000;
+      padding: 10px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      display: inline-block;
+      font-weight: bold;
+      box-shadow: 0 0 10px #FFD700;
+      transition: 0.3s ease;
+    }
+
+    .button:hover {
+      background: linear-gradient(45deg, #FFB300, #FFD700);
+      box-shadow: 0 0 20px #FFD700;
+    }
+
+    .badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #FFD700;
+      color: #000;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+      box-shadow: 0 0 10px #FFD700;
+    }
+
+    footer {
+      padding: 20px;
+      background: #111;
+      color: #ccc;
+      margin-top: 40px;
+      font-size: 14px;
+      box-shadow: 0 0 10px #FFD700;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="particles-js"></div>
+
+  <header>Power Study</header>
+
+  <div class="content">
+    <div class="filter-container">
+      <select id="classFilter" onchange="filterBatches()">
+        <option value="all">All Classes</option>
+         <option value="10">Class 10</option>
+      
+        <option value="11">Class 11</option>
+        <option value="12">Class 12</option>
+        <option value="jee">JEE</option>
+        <option value="neet">NEET</option>
+      </select>
+    </div>
+
+    <div class="batch-container" id="batchContainer">
+      <!-- Example Batches -->
+      <div class="batch-card" data-class="11 jee">
+        <div class="badge">Active</div>
+        <img src="https://i.ibb.co/5WQDFrLS/maxresdefault-2.jpg" class="batch-thumbnail"/>
+        <div class="batch-title">ARJUNA JEE BY PW</div>
+        <a href="https://t.me/Arjuna_jee_2026_class11th" class="button">LET'S START</a>
+      </div>
+
+      <div class="batch-card" data-class="11">
+        <div class="badge">Hot</div>
+        <img src="https://i.ibb.co/Fkm2L9cK/1000066746.jpg" class="batch-thumbnail"/>
+        <div class="batch-title">PRARAMBH BATCH PCMB</div>
+        <a href="selectsubject.html" class="button">LET'S START</a>
+      </div>
+
+      <div class="batch-card" data-class="11 commerce">
+        <div class="badge">New</div>
+        <img src="https://i.ibb.co/8gLz1t1P/1000066747.jpg" class="batch-thumbnail"/>
+        <div class="batch-title">PRARAMBH BATCH COMMERCE</div>
+        <a href="selectsubject.html" class="button">LET'S START</a>
+      </div>
+
+      <div class="batch-card" data-class="11 neet">
+        <div class="badge">Top</div>
+        <img src="https://i.ibb.co/6cYh2V3G/IMG-20250412-143834-040.jpg" class="batch-thumbnail"/>
+        <div class="batch-title">ARJUNA NEET BY PW</div>
+        <a href="https://t.me/ARJUNA_NEET_CLASS11TH" class="button">LET'S START</a>
+          </div>
+
+      <div class="batch-card" data-class="10TH">
+        <div class="badge">Top</div>
+        <img src="https://i.ibb.co/MxMzYfqy/images.jpg" class="batch-thumbnail"/>
+        <div class="batch-title">UDAAN BATCH BY PW</div>
+        <a href="https://t.me/Udaan2026freebatch" class="button">LET'S START</a>
+             </div>
+
+      <div class="batch-card" data-class="10TH">
+        <div class="badge">Top</div>
+        <img src="https://i.ibb.co/j9HRvtDQ/538903229246-aarambh-banner-app.jpg" class="batch-thumbnail"/>
+        <div class="batch-title">AARAMBH BATCH BY NEXT TOPPRS</div>
+        <a href="selectsubject.html" class="button">LET'S START</a>
+               </div>
+
+      <div class="batch-card" data-class="12TH">
+        <div class="badge">Top</div>
+        <img src="https://i.ibb.co/pv8ZsNq0/12th-Comm-1.jpg" class="batch-thumbnail"/>
+        <div class="batch-title">PRARAMBH BATCH COMMERCE</div>
+       <a href="selectsubject.html" class="button">LET'S START</a>
+                    </div>
+
+      <div class="batch-card" data-class="12TH">
+        <div class="badge">Top</div>
+        <img src="https://i.ibb.co/rKTQf66k/1000067197.jpg" class="batch-thumbnail"/>
+        <div class="batch-title">PRARAMBH BATCH COMMERCE</div>
+       <a href="selectsubject.html" class="button">LET'S START</a>
+                     </div>
+
+      <div class="batch-card" data-class="11TH">
+        <div class="badge">Top</div>
+        <img src="https://i.ibb.co/FbpYzT2N/IMG-20250412-144639-250.jpg" class="batch-thumbnail"/>
+        <div class="batch-title">PW UDAAY BATCH </div>
+       <a href="https://t.me/Uday2025_2026" class="button">LET'S START</a>
+        </div>
+
+     
+      <div class="batch-card" data-class=" 11 jee">
+        <div class="badge">Top</div>
+        <img src="https://i.ibb.co/r2wCHBFQ/IMG-20250412-144427-496.jpg" class="batch-thumbnail"/>
+        <div class="batch-title">LAKSHAYA JEE BY PW</div>
+        <a href="https://t.me/PW_Lakshya_NEET_Free" class="button">LET'S START</a>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    Made with ❤️ by Power Study
+  </footer>
+
+  <script>
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 80, density: { enable: true, value_area: 800 } },
+        color: { value: "#FFD700" },
+        shape: { type: "circle" },
+        opacity: { value: 0.4 },
+        size: { value: 4 },
+        line_linked: {
+          enable: true,
+          distance: 150,
+          color: "#FFD700",
+          opacity: 0.3,
+          width: 1
+        },
+        move: { enable: true, speed: 2 }
+      },
+      interactivity: {
+        events: {
+          onhover: { enable: true, mode: "repulse" },
+          onclick: { enable: true, mode: "push" }
+        },
+        modes: {
+          repulse: { distance: 100 },
+          push: { particles_nb: 4 }
+        }
+      }
+    });
+
+    function filterBatches() {
+      const filter = document.getElementById('classFilter').value;
+      const cards = document.querySelectorAll('.batch-card');
+      cards.forEach(card => {
+        const classes = card.getAttribute('data-class');
+        card.style.display = (filter === 'all' || classes.includes(filter)) ? 'block' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>
