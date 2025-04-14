@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Explore - Power Study</title>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #000;
+      color: #FFD700;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    /* Floating Items */
+    .floating-items {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .floating-items span {
+      position: absolute;
+      font-size: 24px;
+      color: #FFD70088;
+      animation: floatItem linear infinite;
+    }
+
+    @keyframes floatItem {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.3;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-120vh) rotate(360deg);
+        opacity: 0.3;
+      }
+    }
+
+    /* Main UI */
+    .main-wrapper {
+      z-index: 2;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 42px;
+      margin-bottom: 40px;
+      text-shadow: 0 0 25px #FFD700, 0 0 60px #FFD70055;
+    }
+
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      max-width: 1000px;
+    }
+
+    .explore-card {
+      background: radial-gradient(circle at top, rgba(255,215,0,0.1), rgba(0,0,0,0.8));
+      border: 2px solid #FFD700;
+      border-radius: 20px;
+      width: 250px;
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+      padding: 20px;
+      box-shadow: 0 0 20px #FFD70044;
+      transition: 0.3s ease-in-out;
+      backdrop-filter: blur(4px);
+    }
+
+    .explore-card:hover {
+      transform: scale(1.06);
+      box-shadow: 0 0 40px #FFD70099;
+    }
+
+    .emoji {
+      font-size: 60px;
+      filter: drop-shadow(0 0 6px #FFD700AA);
+    }
+
+    .label {
+      font-size: 20px;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    .button {
+      background-color: #FFD700;
+      color: black;
+      padding: 10px 24px;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #fff066;
+      transform: scale(1.05);
+    }
+
+    .button:disabled {
+      background: #FFD700;
+      cursor: not-allowed;
+    }
+
+    .loader {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(0, 0, 0, 0.2);
+      border-top: 3px solid #000;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: none;
+    }
+
+    .button.loading .loader {
+      display: block;
+    }
+
+    .button.loading span {
+      visibility: hidden;
+    }
+
+    @keyframes spin {
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    @media screen and (max-width: 600px) {
+      .card-container {
+        flex-direction: column;
+        gap: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Stationery Background -->
+  <div class="floating-items">
+    <span style="left: 5%; top: 80%; font-size: 26px; animation-duration: 22s;">✏️</span>
+    <span style="left: 20%; top: 90%; font-size: 30px; animation-duration: 28s;">📚</span>
+    <span style="left: 35%; top: 100%; font-size: 24px; animation-duration: 25s;">✒️</span>
+    <span style="left: 50%; top: 85%; font-size: 32px; animation-duration: 20s;">📐</span>
+    <span style="left: 65%; top: 95%; font-size: 28px; animation-duration: 26s;">📖</span>
+    <span style="left: 75%; top: 100%; font-size: 30px; animation-duration: 24s;">📝</span>
+    <span style="left: 85%; top: 90%; font-size: 26px; animation-duration: 21s;">📏</span>
+    <span style="left: 95%; top: 80%; font-size: 30px; animation-duration: 27s;">✂️</span>
+  </div>
+
+  <div class="main-wrapper">
+    <h1>What do you want to explore?</h1>
+
+    <div class="card-container">
+
+      <div class="explore-card">
+        <div class="emoji">📚</div>
+        <div class="label">Books</div>
+        <button class="button" onclick="handleClick(this, 'Books.html')">
+          <div class="loader"></div>
+          <span>Explore Books</span>
+        </button>
+      </div>
+
+      <div class="explore-card">
+        <div class="emoji">🎯</div>
+        <div class="label">Batches</div>
+        <button class="button" onclick="handleClick(this, 'Batches.html')">
+          <div class="loader"></div>
+          <span>Explore Batches</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function handleClick(button, target) {
+      button.classList.add('loading');
+      button.disabled = true;
+      setTimeout(() => {
+        window.location.href = target;
+      }, 1200);
+    }
+  </script>
+
+</body>
+</html>
