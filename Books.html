@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Power Study - Books</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: linear-gradient(135deg, #000000, #111111);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #FFD700;
+      overflow-x: hidden;
+    }
+
+    /* FLOATING BOOKS */
+    .floating-book {
+      position: fixed;
+      width: 60px;
+      opacity: 0.08;
+      z-index: -1;
+      animation: floatBook 15s linear infinite;
+    }
+
+    @keyframes floatBook {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(-120vh) rotate(360deg); }
+    }
+
+    header {
+      text-align: center;
+      font-size: 2.5rem;
+      padding: 60px 20px 30px;
+      font-weight: 900;
+      color: transparent;
+      background-image: linear-gradient(90deg, #FFD700, #FF6B00, #FFD700);
+      background-clip: text;
+      -webkit-background-clip: text;
+      animation: textGlow 3s infinite alternate;
+      text-shadow: 0 0 15px #FFD70055;
+    }
+
+    @keyframes textGlow {
+      from { text-shadow: 0 0 10px #FFD70055; }
+      to { text-shadow: 0 0 25px #FF6B00cc; }
+    }
+
+    .hero {
+      text-align: center;
+      padding: 20px;
+      font-size: 1.3rem;
+      color: #ffffffcc;
+      text-shadow: 0 0 8px #FFD70033;
+      margin-bottom: 60px;
+    }
+
+    .books-section {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .books-section h2 {
+      font-size: 2rem;
+      margin-bottom: 40px;
+      color: #fff;
+      text-shadow: 0 0 10px #FFD700aa;
+    }
+
+    .book-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+    }
+
+    .book-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 2px solid #FFD70044;
+      border-radius: 20px;
+      width: 280px;
+      padding: 20px;
+      transition: all 0.4s ease;
+      box-shadow: 0 0 25px #FFD70022;
+    }
+
+    .book-card:hover {
+      transform: scale(1.06);
+      box-shadow: 0 0 30px #FFD70099;
+    }
+
+    .book-card img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 15px;
+      margin-bottom: 20px;
+      border: 2px solid #FFD70033;
+    }
+
+    .book-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: #FFD700;
+    }
+
+    .book-btn {
+      background: linear-gradient(45deg, #FFD700, #FF6B00);
+      padding: 10px 25px;
+      color: #000;
+      border-radius: 25px;
+      font-weight: bold;
+      text-decoration: none;
+      position: relative;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .book-btn.loading {
+      color: transparent;
+      pointer-events: none;
+    }
+
+    .book-btn .loader {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 20px;
+      height: 20px;
+      border: 3px solid transparent;
+      border-top: 3px solid #000;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      animation: spin 0.8s linear infinite;
+      display: none;
+    }
+
+    .book-btn.loading .loader {
+      display: block;
+    }
+
+    @keyframes spin {
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    footer {
+      text-align: center;
+      color: #aaa;
+      padding: 40px 20px;
+      margin-top: 80px;
+      font-size: 0.9rem;
+    }
+
+    footer strong {
+      color: #FFD700;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- FLOATING BOOKS -->
+  <img src="https://cdn-icons-png.flaticon.com/512/29/29302.png" class="floating-book" style="top: 90%; left: 5%; animation-delay: 0s;">
+  <img src="https://cdn-icons-png.flaticon.com/512/29/29302.png" class="floating-book" style="top: 95%; left: 25%; animation-delay: 2s;">
+  <img src="https://cdn-icons-png.flaticon.com/512/29/29302.png" class="floating-book" style="top: 85%; left: 60%; animation-delay: 4s;">
+  <img src="https://cdn-icons-png.flaticon.com/512/29/29302.png" class="floating-book" style="top: 92%; left: 80%; animation-delay: 6s;">
+
+  <header>POWER STUDY</header>
+  <div class="books-section">
+    <h2>Premium Book Collection</h2>
+        <div class="book-grid">
+      <div class="book-card">
+        <img src="https://iili.io/3lV7Kqx.md.jpg" alt="NCERT PUNCH  JEE">
+        <div class="book-title">NCERT PUNCH JEE </div>
+        <button class="book-btn" onclick="showLoader(this, 'https://t.me/POWERFILEBOT?start=BQADAQAD1QoAAo9Z6EeZsWErQdfMUBYE')">
+          <span class="text">Read Now</span>
+          <span class="loader"></span>
+        </button>
+      </div>
+    <div class="book-grid">
+      <div class="book-card">
+        <img src="https://i.ibb.co/0pTPTcs5/IMG-20250414-120314-996.jpg" alt="JEE MAIN + ADV BOOK">
+        <div class="book-title">JEE MAIN + JEE ADVANCE</div>
+        <button class="book-btn" onclick="showLoader(this, 'https://t.me/POWERFILEBOT?start=BQADAQADSgoAAo9Z6EdmBNf65o9O-BYE')">
+          <span class="text">Read Now</span>
+          <span class="loader"></span>
+        </button>
+      </div>
+      <!-- Add more book-cards here if needed -->
+    </div>
+  </div>
+
+  <footer>
+    Made with <strong>Dedication</strong> by <strong>Power Study</strong> x <strong> CUBIX 🔥<strong/>
+  </footer>
+
+  <script>
+    function showLoader(button, url) {
+      button.classList.add('loading');
+      setTimeout(() => {
+        window.location.href = url;
+      }, 2000);
+    }
+  </script>
+
+</body>
+</html>
