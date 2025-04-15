@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PowerStudy | Generate Key</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0; padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: #00f2ff;
+      text-shadow: 0 0 15px #00f2ff80;
+    }
+
+    p {
+      font-size: 1rem;
+      color: #c2d3dd;
+      margin-bottom: 30px;
+    }
+
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    button {
+      padding: 15px 20px;
+      background: #00f2ff;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 10px #00f2ff80;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background: #00c2d3;
+      box-shadow: 0 0 20px #00f2ff;
+    }
+
+    #loadingMessage {
+      display: none;
+      margin-top: 25px;
+      font-size: 1.1rem;
+      color: #00f2ff;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .floating-books {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url('https://i.ibb.co/8NfnHH2/floating-books.gif') no-repeat center center / cover;
+      opacity: 0.07;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .glass {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 30px;
+      border-radius: 20px;
+      backdrop-filter: blur(20px);
+      z-index: 2;
+      box-shadow: 0 0 25px rgba(0, 242, 255, 0.2);
+    }
+  </style>
+</head>
+<body>
+
+<div class="floating-books"></div>
+
+<div class="glass">
+  <h1>Generate Access Key</h1>
+  <p>Choose a server to proceed. Your access key will be generated instantly.</p>
+
+  <div class="button-container">
+    <button id="server02">Server 02</button>
+    <button id="server03Url">Server 03</button>
+    <button id="recommendServer">Recommended Server</button>
+    <button id="watchVideo">Watch Tutorial</button>
+  </div>
+
+  <div id="loadingMessage">Generating key, please wait...</div>
+</div>
+
+<script>
+  const urls = {
+    server02: 'https://modijiurl.com/server-best',
+    server03: 'https://modijiurl.com/server-best',
+    recommendServer: 'https://modijiurl.com/server-best',
+    tutorialVideo: 'liveaarambh.html'
+  };
+
+  function setTemporaryCookieAndRedirect(cookieName, url) {
+    if (!url) return alert('Invalid URL!');
+    document.getElementById("loadingMessage").style.display = "block";
+    setTimeout(() => {
+      document.cookie = `${cookieName}=true; path=/; max-age=${48 * 60 * 60}`;
+      window.open(url, '_blank');
+    }, 2000);
+  }
+
+  document.getElementById('server02').addEventListener('click', () =>
+    setTemporaryCookieAndRedirect('server02KeyGenerated', urls.server02)
+  );
+  document.getElementById('server03Url').addEventListener('click', () =>
+    setTemporaryCookieAndRedirect('server03KeyGenerated', urls.server03)
+  );
+  document.getElementById('recommendServer').addEventListener('click', () =>
+    setTemporaryCookieAndRedirect('recommendServerKeyGenerated', urls.recommendServer)
+  );
+  document.getElementById('watchVideo').addEventListener('click', () =>
+    window.open(urls.tutorialVideo, '_blank')
+  );
+
+  function getCookie(name) {
+    return document.cookie.split('; ').some(cookie => cookie.startsWith(name + '='));
+  }
+
+  if (getCookie('server_one_success') || getCookie('server_two_success') || getCookie('server_three_success')) {
+    window.location.href = "";
+  }
+</script>
+
+</body>
+</html>
