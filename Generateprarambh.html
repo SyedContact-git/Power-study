@@ -126,27 +126,39 @@
       retina_detect: true
     });
 
-    /* JavaScript Logic */
-    const urls = {
-      server02: 'https://bharatlinks.com/W6mJ6Zs',
+    <script>
+const urls = {
+      server02: 'https://bharatlinks.com/W6mJ6Zs'
       server03: 'https://bharatlinks.com/W6mJ6Zs',
       recommendServer: 'https://bharatlinks.com/W6mJ6Zs',
-      tutorialVideo: 'https://t.me/EDUPROCBSE/10'
+      tutorialVideo:'https://t.me/EDUPROCBSE/10'
     };
 
     function setTemporaryCookieAndRedirect(cookieName, url) {
-      if (!url) return alert('Invalid URL!');
-      document.getElementById("loadingMessage").style.display = "block";
-      setTimeout(() => {
-        document.cookie = `${cookieName}=true; path=/; max-age=${24 * 60 * 60}`;
-        window.location.href = url;
-      }, 2000);
-    }
+    if (!url) return alert('Invalid URL!');
+    document.getElementById("loadingMessage").style.display = "block";
+    setTimeout(() => {
+      document.cookie = ${cookieName}=true; path=/; max-age=${24 * 60 * 60}; // 24 hours (86400 seconds)
+      window.open(url, '_blank'); // Open in new tab
+    }, 2000);
+  }
 
     document.getElementById('server02').addEventListener('click', () => setTemporaryCookieAndRedirect('server02KeyGenerated', urls.server02));
     document.getElementById('server03Url').addEventListener('click', () => setTemporaryCookieAndRedirect('server03KeyGenerated', urls.server03));
     document.getElementById('recommendServer').addEventListener('click', () => setTemporaryCookieAndRedirect('recommendServerKeyGenerated', urls.recommendServer));
     document.getElementById('watchVideo').addEventListener('click', () => window.open(urls.tutorialVideo, '_blank'));
+    
+    // Function to check if a specific cookie exists
+function getCookie(name) {
+  return document.cookie.split('; ').some(cookie => cookie.startsWith(name + '='));
+}
+
+// Check if any success cookie exists
+if (getCookie('server_one_success')  getCookie('server_two_success')  getCookie('server_three_success')) {
+  // Redirect to the books page
+  window.location.href = "https://power-study.vercel.app/Prarambhscience.html";
+}
+  </script>
   </script>
 </body>
 </html>
