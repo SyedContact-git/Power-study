@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Power Study - Live Classes</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: linear-gradient(135deg, #1e1f24, #2e2f36);
+    }
+    .glow {
+      box-shadow: 0 0 15px #00ffe0, 0 0 30px #00ffe0;
+    }
+    .button-loader::after {
+      content: "";
+      display: inline-block;
+      margin-left: 8px;
+      width: 12px;
+      height: 12px;
+      border: 2px solid #000;
+      border-top: 2px solid transparent;
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+    }
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body class="text-white min-h-screen flex flex-col items-center justify-center p-6 font-sans">
+
+  <h1 class="text-4xl md:text-6xl font-bold mb-8 text-center tracking-wide">
+    Next Toppers <span class="text-[#00ffe0]">Live Classes</span>
+  </h1>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl">
+
+    <!-- 5 PM Class -->
+    <div class="bg-[#121417] rounded-2xl p-6 glow hover:scale-105 transition-transform duration-300 cursor-pointer">
+      <h2 class="text-2xl font-semibold mb-2">Live Class - 5 PM</h2>
+      <p class="text-gray-300 mb-4">Start your evening with this power-packed session.</p>
+      <span class="inline-block bg-[#00ffe0] text-black text-sm font-bold px-4 py-1 rounded-full animate-pulse">Live at 5:00 PM</span>
+      <div class="mt-6">
+        <button onclick="redirectWithLoad(this, '')" class="bg-[#00ffe0] text-black font-bold px-6 py-2 rounded-xl hover:brightness-90 transition-all">
+          NOT STARTED
+        </button>
+      </div>
+    </div>
+
+    <!-- 8 PM Class -->
+    <div class="bg-[#121417] rounded-2xl p-6 glow hover:scale-105 transition-transform duration-300 cursor-pointer">
+      <h2 class="text-2xl font-semibold mb-2">Live Class - 8 PM</h2>
+      <p class="text-gray-300 mb-4">Wrap up the day with advanced concepts and practice.</p>
+      <span class="inline-block bg-[#00ffe0] text-black text-sm font-bold px-4 py-1 rounded-full animate-pulse">Live at 8:00 PM</span>
+      <div class="mt-6">
+        <button onclick="redirectWithLoad(this, '')" class="bg-[#00ffe0] text-black font-bold px-6 py-2 rounded-xl hover:brightness-90 transition-all">
+          Not Started
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="mt-16 text-center text-gray-400 text-sm">
+    Powered by <span class="text-[#00ffe0] font-semibold">Power Study</span>
+  </div>
+
+  <script>
+    function redirectWithLoad(button, url) {
+      button.disabled = true;
+      button.innerText = "Redirecting";
+      button.classList.add('button-loader');
+      setTimeout(() => {
+        window.location.href = url;
+      }, 1000); // 1s delay for effect
+    }
+  </script>
+
+</body>
+</html>
