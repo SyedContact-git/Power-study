@@ -117,6 +117,44 @@
       background-color: #e6c200;
       box-shadow: 0 0 15px #FFD700;
     }
+      .live-card {
+      background: linear-gradient(135deg, #ff0000, #ff9900);
+      border: 2px solid #fff;
+      color: white;
+      animation: pulseGlow 2s infinite ease-in-out;
+      box-shadow: 0 0 25px #ff4500aa, 0 0 10px #ff9900cc;
+    }
+
+    .live-card h3 {
+      color: white;
+      font-size: 20px;
+    }
+
+    .live-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background-color: #fff;
+      color: red;
+      font-weight: bold;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      box-shadow: 0 0 10px #fff;
+    }
+
+    @keyframes pulseGlow {
+      0% {
+        box-shadow: 0 0 15px #ff4500aa;
+      }
+      50% {
+        box-shadow: 0 0 25px #ff4500cc, 0 0 40px #ff9900bb;
+      }
+      100% {
+        box-shadow: 0 0 15px #ff4500aa;
+      }
+    }
+    
 
     .hidden {
       display: none;
@@ -171,14 +209,12 @@
 
   <!-- LECTURES -->
   <div id="lecturesSection" class="card-container">
-    <div class="card" data-subject="All subjects">
-      <h3>LIVE CLASS BIO</h3>
-      <a href="Live11.html" class="btn">Let's attend</a>
+  <div class="card live-card" data-subject="all">
+      <div class="live-badge">LIVE</div>
+      <h3>LIVE CLASSES ✅</h3>
+      <a href="Live11.html" class="btn">Let's Attend</a>
     </div>
-    <div class="card" data-subject="All subjects">
-      <h3>LIVE CLASS PHYSICS</h3>
-      <a href="Live112.html" class="btn">Let's attend</a>
-    </div>
+   
     <div class="card" data-subject="physics">
       <img src="https://i.ibb.co/6GCD2qs/images-3-1.jpg" alt="Physics Lecture">
       <h3>UNIT AND MEASUREMENT</h3>
@@ -203,6 +239,16 @@
       <img src="https://i.ibb.co/PGnd0RXD/IMG-20250416-101859-713.jpg" alt="chemistry Lecture">
       <h3>SOME BASIC CONCEPTS OF CHEMISTRY 2ND LECTURE </h3>
       <a href="chemistry211recorded.html" class="btn">Let's View</a>
+    </div>
+      <div class="card" data-subject="physics">
+      <img src="https://i.ibb.co/6GCD2qs/images-3-1.jpg" alt="Physics Lecture">
+      <h3>UNIT AND MEASUREMENT 2ND LECTURE</h3>
+      <a href="Unit2recorded.html" class="btn">Let's View</a>
+    </div>
+      <div class="card" data-subject="biology">
+      <img src="https://i.ibb.co/k6KQ9kFd/IMG-20250416-101859-353.jpg" alt="biology Lecture">
+      <h3>THE LIVING WORLD 2nd lecture  </h3>
+      <a href="living2recorded.html" class="btn">Let's View</a>
     </div>
   </div>
 
@@ -232,6 +278,16 @@
       <div class="pdf-icon">📄</div>
       <h3>BASIC CONCEPT OF CHEMISTRY 2ND NOTES</h3>
       <a href="https://drive.google.com/file/d/1GM2rq3Zm-7rW_T5KHSU6JjQ0MgsKpNU8/view?usp=drivesdk" class="btn">View PDF</a>
+    </div>
+     <div class="card" data-subject="biology">
+       <div class="pdf-icon">📄</div>
+      <h3>THE LIVING WORLD NOTES 2ND CLASS </h3>
+      <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/840347643747496200.pdf" class="btn">View PDF</a>
+    </div>
+     <div class="card" data-subject="physics">
+      <div class="pdf-icon">📄</div>
+      <h3>UNIT AND MEASUREMENT 2ND LECTURE</h3>
+      <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/320554157609896960.pdf" class="btn">View PDF</a>
     </div>
   </div>
 

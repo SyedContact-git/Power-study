@@ -117,7 +117,44 @@
       background-color: #e6c200;
       box-shadow: 0 0 15px #FFD700;
     }
+  .live-card {
+      background: linear-gradient(135deg, #ff0000, #ff9900);
+      border: 2px solid #fff;
+      color: white;
+      animation: pulseGlow 2s infinite ease-in-out;
+      box-shadow: 0 0 25px #ff4500aa, 0 0 10px #ff9900cc;
+    }
 
+    .live-card h3 {
+      color: white;
+      font-size: 20px;
+    }
+
+    .live-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background-color: #fff;
+      color: red;
+      font-weight: bold;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      box-shadow: 0 0 10px #fff;
+    }
+
+    @keyframes pulseGlow {
+      0% {
+        box-shadow: 0 0 15px #ff4500aa;
+      }
+      50% {
+        box-shadow: 0 0 25px #ff4500cc, 0 0 40px #ff9900bb;
+      }
+      100% {
+        box-shadow: 0 0 15px #ff4500aa;
+      }
+    }
+    
     .hidden {
       display: none;
     }
@@ -170,9 +207,10 @@
 
   <!-- LECTURES -->
   <div id="lecturesSection" class="card-container">
-   <div class="card" data-subject="Social Science">
-      <h3>LIVE CLASSES ⏩</h3>
-      <a href="liveschedule.html" class="btn">Let's View Live Class</a>
+  <div class="card live-card" data-subject="all">
+      <div class="live-badge">LIVE</div>
+      <h3>LIVE CLASSES ✅</h3>
+      <a href="Live11.html" class="btn">Let's Attend</a>
     </div>
     <div class="card" data-subject="Social Science">
       <img src="https://i.ibb.co/D0K2Sbn/hq720-1.jpg" alt="Physics Lecture">
@@ -197,45 +235,55 @@
      <div class="card" data-subject="Science">
       <img src="https://i.ibb.co/79dQPMX/nexttoppers-com-62969b61-d33e-44a0-ac33-bd4f9693d270.png" alt="Physics Lecture">
       <h3>CHEMICAL RXN & EQN 2ND CLASS</h3>
-      <a href="chemical2recorded.html" class="btn">Let's View</a>
+      <a href="Chemical2recorded.html" class="btn">Let's View</a>
     </div>
       <div class="card" data-subject="Social Science">
       <img src="https://i.ibb.co/79dQPMX/nexttoppers-com-62969b61-d33e-44a0-ac33-bd4f9693d270.png" alt="Physics Lecture">
       <h3> DEVELOPEMENT 2nd LECTURE</h3>
       <a href="Developement2recorded.html" class="btn">Let's View</a>
     </div>
+    <div class="card" data-subject="Social Science">
+      <img src="https://i.ibb.co/79dQPMX/nexttoppers-com-62969b61-d33e-44a0-ac33-bd4f9693d270.png" alt="Physics Lecture">
+      <h3> DEVELOPEMENT 3RD LECTURE</h3>
+      <a href="Developement3recorded.html" class="btn">Let's View</a>
+    </div>
+       <div class="card" data-subject="Science">
+      <img src="https://i.ibb.co/79dQPMX/nexttoppers-com-62969b61-d33e-44a0-ac33-bd4f9693d270.png" alt="Physics Lecture">
+      <h3>CHEMICAL RXN & EQN 3RD CLASS</h3>
+      <a href="Chmeistry3recorded.html" class="btn">Let's View</a>
+    </div>
   </div>
 
   <!-- NOTES -->
   <div id="notesSection" class="card-container hidden">
     <div class="card" data-subject="Social Science">
-      <div class="pdf-icon">📄</div>
+      <div class="pdf-icon">📜</div>
       <h3>DEVELOPEMENT NOTES</h3>
       <a href="https://drive.google.com/file/d/1CYwQlCMFz8waY72MpxZcfzlyT-dUWCj6/view?usp=drivesdk" class="btn">View PDF</a>
     </div>
     <div class="card" data-subject="maths">
-      <div class="pdf-icon">📄</div>
+      <div class="pdf-icon">📜</div>
       <h3>REAL NUMBER NOTES</h3>
       <a href="https://drive.google.com/drive/folders/1Dse3eiNkRq4CgFzeOD2qxAhZVl2hklxL" class="btn">View PDF</a>
     </div>
      <div class="card" data-subject="maths">
-      <div class="pdf-icon">📄</div>
+      <div class="pdf-icon">📜</div>
       <h3>DPP #1</h3>
       <a href="https://drive.google.com/file/d/1M2C9SEvckkjzKpzR63fIpy-0GiDBYZYN/view?usp=drivesdk" class="btn">View PDF</a>
     </div>
      <div class="card" data-subject="maths">
-      <div class="pdf-icon">📄</div>
+      <div class="pdf-icon">📜</div>
       <h3>DPP #2</h3>
       <a href="https://drive.google.com/file/d/1Dc6uNtWQOmTA9zdSbD3zdWeVPnFPQPfj/view?usp=drivesdk" class="btn">View PDF</a>
       
     </div>
     <div class="card" data-subject="Science">
-      <div class="pdf-icon">📄</div>
+      <div class="pdf-icon">📜</div>
       <h3>CHEMICAL REACTION AND EQUATION NOTES 1st+2nd</h3>
       <a href="https://drive.google.com/drive/folders/1EpcDfX5FtnDqckP8LcnC8xiJ7PsRLwLD" class="btn">View PDF</a>
     </div>
       <div class="card" data-subject="Social Science">
-      <div class="pdf-icon">📄</div>
+      <div class="pdf-icon">📜</div>
       <h3>DEVELOPEMENT NOTES 2nd class</h3>
       <a href="https://drive.google.com/file/d/1G5LDv-y1Qi9nMUJZa43IV32VrzakvbpZ/view?usp=drivesdk" class="btn">View PDF</a>
     </div>
