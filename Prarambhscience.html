@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -117,44 +117,6 @@
       background-color: #e6c200;
       box-shadow: 0 0 15px #FFD700;
     }
-      .live-card {
-      background: linear-gradient(135deg, #ff0000, #ff9900);
-      border: 2px solid #fff;
-      color: white;
-      animation: pulseGlow 2s infinite ease-in-out;
-      box-shadow: 0 0 25px #ff4500aa, 0 0 10px #ff9900cc;
-    }
-
-    .live-card h3 {
-      color: white;
-      font-size: 20px;
-    }
-
-    .live-badge {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      background-color: #fff;
-      color: red;
-      font-weight: bold;
-      padding: 4px 10px;
-      border-radius: 20px;
-      font-size: 12px;
-      box-shadow: 0 0 10px #fff;
-    }
-
-    @keyframes pulseGlow {
-      0% {
-        box-shadow: 0 0 15px #ff4500aa;
-      }
-      50% {
-        box-shadow: 0 0 25px #ff4500cc, 0 0 40px #ff9900bb;
-      }
-      100% {
-        box-shadow: 0 0 15px #ff4500aa;
-      }
-    }
-    
 
     .hidden {
       display: none;
@@ -189,32 +151,23 @@
   </style>
 </head>
 <body>
-
   <header>PowerStudy - prarambh </header>
-
   <div class="toggle-buttons">
     <button id="lecturesBtn" class="active">Lectures</button>
     <button id="notesBtn">Notes</button>
   </div>
-
   <div>
     <select id="subjectFilter">
       <option value="all">All Subjects</option>
       <option value="maths">Maths</option>
       <option value="physics">Physics</option>
-       <option value="biology">biology</option>
-        <option value="chemistry">chemistry</option>
+      <option value="biology">biology</option>
+      <option value="chemistry">chemistry</option>
     </select>
   </div>
 
   <!-- LECTURES -->
   <div id="lecturesSection" class="card-container">
-  <div class="card live-card" data-subject="all">
-      <div class="live-badge">LIVE</div>
-      <h3>LIVE CLASSES ✅</h3>
-      <a href="Live11.html" class="btn">Let's Attend</a>
-    </div>
-   
     <div class="card" data-subject="physics">
       <img src="https://i.ibb.co/6GCD2qs/images-3-1.jpg" alt="Physics Lecture">
       <h3>UNIT AND MEASUREMENT</h3>
@@ -225,30 +178,65 @@
       <h3>SETS LECTURE</h3>
       <a href="https://www.youtube.com/live/vcqyIgZfCog?si=q9AbSuRFqLK1E0pP" class="btn">Let's View</a>
     </div>
-     <div class="card" data-subject="chemistry">
+    <div class="card" data-subject="chemistry">
       <img src="https://i.ibb.co/PGnd0RXD/IMG-20250416-101859-713.jpg" alt="chemistry Lecture">
       <h3>SOME BASIC CONCEPTS(CHEMISTRY) </h3>
       <a href="https://www.youtube.com/live/EVU_Bvc3HpE?si=GioIzxLmyC9eLFVk" class="btn">Let's View</a>
     </div>
-      <div class="card" data-subject="biology">
+    <div class="card" data-subject="biology">
       <img src="https://i.ibb.co/k6KQ9kFd/IMG-20250416-101859-353.jpg" alt="biology Lecture">
       <h3>THE LIVING WORLD </h3>
       <a href="https://www.youtube.com/live/RF6xfHVo9xc?si=ST4nKKgPZkjQMUcu" class="btn">Let's View</a>
     </div>
-       <div class="card" data-subject="chemistry">
+    <div class="card" data-subject="chemistry">
       <img src="https://i.ibb.co/PGnd0RXD/IMG-20250416-101859-713.jpg" alt="chemistry Lecture">
       <h3>SOME BASIC CONCEPTS OF CHEMISTRY 2ND LECTURE </h3>
       <a href="chemistry211recorded.html" class="btn">Let's View</a>
     </div>
-      <div class="card" data-subject="physics">
+    <div class="card" data-subject="physics">
       <img src="https://i.ibb.co/6GCD2qs/images-3-1.jpg" alt="Physics Lecture">
       <h3>UNIT AND MEASUREMENT 2ND LECTURE</h3>
       <a href="Unit2recorded.html" class="btn">Let's View</a>
     </div>
-      <div class="card" data-subject="biology">
+    <div class="card" data-subject="biology">
       <img src="https://i.ibb.co/k6KQ9kFd/IMG-20250416-101859-353.jpg" alt="biology Lecture">
       <h3>THE LIVING WORLD 2nd lecture  </h3>
       <a href="living2recorded.html" class="btn">Let's View</a>
+    </div>
+        <div class="card" data-subject="physics">
+      <img src="https://i.ibb.co/6GCD2qs/images-3-1.jpg" alt="Physics Lecture">
+      <h3>UNIT AND MEASUREMENT 3RD LECTURE</h3>
+      <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4354885/174499396879388296383/index_1.m3u8" class="btn">Let's View</a>
+    </div>
+    <div class="card" data-subject="chemistry">
+      <img src="https://i.ibb.co/PGnd0RXD/IMG-20250416-101859-713.jpg" alt="chemistry Lecture">
+      <h3>SOME BASIC CONCEPTS OF CHEMISTRY 3RD LECTURE </h3>
+      <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4357309/174530949861477555169/index_1.m3u8" class="btn">Let's View</a>
+    </div>
+    <div class="card" data-subject="chemistry">
+      <img src="https://i.ibb.co/PGnd0RXD/IMG-20250416-101859-713.jpg" alt="chemistry Lecture">
+      <h3>SOME BASIC CONCEPTS OF CHEMISTRY 4TH LECTURE </h3>
+      <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4357309/174530949861477555169/index_1.m3u8" class="btn">Let's View</a>
+    </div>
+        <div class="card" data-subject="biology">
+      <img src="https://i.ibb.co/k6KQ9kFd/IMG-20250416-101859-353.jpg" alt="biology Lecture">
+      <h3>THE LIVING WORLD 3RD lecture  </h3>
+      <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4354742/174498168131232621696/index_1.m3u8" class="btn">Let's View</a>
+    </div>
+            <div class="card" data-subject="biology">
+      <img src="https://i.ibb.co/k6KQ9kFd/IMG-20250416-101859-353.jpg" alt="biology Lecture">
+      <h3> Biological Classification lecture 1</h3>
+      <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4356754/174524546772032621696/index_1.m3u8" class="btn">Let's View</a>
+    </div>
+       <div class="card" data-subject="maths">
+      <img src="https://i.ibb.co/39CCtTS2/hq720-2.jpg" alt="Maths Lecture">
+      <h3>SETS LECTURE 2ND</h3>
+      <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4353889/174489667533668296383/index_1.m3u8" class="btn">Let's View</a>
+    </div>
+    <div class="card" data-subject="maths">
+      <img src="https://i.ibb.co/39CCtTS2/hq720-2.jpg" alt="Maths Lecture">
+      <h3>SETS LECTURE 3RD</h3>
+      <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4356690/174524049345081097666/index_1.m3u8" class="btn">Let's View</a>
     </div>
   </div>
 
@@ -269,25 +257,55 @@
       <h3>THE LIVING WORLD NOTES </h3>
       <a href="https://drive.google.com/file/d/1pwuQqik49QOyY2MD4eWUwdPpKX6TpXlX/view?usp=drive_link" class="btn">View PDF</a>
     </div>
-     <div class="card" data-subject="chemistry">
+    <div class="card" data-subject="chemistry">
       <div class="pdf-icon">📄</div>
       <h3>BASIC CONCEPT OF CHEMISTRY 1ST NOTES</h3>
       <a href="https://drive.google.com/file/d/1dSo33TbJ4IxkpCDC_80vcgJNafeDJM9X/view" class="btn">View PDF</a>
     </div>
-     <div class="card" data-subject="chemistry">
+    <div class="card" data-subject="chemistry">
       <div class="pdf-icon">📄</div>
       <h3>BASIC CONCEPT OF CHEMISTRY 2ND NOTES</h3>
       <a href="https://drive.google.com/file/d/1GM2rq3Zm-7rW_T5KHSU6JjQ0MgsKpNU8/view?usp=drivesdk" class="btn">View PDF</a>
     </div>
-     <div class="card" data-subject="biology">
-       <div class="pdf-icon">📄</div>
-      <h3>THE LIVING WORLD NOTES 2ND CLASS </h3>
+    <div class="card" data-subject="biology">
+      <div class="pdf-icon">📄</div>
+      <h3>THE LIVING WORLD NOTES 2ND NOTES </h3>
       <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/840347643747496200.pdf" class="btn">View PDF</a>
     </div>
-     <div class="card" data-subject="physics">
+    <div class="card" data-subject="physics">
       <div class="pdf-icon">📄</div>
-      <h3>UNIT AND MEASUREMENT 2ND LECTURE</h3>
+      <h3>UNIT AND MEASUREMENT 2ND NOTES</h3>
       <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/320554157609896960.pdf" class="btn">View PDF</a>
+    </div>
+    <div class="card" data-subject="physics">
+      <div class="pdf-icon">📄</div>
+      <h3>UNIT AND MEASUREMENT 3RD NOTES</h3>
+      <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/282566967198221150.pdf" class="btn">View PDF</a>
+    </div>
+    <div class="card" data-subject="physics">
+      <div class="pdf-icon">📄</div>
+      <h3>UNIT AND MEASUREMENT PCP </h3>
+      <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/798807099203843300.pdf" class="btn">View PDF</a>
+    </div>
+        <div class="card" data-subject="chemistry">
+      <div class="pdf-icon">📄</div>
+      <h3>Law Of Chemical Combination NOTES (levtyre 3) </h3>
+      <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/563943491510636200.pdf" class="btn">View PDF</a>
+    </div>
+        <div class="card" data-subject="biology">
+      <div class="pdf-icon">📄</div>
+      <h3>THE LIVING WORLD NOTES 3RD NOTES </h3>
+      <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/568137344888524700.pdf" class="btn">View PDF</a>
+    </div>
+        <div class="card" data-subject="maths">
+      <div class="pdf-icon">📄</div>
+      <h3>SETS NOTES 2nd </h3>
+      <a href="https://dxixtlyravvxx.cloudfront.net/540/admin_v1/file_manager/pdf/5110820Sets%20L2.pdf_Sets%20L2.pdf" class="btn">View PDF</a>
+    </div>
+    <div class="card" data-subject="maths">
+      <div class="pdf-icon">📄</div>
+      <h3>SETS #DPP ~ 1</h3>
+      <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/759054519832697600.pdf" class="btn">View PDF</a>
     </div>
   </div>
 
@@ -338,6 +356,5 @@
       });
     });
   </script>
-
 </body>
 </html>
