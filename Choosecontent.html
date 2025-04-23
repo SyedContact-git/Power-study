@@ -10,9 +10,9 @@
     }
 
     body {
-      background-color: #000;
+      background: #f4f4f4;
       color: #FFD700;
-      font-family: 'Segoe UI', sans-serif;
+      font-family: "Lucida Handwriting", cursive;
       margin: 0;
       padding: 0;
       overflow-x: hidden;
@@ -20,7 +20,6 @@
       min-height: 100vh;
     }
 
-    /* Floating Items */
     .floating-items {
       position: fixed;
       top: 0;
@@ -40,20 +39,11 @@
     }
 
     @keyframes floatItem {
-      0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 0.3;
-      }
-      50% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-120vh) rotate(360deg);
-        opacity: 0.3;
-      }
+      0% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-120vh) rotate(360deg); opacity: 0.3; }
     }
 
-    /* Main UI */
     .main-wrapper {
       z-index: 2;
       position: relative;
@@ -61,14 +51,15 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 60px 20px;
+      padding: 80px 20px;
       text-align: center;
     }
 
     h1 {
-      font-size: 42px;
-      margin-bottom: 40px;
-      text-shadow: 0 0 25px #FFD700, 0 0 60px #FFD70055;
+      font-size: 48px;
+      margin-bottom: 60px;
+      color: #FFD700;
+      text-shadow: 0 0 15px #FFD700aa, 0 0 50px #FFD70055;
     }
 
     .card-container {
@@ -80,60 +71,92 @@
     }
 
     .explore-card {
-      background: radial-gradient(circle at top, rgba(255,215,0,0.1), rgba(0,0,0,0.8));
-      border: 2px solid #FFD700;
-      border-radius: 20px;
-      width: 250px;
-      height: 300px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid #FFD70088;
+      border-radius: 25px;
+      width: 260px;
+      height: 310px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: space-evenly;
       padding: 20px;
-      box-shadow: 0 0 20px #FFD70044;
-      transition: 0.3s ease-in-out;
-      backdrop-filter: blur(4px);
+      box-shadow: 0 0 25px #FFD70033;
+      backdrop-filter: blur(12px);
+      transition: 0.4s ease-in-out;
     }
 
     .explore-card:hover {
-      transform: scale(1.06);
-      box-shadow: 0 0 40px #FFD70099;
+      transform: scale(1.07);
+      box-shadow: 0 0 50px #FFD70099;
     }
 
     .emoji {
-      font-size: 60px;
+      font-size: 64px;
       filter: drop-shadow(0 0 6px #FFD700AA);
     }
 
     .label {
-      font-size: 20px;
-      color: #fff;
+      font-size: 22px;
+      color: #0a0a0a;
       font-weight: bold;
     }
 
     .button {
-      background-color: #FFD700;
-      color: black;
-      padding: 10px 24px;
+      background: linear-gradient(to right, #FFD700, #ffea00);
+      color: #000;
+      padding: 10px 26px;
       border-radius: 30px;
-      font-weight: bold;
       font-size: 16px;
+      font-weight: bold;
       border: none;
       cursor: pointer;
       position: relative;
       overflow: hidden;
-      transition: 0.3s ease;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 12px #FFD700aa;
+      font-family: "Lucida Handwriting", cursive;
     }
 
     .button:hover {
-      background-color: #fff066;
-      transform: scale(1.05);
+      transform: scale(1.08);
+      box-shadow: 0 0 30px #FFD70099;
+      background: linear-gradient(to right, #fff96a, #fff3b3);
     }
 
     .button:disabled {
       background: #FFD700;
       cursor: not-allowed;
     }
+    /* Button Styling */
+ button {
+    background-color:BLACK;
+    color: white;
+      padding: 10px 26px;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 12px #FFD700aa;
+      font-family: "Lucida Handwriting", cursive;
+    }
+
+ button:hover {
+    background-color: #005f73;
+}
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 0.8rem;
+    color: #888;
+}
+
 
     .loader {
       position: absolute;
@@ -162,17 +185,43 @@
       100% { transform: translate(-50%, -50%) rotate(360deg); }
     }
 
+    .telegram-button {
+      margin-top: 70px;
+      padding: 14px 30px;
+      border-radius: 50px;
+      font-size: 18px;
+      font-weight: bold;
+      background: linear-gradient(to right, #FFD700, #ffdf66);
+      color: #000;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 0 20px #FFD70055, inset 0 0 20px #FFD70022;
+      transition: all 0.3s ease;
+      font-family: "Lucida Handwriting", cursive;
+    }
+
+    .telegram-button:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 35px #FFD700aa;
+      background: linear-gradient(to right, #fff47a, #ffea88);
+    }
+
     @media screen and (max-width: 600px) {
       .card-container {
         flex-direction: column;
         gap: 30px;
+      }
+
+      h1 {
+        font-size: 36px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Floating Stationery Background -->
   <div class="floating-items">
     <span style="left: 5%; top: 80%; font-size: 26px; animation-duration: 22s;">✏️</span>
     <span style="left: 20%; top: 90%; font-size: 30px; animation-duration: 28s;">📚</span>
@@ -186,8 +235,12 @@
 
   <div class="main-wrapper">
     <h1>What do you want to explore?</h1>
-
-    <div class="card-container">
+    <button id="changeColorButton">Change Background Color</button>
+    <div>
+    </div>
+_____________________________                                  
+    <div
+ class="card-container">
 
       <div class="explore-card">
         <div class="emoji">📚</div>
@@ -206,18 +259,41 @@
           <span>Explore Batches</span>
         </button>
       </div>
+        <div class="explore-card">
+        <div class="emoji">🎥</div>
+        <div class="label">LIVE CLASSES</div>
+        <button class="button" onclick="handleClick(this, 'liveschedule.html')">
+          <div class="loader"></div>
+          <span>Attend Live Classes </span>
+        </button>
+      </div>
 
     </div>
+
+    <!-- Telegram CTA -->
+    <a href="https://t.me/POWERSTUDYHUB" target="_blank" class="telegram-button">
+      <span>🚀</span> Join Telegram Community
+    </a>
+
   </div>
 
   <script>
-    function handleClick(button, target) {
+  
+function
+     handleClick(button, target) {
       button.classList.add('loading');
       button.disabled = true;
       setTimeout(() => {
         window.location.href = target;
       }, 1200);
     }
+    // Function to change the background color of the body when the button is clicked
+document.getElementById("changeColorButton").addEventListener("click", function() {
+    const colors = ["#FF5733", "#33FF57", "#3357FF", "#F4F4F4", "#FFC300"];
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    document.body.style.backgroundColor = randomColor;
+});
+
   </script>
 
 </body>

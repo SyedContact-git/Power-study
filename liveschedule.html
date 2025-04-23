@@ -1,83 +1,151 @@
-<!DOCTYPE html>
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>Power Study - Live Classes</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
-      background: linear-gradient(135deg, #1e1f24, #2e2f36);
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #1f1c2c, #928dab);
+      color: #fff;
+      padding: 40px 20px;
     }
-    .glow {
-      box-shadow: 0 0 15px #00ffe0, 0 0 30px #00ffe0;
+
+    h1 {
+      text-align: center;
+      font-size: 3.2rem;
+      margin-bottom: 50px;
+      color: #ffd700;
+      text-shadow: 0 0 15px #ffd70099, 0 0 30px #ffc10755;
     }
-    .button-loader::after {
-      content: "";
-      display: inline-block;
-      margin-left: 8px;
-      width: 12px;
-      height: 12px;
-      border: 2px solid #000;
-      border-top: 2px solid transparent;
-      border-radius: 50%;
-      animation: spin 0.6s linear infinite;
+
+    .batch-group {
+      margin-bottom: 60px;
     }
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
+
+    .batch-title {
+      font-size: 1.8rem;
+      margin-bottom: 25px;
+      text-transform: uppercase;
+      border-left: 6px solid #ffd700;
+      padding-left: 15px;
+      color: #ffef99;
+      text-shadow: 0 0 5px #ffd70088;
+    }
+
+    .class-card {
+      background: rgba(255, 255, 255, 0.07);
+      border-radius: 18px;
+      padding: 20px 25px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.2);
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      backdrop-filter: blur(8px);
+      transition: all 0.4s ease;
+    }
+
+    .class-card:hover {
+      transform: scale(1.015);
+      background: rgba(255, 255, 255, 0.09);
+    }
+
+    .class-info {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #fff;
+    }
+
+    .live-btn {
+      padding: 12px 22px;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 12px;
+      background: #555;
+      color: #bbb;
+      cursor: not-allowed;
+      transition: 0.3s;
+    }
+
+    a[href]:not([href=""]) .live-btn {
+      background: #ffd700;
+      color: #000;
+      cursor: pointer;
+      box-shadow: 0 0 12px #ffd700aa, 0 0 28px #ffd70055;
+    }
+
+    a[href]:not([href=""]) .live-btn:hover {
+      transform: scale(1.08);
+    }
+
+    a {
+      text-decoration: none;
     }
   </style>
 </head>
-<body class="text-white min-h-screen flex flex-col items-center justify-center p-6 font-sans">
+<body>
+  <h1>Power Study - Live Classes</h1>
 
-  <h1 class="text-4xl md:text-6xl font-bold mb-8 text-center tracking-wide">
-    Next Toppers <span class="text-[#00ffe0]">Live Classes</span>
-  </h1>
+  <!-- Aarambh Batch -->
+  <div class="batch-group">
+    <div class="batch-title">Class 10 - Aarambh Batch</div>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl">
-
-    <!-- 5:10 PM Class -->
-    <div class="bg-[#121417] rounded-2xl p-6 glow hover:scale-105 transition-transform duration-300 cursor-pointer">
-      <h2 class="text-2xl font-semibold mb-2">Live Class - 5 PM</h2>
-      <p class="text-gray-300 mb-4">Start your evening with this power-packed session.</p>
-      <span class="inline-block bg-[#00ffe0] text-black text-sm font-bold px-4 py-1 rounded-full animate-pulse">Live at 5:00 PM</span>
-      <div class="mt-6">
-        <button onclick="redirectWithLoad(this, '')" class="bg-[#00ffe0] text-black font-bold px-6 py-2 rounded-xl hover:brightness-90 transition-all">
-          LIVE not STARTED 
-        </button>
-      </div>
+    <div class="class-card">
+      <div class="class-info">Evening Class - 5:00 PM</div>
+      <a href="">
+        <button class="live-btn">Attend Live Class</button>
+      </a>
     </div>
 
-    <!-- 8:10 PM Class -->
-    <div class="bg-[#121417] rounded-2xl p-6 glow hover:scale-105 transition-transform duration-300 cursor-pointer">
-      <h2 class="text-2xl font-semibold mb-2">Live Class - 8 PM</h2>
-      <p class="text-gray-300 mb-4">Wrap up the day with advanced concepts and practice.</p>
-      <span class="inline-block bg-[#00ffe0] text-black text-sm font-bold px-4 py-1 rounded-full animate-pulse">Live at 8:00 PM</span>
-      <div class="mt-6">
-        <button onclick="redirectWithLoad(this, 'https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1kw75zcv4u98c.cloudfront.net/out/v1/287810d967cc428e9bd992002e55b72c/index_1.m3u8')" class="bg-[#00ffe0] text-black font-bold px-6 py-2 rounded-xl hover:brightness-90 transition-all">
-          LIVE started
-        </button>
-      </div>
+    <div class="class-card">
+      <div class="class-info">Night Class - 8:00 PM</div>
+      <a href="">
+        <button class="live-btn">Attend Live Class</button>
+      </a>
+    </div>
+  </div>
+
+  <!-- Prarambh PCMB -->
+  <div class="batch-group">
+    <div class="batch-title">Prarambh Batch - PCMB</div>
+
+    <div class="class-card">
+      <div class="class-info">Evening Class - 5:00 PM</div>
+      <a href="">
+        <button class="live-btn">Attend Live Class</button>
+      </a>
     </div>
 
+    <div class="class-card">
+      <div class="class-info">Night Class - 8:00 PM</div>
+      <a href="">
+        <button class="live-btn">Attend Live Class</button>
+      </a>
+    </div>
   </div>
 
-  <div class="mt-16 text-center text-gray-400 text-sm">
-    Powered by <span class="text-[#00ffe0] font-semibold">Power Study</span>
+  <!-- Prarambh Commerce -->
+  <div class="batch-group">
+    <div class="batch-title">Prarambh Batch - Commerce</div>
+
+    <div class="class-card">
+      <div class="class-info">Evening Class - 5:00 PM</div>
+      <a href="">
+        <button class="live-btn">Attend Live Class</button>
+      </a>
+    </div>
+
+    <div class="class-card">
+      <div class="class-info">Night Class - 8:00 PM</div>
+      <a href="">
+        <button class="live-btn">Attend Live Class</button>
+      </a>
+    </div>
   </div>
-
-  <script>
-    function redirectWithLoad(button, url) {
-      button.disabled = true;
-      button.innerText = "Redirecting";
-      button.classList.add('button-loader');
-      setTimeout(() => {
-        window.location.href = url;
-      }, 1000); // 1s delay for effect
-    }
-  </script>
-
 </body>
 </html>
