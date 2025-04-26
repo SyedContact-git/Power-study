@@ -1,0 +1,205 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Website Under Maintenance | Power Study</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+      padding: 20px;
+    }
+
+    .background {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 20%, #00f7ff15 5%, transparent 50%), 
+                  radial-gradient(circle at 80% 80%, #ff00ff15 5%, transparent 50%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .particles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .particles span {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: #fff;
+      border-radius: 50%;
+      opacity: 0.1;
+      animation: floatUp 20s linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(100vh); }
+      100% { transform: translateY(-100vh); }
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 25px;
+      backdrop-filter: blur(20px);
+      padding: 40px 25px;
+      width: 90%;
+      max-width: 550px;
+      text-align: center;
+      box-shadow: 0 0 30px rgba(0, 247, 255, 0.2);
+    }
+
+    .maintenance-label {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #ffffff;
+      text-transform: uppercase;
+      background: linear-gradient(90deg, #00f7ff, #ff00ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 25px rgba(0, 247, 255, 0.4);
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+      word-wrap: break-word;
+    }
+
+    .message {
+      font-size: 0.95rem;
+      color: #ddd;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .timer {
+      font-size: 2rem;
+      font-weight: bold;
+      color: transparent;
+      background: linear-gradient(90deg, #00f7ff, #ff00ff);
+      background-clip: text;
+      -webkit-background-clip: text;
+      text-shadow: 0 0 20px #00f7ff50;
+      margin-bottom: 30px;
+      animation: glowPulse 2s infinite alternate;
+    }
+
+    @keyframes glowPulse {
+      0% { text-shadow: 0 0 10px #00f7ff; }
+      100% { text-shadow: 0 0 25px #ff00ff; }
+    }
+
+    .btn {
+      padding: 12px 28px;
+      font-size: 0.95rem;
+      color: #fff;
+      background: transparent;
+      border: 2px solid #00f7ff;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(120deg, transparent, #00f7ff88, transparent);
+      transition: all 0.5s;
+      z-index: -1;
+    }
+
+    .btn:hover::before {
+      left: 100%;
+    }
+
+    .btn:hover {
+      box-shadow: 0 0 15px #00f7ff;
+      border-color: #00f7ff;
+    }
+
+    @media (max-width: 400px) {
+      .maintenance-label {
+        font-size: 1.5rem;
+      }
+      .timer {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="background"></div>
+  <div class="particles">
+    <span style="left: 10%; animation-delay: 0s;"></span>
+    <span style="left: 25%; animation-delay: 4s;"></span>
+    <span style="left: 40%; animation-delay: 8s;"></span>
+    <span style="left: 60%; animation-delay: 2s;"></span>
+    <span style="left: 80%; animation-delay: 6s;"></span>
+    <span style="left: 90%; animation-delay: 1s;"></span>
+  </div>
+
+  <div class="container">
+    <div class="maintenance-label">Website Under Maintenance</div>
+    <div class="message">
+      We're upgrading your Power Study experience!<br>
+      Back tomorrow at <strong>10 AM</strong> with a <strong>surprise</strong> for all classes!
+    </div>
+    <div class="timer" id="countdown">--:--:--</div>
+    <button class="btn" onclick="location.href='#'">View Live Updates</button>
+  </div>
+
+  <script>
+    const now = new Date();
+    const tomorrow = new Date(now);
+    tomorrow.setDate(now.getDate() + 1);
+    tomorrow.setHours(10, 0, 0, 0);
+
+    function updateCountdown() {
+      const now = new Date();
+      const distance = tomorrow - now;
+
+      if (distance < 0) {
+        document.getElementById('countdown').innerText = "We're Back!";
+        return;
+      }
+
+      const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((distance / (1000 * 60)) % 60);
+      const seconds = Math.floor((distance / 1000) % 60);
+
+      document.getElementById('countdown').innerText =
+        `${String(hours).padStart(2, '0')}h : ${String(minutes).padStart(2, '0')}m : ${String(seconds).padStart(2, '0')}s`;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+</body>
+</html>
