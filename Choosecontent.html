@@ -1,300 +1,287 @@
-j<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Explore - Power Study</title>
+  <title>Power Study - Explore</title>
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    html {
-      scroll-behavior: smooth;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Urbanist', sans-serif;
     }
 
     body {
-      background: #f4f4f4;
-      color: #FFD700;
-      font-family: "Lucida Handwriting", cursive;
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-      position: relative;
+      background: linear-gradient(135deg, #6a1b9a, #3f51b5); /* Purple and Blue Gradient */
       min-height: 100vh;
+      overflow-x: hidden;
+      overscroll-behavior-y: contain;
+      padding: 50px 20px;
+      position: relative;
     }
 
-    .floating-items {
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 40px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #f1f1f1;
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+      letter-spacing: 2px;
+      text-align: center;
+    }
+
+    /* Snowball Animation */
+    .snowball {
+      position: absolute;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: snowFall 10s infinite linear;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    @keyframes snowFall {
+      0% {
+        transform: translateY(-50px);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(100vh);
+        opacity: 0.5;
+      }
+    }
+
+    /* 5 Snowballs */
+    .snowball:nth-child(1) {
+      width: 12px;
+      height: 12px;
+      top: 10%;
+      left: 15%;
+      animation-duration: 12s;
+      animation-delay: 2s;
+    }
+
+    .snowball:nth-child(2) {
+      width: 8px;
+      height: 8px;
+      top: 30%;
+      left: 60%;
+      animation-duration: 10s;
+      animation-delay: 3s;
+    }
+
+    .snowball:nth-child(3) {
+      width: 10px;
+      height: 10px;
+      top: 50%;
+      left: 25%;
+      animation-duration: 9s;
+      animation-delay: 5s;
+    }
+
+    .snowball:nth-child(4) {
+      width: 14px;
+      height: 14px;
+      top: 70%;
+      left: 80%;
+      animation-duration: 11s;
+      animation-delay: 7s;
+    }
+
+    .snowball:nth-child(5) {
+      width: 6px;
+      height: 6px;
+      top: 90%;
+      left: 50%;
+      animation-duration: 8s;
+      animation-delay: 6s;
+    }
+
+    /* Container Style */
+    .container {
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      z-index: 5;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 4px 60px rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      width: 300px;
+      height: 400px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .card:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 80px rgba(255, 255, 255, 0.3);
+    }
+
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover img {
+      transform: scale(1.05);
+    }
+
+    .card h3 {
+      color: #ecf0f1;
+      margin: 15px 0;
+      font-size: 1.6rem;
+    }
+
+    .card button {
+      background: #8e24aa;
+      border: none;
+      padding: 12px 20px;
+      font-weight: bold;
+      border-radius: 50px;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      margin-top: 10px;
+    }
+
+    .card button:hover {
+      background: #7b1fa2;
+    }
+
+    /* Loader */
+    .loader {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      overflow: hidden;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .floating-items span {
-      position: absolute;
-      font-size: 24px;
-      color: #FFD70088;
-      animation: floatItem linear infinite;
-    }
-
-    @keyframes floatItem {
-      0% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
-      50% { opacity: 1; }
-      100% { transform: translateY(-120vh) rotate(360deg); opacity: 0.3; }
-    }
-
-    .main-wrapper {
-      z-index: 2;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      background: rgba(0, 0, 0, 0.8);
+      display: none;
       justify-content: center;
-      padding: 80px 20px;
-      text-align: center;
-    }
-
-    h1 {
-      font-size: 48px;
-      margin-bottom: 60px;
-      color: #FFD700;
-      text-shadow: 0 0 15px #FFD700aa, 0 0 50px #FFD70055;
-    }
-
-    .card-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 40px;
-      max-width: 1000px;
-    }
-
-    .explore-card {
-      background: rgba(255, 255, 255, 0.05);
-      border: 2px solid #FFD70088;
-      border-radius: 25px;
-      width: 260px;
-      height: 310px;
-      display: flex;
-      flex-direction: column;
       align-items: center;
-      justify-content: space-evenly;
-      padding: 20px;
-      box-shadow: 0 0 25px #FFD70033;
-      backdrop-filter: blur(12px);
-      transition: 0.4s ease-in-out;
+      z-index: 1000;
     }
 
-    .explore-card:hover {
-      transform: scale(1.07);
-      box-shadow: 0 0 50px #FFD70099;
-    }
-
-    .emoji {
-      font-size: 64px;
-      filter: drop-shadow(0 0 6px #FFD700AA);
-    }
-
-    .label {
-      font-size: 22px;
-      color: #0a0a0a;
-      font-weight: bold;
-    }
-
-    .button {
-      background: linear-gradient(to right, #FFD700, #ffea00);
-      color: #000;
-      padding: 10px 26px;
-      border-radius: 30px;
-      font-size: 16px;
-      font-weight: bold;
-      border: none;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 12px #FFD700aa;
-      font-family: "Lucida Handwriting", cursive;
-    }
-
-    .button:hover {
-      transform: scale(1.08);
-      box-shadow: 0 0 30px #FFD70099;
-      background: linear-gradient(to right, #fff96a, #fff3b3);
-    }
-
-    .button:disabled {
-      background: #FFD700;
-      cursor: not-allowed;
-    }
-    /* Button Styling */
- button {
-    background-color:BLACK;
-    color: white;
-      padding: 10px 26px;
-      border-radius: 30px;
-      font-size: 16px;
-      font-weight: bold;
-      border: none;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 12px #FFD700aa;
-      font-family: "Lucida Handwriting", cursive;
-    }
-
- button:hover {
-    background-color: #005f73;
-}
-
-/* Footer Styles */
-footer {
-    text-align: center;
-    margin-top: 40px;
-    font-size: 0.8rem;
-    color: #888;
-}
-
-
-    .loader {
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      border: 3px solid rgba(0, 0, 0, 0.2);
-      border-top: 3px solid #000;
+    .circle-loader {
+      width: 70px;
+      height: 70px;
+      border: 6px solid #8e24aa;
+      border-top: 6px solid transparent;
       border-radius: 50%;
       animation: spin 1s linear infinite;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      display: none;
-    }
-
-    .button.loading .loader {
-      display: block;
-    }
-
-    .button.loading span {
-      visibility: hidden;
     }
 
     @keyframes spin {
-      0% { transform: translate(-50%, -50%) rotate(0deg); }
-      100% { transform: translate(-50%, -50%) rotate(360deg); }
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
 
-    .telegram-button {
-      margin-top: 70px;
-      padding: 14px 30px;
-      border-radius: 50px;
-      font-size: 18px;
-      font-weight: bold;
-      background: linear-gradient(to right, #FFD700, #ffdf66);
-      color: #000;
-      text-decoration: none;
-      display: inline-flex;
+    /* Telegram Button */
+    .telegram-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #0088cc;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
       align-items: center;
-      gap: 10px;
-      box-shadow: 0 0 20px #FFD70055, inset 0 0 20px #FFD70022;
-      transition: all 0.3s ease;
-      font-family: "Lucida Handwriting", cursive;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      cursor: pointer;
+      z-index: 999;
     }
 
-    .telegram-button:hover {
-      transform: scale(1.08);
-      box-shadow: 0 0 35px #FFD700aa;
-      background: linear-gradient(to right, #fff47a, #ffea88);
+    .telegram-btn img {
+      width: 30px;
+      height: 30px;
     }
 
-    @media screen and (max-width: 600px) {
-      .card-container {
+    @media (max-width: 768px) {
+      .container {
         flex-direction: column;
-        gap: 30px;
-      }
-
-      h1 {
-        font-size: 36px;
+        align-items: center;
       }
     }
   </style>
 </head>
+
 <body>
 
-  <div class="floating-items">
-    <span style="left: 5%; top: 80%; font-size: 26px; animation-duration: 22s;">✏️</span>
-    <span style="left: 20%; top: 90%; font-size: 30px; animation-duration: 28s;">📚</span>
-    <span style="left: 35%; top: 100%; font-size: 24px; animation-duration: 25s;">✒️</span>
-    <span style="left: 50%; top: 85%; font-size: 32px; animation-duration: 20s;">📐</span>
-    <span style="left: 65%; top: 95%; font-size: 28px; animation-duration: 26s;">📖</span>
-    <span style="left: 75%; top: 100%; font-size: 30px; animation-duration: 24s;">📝</span>
-    <span style="left: 85%; top: 90%; font-size: 26px; animation-duration: 21s;">📏</span>
-    <span style="left: 95%; top: 80%; font-size: 30px; animation-duration: 27s;">✂️</span>
-  </div>
+<!-- Snowball Animation -->
+<div class="snowball"></div>
+<div class="snowball"></div>
+<div class="snowball"></div>
+<div class="snowball"></div>
+<div class="snowball"></div>
 
-  <div class="main-wrapper">
-    <h1>What do you want to explore?</h1>
-    <button id="changeColorButton">Change Background Color</button>
-    <div>
-    </div>
-_____________________________                                  
-    <div
- class="card-container">
+<main>
+  <h1>What do you want to explore?</h1>
 
-      <div class="explore-card">
-        <div class="emoji">📚</div>
-        <div class="label">Books</div>
-        <button class="button" onclick="handleClick(this, 'Books.html')">
-          <div class="loader"></div>
-          <span>Explore Books</span>
-        </button>
-      </div>
-
-      <div class="explore-card">
-        <div class="emoji">🎯</div>
-        <div class="label">Batches</div>
-        <button class="button" onclick="handleClick(this, 'Batches.html')">
-          <div class="loader"></div>
-          <span>Explore Batches</span>
-        </button>
-      </div>
-        <div class="explore-card">
-        <div class="emoji">🎥</div>
-        <div class="label">LIVE CLASSES</div>
-        <button class="button" onclick="handleClick(this, 'Generatelive.html')">
-          <div class="loader"></div>
-          <span>Attend Live Classes </span>
-        </button>
-      </div>
-
+  <div class="container">
+    <!-- Live Classes Section -->
+    <div class="card">
+      <img src="https://i.ibb.co/9kQsX4NG/file-00000000db906230bebb51991162680e-conversation-id-680e41e6-2c2c-8013-9f55-a59109e52282-message-i.png" alt="Live Classes">
+      <h3>Live Classes</h3>
+      <button onclick="redirectWithLoader('live.html')">Join Now</button>
     </div>
 
-    <!-- Telegram CTA -->
-    <a href="https://t.me/POWERSTUDYHUB" target="_blank" class="telegram-button">
-      <span>🚀</span> Join Telegram Community
-    </a>
+    <!-- Books Section -->
+    <div class="card">
+      <img src="https://i.ibb.co/sd69yHbX/IMG-20250427-093758.jpg" alt="Books">
+      <h3>Books</h3>
+      <button onclick="redirectWithLoader('books.html')">Open Books</button>
+    </div>
 
+    <!-- Batches Section -->
+    <div class="card">
+      <img src="https://i.ibb.co/5hRHL2xT/IMG-20250427-093724.jpg" alt="Batches">
+      <h3>Batches</h3>
+      <button onclick="redirectWithLoader('batches.html')">Explore Batches</button>
+    </div>
   </div>
+</main>
 
-  <script>
-  
-function
-     handleClick(button, target) {
-      button.classList.add('loading');
-      button.disabled = true;
-      setTimeout(() => {
-        window.location.href = target;
-      }, 1200);
-    }
-    // Function to change the background color of the body when the button is clicked
-document.getElementById("changeColorButton").addEventListener("click", function() {
-    const colors = ["#FF5733", "#33FF57", "#3357FF", "#F4F4F4", "#FFC300"];
-    const randomColor = colors[Math.floor(Math.random() * colors.length)];
-    document.body.style.backgroundColor = randomColor;
-});
+<!-- Loader -->
+<div class="loader" id="pageLoader">
+  <div class="circle-loader"></div>
+</div>
 
-  </script>
+<!-- Telegram Button -->
+<div class="telegram-btn" onclick="window.location.href='https://t.me/powerstudyofficial';">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
+</div>
+
+<script>
+  function redirectWithLoader(url) {
+    const loader = document.getElementById('pageLoader');
+    loader.style.display = 'flex';
+    setTimeout(() => {
+      window.location.href = url;
+    }, 1500);
+  }
+</script>
 
 </body>
 </html>

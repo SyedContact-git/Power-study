@@ -1,0 +1,537 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PowerStudy - Learn</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #faf5ff, #f0ebff);
+      color: #4b0082;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      text-align: center;
+    }
+
+    header {
+      font-size: 36px;
+      padding: 30px 10px;
+      font-weight: bold;
+      background: rgba(168, 85, 247, 0.1);
+      backdrop-filter: blur(10px);
+      text-shadow: 0 0 20px #a855f7aa;
+      box-shadow: 0 0 15px #c084fc44;
+      border-bottom: 2px solid #a855f733;
+      color: #6b21a8;
+    }
+
+    .toggle-buttons {
+      margin: 25px;
+    }
+
+    .toggle-buttons button {
+      padding: 12px 30px;
+      border: 2px solid #a855f7;
+      background: transparent;
+      color: #a855f7;
+      font-weight: bold;
+      border-radius: 30px;
+      cursor: pointer;
+      margin: 10px;
+      transition: 0.3s;
+      box-shadow: 0 0 10px #c084fc33;
+    }
+
+    .toggle-buttons button.active,
+    .toggle-buttons button:hover {
+      background-color: #a855f7;
+      color: white;
+      transform: scale(1.08);
+      box-shadow: 0 0 20px #a855f7aa;
+    }
+
+    select {
+      margin-bottom: 25px;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-weight: bold;
+      background-color: #a855f7;
+      color: white;
+      border: none;
+      box-shadow: 0 0 10px #c084fc55;
+    }
+
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+      padding: 30px 10px;
+    }
+
+    .card {
+      background: rgba(168, 85, 247, 0.05);
+      border: 1px solid #a855f722;
+      border-radius: 20px;
+      width: 340px;
+      padding-bottom: 25px;
+      overflow: hidden;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 0 20px #c084fc22;
+      transition: 0.4s ease;
+      position: relative;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px #c084fc88;
+    }
+
+    .card img {
+      width: 100%;
+      height: 155px;
+      object-fit: cover;
+      border-bottom: 1px solid #c084fc22;
+    }
+
+    .card h3 {
+      padding: 15px 10px 5px;
+      font-size: 18px;
+      color: #4b0082;
+    }
+
+    .card .btn {
+      margin-top: 12px;
+      padding: 10px 24px;
+      background-color: #a855f7;
+      color: white;
+      border-radius: 25px;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+      transition: 0.3s ease;
+    }
+
+    .card .btn:hover {
+      background-color: #9333ea;
+      box-shadow: 0 0 15px #c084fc;
+    }
+
+    .live-card {
+      background: linear-gradient(135deg, #9333ea, #c084fc);
+      border: 2px solid #fff;
+      color: white;
+      animation: pulseGlow 2s infinite ease-in-out;
+      box-shadow: 0 0 25px #9333eaaa, 0 0 10px #c084fccc;
+    }
+
+    .live-card h3 {
+      color: white;
+      font-size: 20px;
+    }
+
+    .live-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background-color: #fff;
+      color: #9333ea;
+      font-weight: bold;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      box-shadow: 0 0 10px #fff;
+    }
+
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 15px #9333eaaa; }
+      50% { box-shadow: 0 0 25px #9333eacc, 0 0 40px #c084fcbb; }
+      100% { box-shadow: 0 0 15px #9333eaaa; }
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .pdf-icon {
+      font-size: 48px;
+      margin-top: 20px;
+      color: #a855f7;
+    }
+  </style>
+</head>
+<body>
+
+  <header>PowerStudy - Aarambh</header>
+
+  <div class="toggle-buttons">
+    <button id="lecturesBtn" class="active">Lectures</button>
+    <button id="notesBtn">Notes</button>
+  </div>
+
+  <div>
+    <select id="subjectFilter">
+      <option value="all">All Subjects</option>
+      <option value="Science">Science</option>
+      <option value="Social Science">Social Science</option>
+      <option value="maths">Maths</option>
+      <option value="english">English</option>
+    </select>
+  </div>
+<!-- LECTURES SECTION -->
+<div id="lecturesSection" class="card-container">
+  <div class="card" data-subject="Social Science">
+    <img src="https://i.ibb.co/ymQ2SsCD/IMG-20250427-093724.jpg" alt="IMG-20250427-093724" border="0">
+    <h3>DEVELOPMENT 1ST CLASS</h3>
+    <a href="https://www.youtube.com/live/URGAO81IXXk?si=ibq1pXl1i2flhuWt" class="btn">Let's View</a>
+  </div>
+  <div class="card" data-subject="maths">
+    <img src="https://i.ibb.co/ymQ2SsCD/IMG-20250427-093724.jpg" alt="IMG-20250427-093724" border="0">
+    <h3>REAL NO. 1ST CLASS</h3>
+    <a href="https://www.youtube.com/live/_0ooaKrdubI?si=BK2a9KOsuCbhEhkd" class="btn">Let's View</a>
+  </div>
+  <div class="card" data-subject="Science">
+    <img src="https://i.ibb.co/ymQ2SsCD/IMG-20250427-093724.jpg" alt="IMG-20250427-093724" border="0">
+    <h3>CHEMICAL REACTION AND EQUATION</h3>
+    <a href="https://www.youtube.com/live/TRS7cu_n108?si=NnaTf_w74s9Q8PAA" class="btn">Let's View</a>
+  </div>
+  <div class="card" data-subject="maths">
+    <img src="https://i.ibb.co/ymQ2SsCD/IMG-20250427-093724.jpg" alt="IMG-20250427-093724" border="0">
+    <h3>REAL NO. 2nd class</h3>
+    <a href="realnumberrecorded.html" class="btn">Let's View</a>
+  </div>
+  <div class="card" data-subject="Science">
+    <img src="https://i.ibb.co/ymQ2SsCD/IMG-20250427-093724.jpg" alt="IMG-20250427-093724" border="0">
+    <h3>CHEMICAL RXN & EQN 2ND CLASS</h3>
+    <a href="Chemical2recorded.html" class="btn">Let's View</a>
+  </div>
+  <div class="card" data-subject="Social Science">
+    <img src="https://i.ibb.co/ymQ2SsCD/IMG-20250427-093724.jpg" alt="IMG-20250427-093724" border="0">
+    <h3>DEVELOPMENT 2ND LECTURE</h3>
+    <a href="Developement2recorded.html" class="btn">Let's View</a>
+  </div>
+  <div class="card" data-subject="Social Science">
+    <img src="https://i.ibb.co/ymQ2SsCD/IMG-20250427-093724.jpg" alt="IMG-20250427-093724" border="0">
+    <h3>DEVELOPMENT 3RD LECTURE</h3>
+    <a href="Developement3recorded.html" class="btn">Let's View</a>
+  </div>
+  <div class="card" data-subject="Science">
+    <img src="https://i.ibb.co/ymQ2SsCD/IMG-20250427-093724.jpg" alt="IMG-20250427-093724" border="0">
+    <h3>CHEMICAL RXN & EQN 3RD CLASS</h3>
+    <a href="Chmeistry3recorded.html" class="btn">Let's View</a>
+  </div>
+  <div class="card" data-subject="maths">
+    <img src="https://i.ibb.co/ymQ2SsCD/IMG-20250427-093724.jpg" alt="IMG-20250427-093724" border="0">
+    <h3>REAL NO. 3RD CLASS</h3>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4354873/174499225616481097666/index_1.m3u8" class="btn">Let's View</a>
+  </div>
+  <div class="card" data-subject="maths">
+    <img src="https://i.ibb.co/ymQ2SsCD/IMG-20250427-093724.jpg" alt="IMG-20250427-093724" border="0">
+    <h3>REAL NO. 4TH CLASS</h3>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4355458/174508004648941097666/index_1.m3u8" class="btn">Let's View</a>
+  </div>
+  <div class="card" data-subject="maths">
+    <img src="https://i.ibb.co/ymQ2SsCD/IMG-20250427-093724.jpg" alt="IMG-20250427-093724" border="0">
+    <h3>REAL NO. 5TH CLASS</h3>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4356796/174525209654081097666/index_1.m3u8" class="btn">Let's View</a>
+  </div>
+  <div class="card" data-subject="Science">
+    <img src="https://i.ibb.co/ymQ2SsCD/IMG-20250427-093724.jpg" alt="IMG-20250427-093724" border="0">
+    <h3>CHEMICAL RXN & EQN 4TH CLASS</h3>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4354717/174498038229378296383/index_1.m3u8" class="btn">Let's View</a>
+  </div>
+  <div class="card" data-subject="Social Science">
+    <img src="https://i.ibb.co/ymQ2SsCD/IMG-20250427-093724.jpg" alt="IMG-20250427-093724" border="0">
+    <h3>DEVELOPMENT 4TH LECTURE</h3>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4355307/174506622189247880624/index_1.m3u8" class="btn">Let's View</a>
+  </div>
+  <div class="card" data-subject="Social Science">
+    <img src="https://i.ibb.co/ymQ2SsCD/IMG-20250427-093724.jpg" alt="IMG-20250427-093724" border="0">
+    <h3>DEVELOPMENT 5TH LECTURE</h3>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4356674/174523974370667880624/index_1.m3u8" class="btn">Let's View</a>
+  </div>
+  <div class="card" data-subject="english">
+    <img src="https://i.ibb.co/ymQ2SsCD/IMG-20250427-093724.jpg" alt="IMG-20250427-093724" border="0">
+    <h3>Letter to God Lecture 1</h3>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d3cx6qbbd4cbso.cloudfront.net/file_library/videos/vod_non_drm_ios/4355437/1745094964_5789358984187695/sunny/1745075625242_69087200894049560_video_VOD240p30.m3u8" class="btn">Let's View</a>
+  </div>
+  <div class="card" data-subject="english">
+    <img src="https://i.ibb.co/ymQ2SsCD/IMG-20250427-093724.jpg" alt="IMG-20250427-093724" border="0">
+    <h3>Letter to God Lecture 2</h3>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d3cx6qbbd4cbso.cloudfront.net/file_library/videos/vod_non_drm_ios/4355438/1745092805_3842501733043505/sunny/1745075729856_273253030448162560_video_VOD240p30.m3u8" class="btn">Let's View</a>
+  </div>
+  <div class="card" data-subject="Social Science">
+    <img src="https://i.ibb.co/ymQ2SsCD/IMG-20250427-093724.jpg" alt="IMG-20250427-093724" border="0">
+    <h3>Resources and Development Lecture 1</h3>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4357716/174532560751637880624/index_1.m3u8" class="btn">Let's View</a>
+  </div>
+  <div class="card" data-subject="Science">
+    <img src="https://i.ibb.co/ymQ2SsCD/IMG-20250427-093724.jpg" alt="IMG-20250427-093724" border="0">
+    <h3>CHEMICAL RXN & EQN 5TH CLASS</h3>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4358838/174541230763428296383/index_1.m3u8" class="btn">Let's View</a>
+  </div>
+  <div class="card" data-subject="maths">
+    <img src="https://i.ibb.co/ymQ2SsCD/IMG-20250427-093724.jpg" alt="IMG-20250427-093724" border="0">
+    <h3>REAL NO. 6TH CLASS</h3>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4357843/174533856999441097666/index_1.m3u8" class="btn">Let's View</a>
+  </div>
+  <div class="card" data-subject="Science">
+    <img src="https://i.ibb.co/ymQ2SsCD/IMG-20250427-093724.jpg" alt="IMG-20250427-093724" border="0">
+    <h3>CHEMICAL RXN & EQN 6TH CLASS</h3>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4359955/174549890921018296383/index_3.m3u8" class="btn">Let's View</a>
+  </div>
+<!-- Chemical Reaction and Equation Lecture 7 -->
+<div class="card" data-subject="Science">
+  <img src="https://i.ibb.co/ymQ2SsCD/IMG-20250427-093724.jpg" alt="IMG-20250427-093724">
+  <h3>CHEMICAL REACTION AND EQUATION LECTURE 7</h3>
+  <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4361147/174558535223448296383/index_1.m3u8" class="btn">Let's View</a>
+</div>
+
+<!-- Resources and Development Lecture 2 -->
+<div class="card" data-subject="Social Science">
+  <img src="https://i.ibb.co/ymQ2SsCD/IMG-20250427-093724.jpg" alt="IMG-20250427-093724">
+  <h3>RESOURCES AND DEVELOPMENT LECTURE 2</h3>
+  <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4359018/174542319983487880624/index_3.m3u8" class="btn">Let's View</a>
+</div>
+
+<!-- Resources and Development Lecture 3 -->
+<div class="card" data-subject="Social Science">
+  <img src="https://i.ibb.co/ymQ2SsCD/IMG-20250427-093724.jpg" alt="IMG-20250427-093724">
+  <h3>RESOURCES AND DEVELOPMENT LECTURE 3</h3>
+  <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4360148/174550914289447880624/index_3.m3u8" class="btn">Let's View</a>
+</div>
+
+<!-- Two Gentlemen of Verona Lecture 1 -->
+<div class="card" data-subject="english">
+  <img src="https://i.ibb.co/ymQ2SsCD/IMG-20250427-093724.jpg" alt="IMG-20250427-093724">
+  <h3>TWO GENTLEMEN LECTURE 1</h3>
+  <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d3cx6qbbd4cbso.cloudfront.net/file_library/videos/vod_non_drm_ios/4355439/1745093044_4924087909410992/sunny/1745075811428_105843213207123620_video_VOD.m3u8" class="btn">Let's View</a>
+</div>
+
+<!-- Two Gentlemen of Verona Lecture 2 -->
+<div class="card" data-subject="english">
+  <img src="https://i.ibb.co/ymQ2SsCD/IMG-20250427-093724.jpg" alt="IMG-20250427-093724">
+  <h3>TWO GENTLEMEN LECTURE 2</h3>
+  <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d3cx6qbbd4cbso.cloudfront.net/file_library/videos/vod_non_drm_ios/4355440/1745093225_3967621876101546/sunny/1745075940281_157990210964759200_video_VOD.m3u8" class="btn">Let's View</a>
+</div>
+<div class="card" data-subject="maths">
+    <img src="https://i.ibb.co/ymQ2SsCD/IMG-20250427-093724.jpg" alt="IMG-20250427-093724" border="0">
+    <h3> Polynomial Lecture - 1</h3>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4361323/174559737034061097666/index_1.m3u8" class="btn">Let's View</a>
+  </div>
+  <div class="card" data-subject="Science">
+  <img src="https://i.ibb.co/ymQ2SsCD/IMG-20250427-093724.jpg" alt="IMG-20250427-093724">
+  <h3>CHEMICAL REACTION AND EQUATION LECTURE 8</h3>
+  <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4362037/174567339728038296383/index_3.m3u8" class="btn">Let's View</a>
+</div>
+<div class="card" data-subject="maths">
+    <img src="https://i.ibb.co/ymQ2SsCD/IMG-20250427-093724.jpg" alt="IMG-20250427-093724" border="0">
+    <h3> Polynomial Lecture - 2</h3>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4362134/174568400490071097666/index_3.m3u8" class="btn">Let's View</a>
+  </div></div>
+  </div>
+
+  <!-- NOTES SECTION -->
+  <div id="notesSection" class="card-container hidden">
+<!-- Real Numbers Notes -->
+<div class="card" data-subject="maths">
+  <div class="pdf-icon">📜</div>
+  <h3>Real Numbers Notes 1</h3>
+  <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/22420916723093830.pdf" class="btn" target="_blank">View PDF</a>
+</div>
+
+<div class="card" data-subject="maths">
+  <div class="pdf-icon">📜</div>
+  <h3>Real Numbers Notes 2</h3>
+  <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/440507540857891140.pdf" class="btn" target="_blank">View PDF</a>
+</div>
+
+<div class="card" data-subject="maths">
+  <div class="pdf-icon">📜</div>
+  <h3>Real Numbers Notes 3</h3>
+  <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/805714130200073600.pdf" class="btn" target="_blank">View PDF</a>
+</div>
+
+<div class="card" data-subject="maths">
+  <div class="pdf-icon">📜</div>
+  <h3>Real Numbers Notes 4</h3>
+  <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/187284260099181220.pdf" class="btn" target="_blank">View PDF</a>
+</div>
+
+<div class="card" data-subject="maths">
+  <div class="pdf-icon">📜</div>
+  <h3>Real Numbers Notes 5</h3>
+  <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/601835403370027400.pdf" class="btn" target="_blank">View PDF</a>
+</div>
+
+<!-- Real Numbers DPPs -->
+<div class="card" data-subject="maths">
+  <div class="pdf-icon">📜</div>
+  <h3>Real Numbers DPP 1</h3>
+  <a href="https://drive.google.com/file/d/1M2C9SEvckkjzKpzR63fIpy-0GiDBYZYN/view?usp=sharing" class="btn" target="_blank">View PDF</a>
+</div>
+
+<div class="card" data-subject="maths">
+  <div class="pdf-icon">📜</div>
+  <h3>Real Numbers DPP 2</h3>
+  <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/754506419720273500.pdf" class="btn" target="_blank">View PDF</a>
+</div>
+
+<div class="card" data-subject="maths">
+  <div class="pdf-icon">📜</div>
+  <h3>Real Numbers DPP 3</h3>
+  <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/50352740213663790.pdf" class="btn" target="_blank">View PDF</a>
+</div>
+
+<div class="card" data-subject="maths">
+  <div class="pdf-icon">📜</div>
+  <h3>Real Numbers DPP 4</h3>
+  <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/77872188217647540.pdf" class="btn" target="_blank">View PDF</a>
+</div>
+
+<div class="card" data-subject="maths">
+  <div class="pdf-icon">📜</div>
+  <h3>Real Numbers DPP 5</h3>
+  <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/463630041745735040.pdf" class="btn" target="_blank">View PDF</a>
+</div>  
+<div class="card" data-subject="Science">
+  <div class="pdf-icon">📜</div>
+  <h3>Chemical Reactions and Equations Notes 1</h3>
+  <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/545509967460020400.pdf" class="btn" target="_blank">View PDF</a>
+</div>
+
+<div class="card" data-subject="Science">
+  <div class="pdf-icon">📜</div>
+  <h3>Chemical Reactions and Equations Notes 2</h3>
+  <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/92623582258554050.pdf" class="btn" target="_blank">View PDF</a>
+</div>
+
+<div class="card" data-subject="Science">
+  <div class="pdf-icon">📜</div>
+  <h3>Chemical Reactions and Equations Notes 3</h3>
+  <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/467570420184705540.pdf" class="btn" target="_blank">View PDF</a>
+</div>
+
+<div class="card" data-subject="Science">
+  <div class="pdf-icon">📜</div>
+  <h3>Chemical Reactions and Equations Notes 4</h3>
+  <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/508994911186986560.pdf" class="btn" target="_blank">View PDF</a>
+</div>
+
+<div class="card" data-subject="Science">
+  <div class="pdf-icon">📜</div>
+  <h3>Chemical Reactions and Equations Notes 5</h3>
+  <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/812608998691140200.pdf" class="btn" target="_blank">View PDF</a>
+</div>
+
+<div class="card" data-subject="Science">
+  <div class="pdf-icon">📜</div>
+  <h3>Chemical Reactions and Equations Notes 6</h3>
+  <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/692200381751812900.pdf" class="btn" target="_blank">View PDF</a>
+</div>
+
+<div class="card" data-subject="Science">
+  <div class="pdf-icon">📜</div>
+  <h3>Chemical Reactions and Equations Notes 7</h3>
+  <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/635590807317661200.pdf" class="btn" target="_blank">View PDF</a>
+</div>
+
+<div class="card" data-subject="Science">
+  <div class="pdf-icon">📜</div>
+  <h3>Chemical Reactions and Equations ACP 1</h3>
+  <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/151758065059113380.pdf" class="btn" target="_blank">View PDF</a>
+</div>
+<div class="card" data-subject="Social Science">
+  <div class="pdf-icon">📜</div>
+  <h3>Development Notes 1</h3>
+  <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/499211942268668900.pdf" class="btn" target="_blank">View PDF</a>
+</div>
+
+<div class="card" data-subject="Social Science">
+  <div class="pdf-icon">📜</div>
+  <h3>Development Notes 2</h3>
+  <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/757785193454953700.pdf" class="btn" target="_blank">View PDF</a>
+</div>
+
+<div class="card" data-subject="Social Science">
+  <div class="pdf-icon">📜</div>
+  <h3>Development Notes 3</h3>
+  <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/531868284639640500.pdf" class="btn" target="_blank">View PDF</a>
+</div>
+
+<div class="card" data-subject="Social Science">
+  <div class="pdf-icon">📜</div>
+  <h3>Development Notes 4</h3>
+  <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/588945413789555000.pdf" class="btn" target="_blank">View PDF</a>
+</div>
+
+<div class="card" data-subject="Social Science">
+  <div class="pdf-icon">📜</div>
+  <h3>Development WPP 1</h3>
+  <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/346089666981640100.pdf" class="btn" target="_blank">View PDF</a>
+</div>
+<div class="card" data-subject="Social Science">
+  <div class="pdf-icon">📜</div>
+  <h3>Resources and Development Notes 1</h3>
+  <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/307992216764131200.pdf" class="btn" target="_blank">View PDF</a>
+</div>
+
+<div class="card" data-subject="Social Science">
+  <div class="pdf-icon">📜</div>
+  <h3>Resources and Development Notes 2</h3>
+  <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/389898906835482900.pdf" class="btn" target="_blank">View PDF</a>
+</div>
+<div class="card" data-subject="Science">
+  <div class="pdf-icon">📜</div>
+  <h3>Chemical Reactions and Equations Lecture 8</h3>
+  <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/214143229364161280.pdf" class="btn" target="_blank">View PDF</a>
+</div>
+<div class="card" data-subject="maths">
+  <div class="pdf-icon">📜</div>
+  <h3> Polynomial Notes 1</h3>
+  <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/461049038359672400.pdf" class="btn" target="_blank">View PDF</a>
+</div>
+<div class="card" data-subject="maths">
+  <div class="pdf-icon">📜</div>
+  <h3> Polynomial Notes 2</h3>
+  <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/454067914091926400.pdf" class="btn" target="_blank">View PDF</a>
+</div>
+  <script>
+    const lecturesBtn = document.getElementById('lecturesBtn');
+    const notesBtn = document.getElementById('notesBtn');
+    const lecturesSection = document.getElementById('lecturesSection');
+    const notesSection = document.getElementById('notesSection');
+    const subjectFilter = document.getElementById('subjectFilter');
+
+    lecturesBtn.addEventListener('click', () => {
+      lecturesSection.classList.remove('hidden');
+      notesSection.classList.add('hidden');
+      lecturesBtn.classList.add('active');
+      notesBtn.classList.remove('active');
+    });
+
+    notesBtn.addEventListener('click', () => {
+      notesSection.classList.remove('hidden');
+      lecturesSection.classList.add('hidden');
+      notesBtn.classList.add('active');
+      lecturesBtn.classList.remove('active');
+    });
+
+    subjectFilter.addEventListener('change', () => {
+      const selectedSubject = subjectFilter.value;
+      const cards = document.querySelectorAll('.card-container .card');
+      cards.forEach(card => {
+        const subject = card.getAttribute('data-subject');
+        if (selectedSubject === 'all' || subject === selectedSubject) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

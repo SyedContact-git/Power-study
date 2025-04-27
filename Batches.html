@@ -1,274 +1,339 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Power Study</title>
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Power Study - Batches</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', sans-serif;
-    }
-
+    /* Base styles */
     body {
-      background: #000;
-      color: #fff;
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom, #f5f0ff, #ffffff);
       overflow-x: hidden;
-      text-align: center;
-    }
-
-    #particles-js {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      z-index: -1;
+      position: relative;
     }
 
     header {
-      background: #000;
-      backdrop-filter: blur(8px);
-      color: #FFD700;
-      padding: 20px;
-      font-size: 28px;
-      font-weight: bold;
-      text-shadow: 0 0 15px #FFD700;
-      box-shadow: 0 0 15px #FFD700;
-      border-bottom: 2px solid rgba(255, 215, 0, 0.2);
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 10;
+      background-color: #8e2de2;
+      background-image: linear-gradient(45deg, #8e2de2, #4a00e0);
+      color: white;
+      padding: 15px 20px;
+      font-size: 26px;
+      font-weight: 800;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(142,45,226,0.3);
     }
 
-    .content {
-      padding-top: 120px;
+    #tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      background: #fff;
+      padding: 10px 0;
+      gap: 10px;
     }
 
-    .filter-container {
-      margin: 30px auto;
-    }
-
-    select {
-      padding: 10px 20px;
-      font-size: 16px;
-      border-radius: 30px;
-      border: none;
-      background: #111;
-      color: #FFD700;
-      box-shadow: 0 0 10px #FFD700;
+    .tag {
+      background: #f0e6ff;
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-weight: 600;
+      color: #5a189a;
+      cursor: pointer;
       transition: 0.3s;
     }
 
-    select:focus {
+    .tag:hover {
+      background: #d0b3ff;
+      color: #3c096c;
+    }
+
+    #search-bar {
+      width: 90%;
+      margin: 20px auto;
+      display: block;
+      padding: 12px;
+      border: 2px solid #d6b3ff;
+      border-radius: 12px;
+      font-size: 16px;
       outline: none;
-      box-shadow: 0 0 15px #ffcc00;
+      background: #faf5ff;
     }
 
     .batch-container {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 20px;
       padding: 20px;
+      gap: 20px;
     }
 
     .batch-card {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
+      background: #ffffff;
       border-radius: 15px;
-      width: 300px;
-      padding: 15px;
-      color: white;
-      box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
-      transition: transform 0.3s ease;
+      overflow: hidden;
+      width: 320px;
+      box-shadow: 0px 4px 20px rgba(155, 89, 182, 0.2);
+      text-align: center;
       position: relative;
+      transition: 0.4s;
     }
 
     .batch-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
+      transform: translateY(-8px);
+      box-shadow: 0px 8px 25px rgba(155, 89, 182, 0.4);
     }
 
     .batch-thumbnail {
       width: 100%;
-      border-radius: 10px;
+      height: 160px;
+      object-fit: cover;
     }
 
     .batch-title {
       font-size: 18px;
-      margin: 15px 0;
-      font-weight: bold;
-      color: #fff;
+      font-weight: 600;
+      padding: 10px;
+      color: #5a189a;
     }
 
     .button {
-      background: linear-gradient(45deg, #FFD700, #FFB300);
-      color: #000;
+      background: linear-gradient(45deg, #8e2de2, #4a00e0);
+      color: white;
       padding: 10px 20px;
       border-radius: 30px;
+      font-weight: 600;
       text-decoration: none;
+      margin: 10px auto 20px;
       display: inline-block;
-      font-weight: bold;
-      box-shadow: 0 0 10px #FFD700;
-      transition: 0.3s ease;
+      transition: 0.3s;
     }
 
     .button:hover {
-      background: linear-gradient(45deg, #FFB300, #FFD700);
-      box-shadow: 0 0 20px #FFD700;
+      background: linear-gradient(45deg, #9d4edd, #7b2cbf);
     }
 
     .badge {
       position: absolute;
       top: 10px;
-      right: 10px;
-      background: #FFD700;
-      color: #000;
-      padding: 6px 12px;
-      border-radius: 20px;
+      left: 10px;
+      background: #8e2de2;
+      color: white;
+      padding: 5px 10px;
       font-size: 12px;
-      font-weight: bold;
-      box-shadow: 0 0 10px #FFD700;
+      border-radius: 10px;
     }
 
-    footer {
-      padding: 20px;
-      background: #111;
-      color: #ccc;
-      margin-top: 40px;
-      font-size: 14px;
-      box-shadow: 0 0 10px #FFD700;
+    /* Loader */
+    #loader {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      flex-direction: column;
+    }
+
+    .spinner-box {
+      position: relative;
+      width: 120px;
+      height: 120px;
+    }
+
+    .configure-border-1, .configure-border-2 {
+      width: 120px;
+      height: 120px;
+      padding: 3px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      background: linear-gradient(45deg, #9d4edd, #b983ff, #8e2de2, #c77dff);
+      background-size: 300% 300%;
+      animation: gradientMove 6s ease infinite, configure-clockwise 3s ease-in-out infinite alternate;
+      border-radius: 50%;
+    }
+    .configure-border-2 {
+      transform: rotate(45deg);
+      animation: gradientMove 6s ease infinite, configure-xclockwise 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    @keyframes configure-clockwise {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes configure-xclockwise {
+      0% { transform: rotate(45deg); }
+      100% { transform: rotate(-315deg); }
+    }
+
+    .configure-core {
+      width: 100%;
+      height: 100%;
+      background-color: #ffffff;
+      border-radius: 50%;
+    }
+
+    .loading-text {
+      margin-top: 20px;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #6a0dad;
+    }
+
+    /* SNOW ANIMATION */
+    .snowflake {
+      position: fixed;
+      top: -10px;
+      color: white;
+      font-size: 20px;
+      pointer-events: none;
+      user-select: none;
+      z-index: 100;
+      animation-name: fall;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0) translateX(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) translateX(50px);
+        opacity: 0;
+      }
     }
   </style>
+
 </head>
+
 <body>
 
-  <div id="particles-js"></div>
+<header>Power Study - Batches</header>
 
-  <header>Power Study</header>
+<div id="tags">
+  <div class="tag" onclick="filterBatches('all')">All</div>
+  <div class="tag" onclick="filterBatches('9')">Class 9</div>
+  <div class="tag" onclick="filterBatches('10')">Class 10</div>
+  <div class="tag" onclick="filterBatches('11')">Class 11</div>
+  <div class="tag" onclick="filterBatches('12')">Class 12</div>
+</div>
 
-  <div class="content">
-    <div class="filter-container">
-      <select id="classFilter" onchange="filterBatches()">
-        <option value="all">All Classes</option>
-         <option value="10">Class 10</option>
-      
-        <option value="11">Class 11</option>
-      
-        <option value="jee">JEE</option>
-        <option value="neet">NEET</option>
-      </select>
-    </div>
+<input type="text" id="search-bar" placeholder="Search Batches..." onkeyup="searchBatches()">
 
-    <div class="batch-container" id="batchContainer">
-      <!-- Example Batches -->
-      <div class="batch-card" data-class="11 jee">
-        <div class="badge">Active</div>
-        <img src="https://i.ibb.co/5WQDFrLS/maxresdefault-2.jpg" class="batch-thumbnail"/>
-        <div class="batch-title">ARJUNA JEE BY PW</div>
-        <a href="https://t.me/Arjuna_jee_2026_class11th" class="button">LET'S START</a>
-      </div>
+<div class="batch-container" id="batchContainer">
 
-      <div class="batch-card" data-class="11">
-        <div class="badge">Hot</div>
-        <img src="https://i.ibb.co/WpY8vySG/PA-Science-1.jpg" class="batch-thumbnail"/>
-        <div class="batch-title">PRARAMBH BATCH PCMB</div>
-        <a href="Prarambhscience.html" class="button">LET'S START</a>
-      </div>
-      <div class="batch-card" data-class="11">
-        <div class="badge">Hot</div>
-        <img src="https://i.ibb.co/FkxwWB5m/PA-Comm.jpg" class="batch-thumbnail"/>
-        <div class="batch-title">PRARAMBH BATCH COMMERCE</div>
-        <a href="Prarambhcommerce.html" class="button">LET'S START</a>
-      </div>
-
-      <div class="batch-card" data-class="11 neet">
-        <div class="badge">Top</div>
-        <img src="https://i.ibb.co/6cYh2V3G/IMG-20250412-143834-040.jpg" class="batch-thumbnail"/>
-        <div class="batch-title">ARJUNA NEET BY PW</div>
-        <a href="https://t.me/ARJUNA_NEET_CLASS11TH" class="button">LET'S START</a>
-          </div>
-
-      <div class="batch-card" data-class="10TH">
-        <div class="badge">Top</div>
-        <img src="https://i.ibb.co/MxMzYfqy/images.jpg" class="batch-thumbnail"/>
-        <div class="batch-title">UDAAN BATCH BY PW</div>
-        <a href="https://t.me/Udaan2026freebatch" class="button">LET'S START</a>
-             </div>
-
-      <div class="batch-card" data-class="10TH">
-        <div class="badge">Top</div>
-        <img src="https://i.ibb.co/j9HRvtDQ/538903229246-aarambh-banner-app.jpg" class="batch-thumbnail"/>
-        <div class="batch-title">AARAMBH BATCH BY NEXT TOPPRS</div>
-        <a href="Aarambhclasses.html" class="button">LET'S START</a>
-               </div>
-
-      <div 
-
-      <div class="batch-card" data-class="11TH">
-        <div class="badge">Top</div>
-        <img src="https://i.ibb.co/FbpYzT2N/IMG-20250412-144639-250.jpg" class="batch-thumbnail"/>
-        <div class="batch-title">PW UDAAY BATCH </div>
-       <a href="https://t.me/Uday2025_2026" class="button">LET'S START</a>
-        </div>
-
-     
-      <div class="batch-card" data-class=" 11 jee">
-        <div class="badge">Top</div>
-        <img src="https://i.ibb.co/r2wCHBFQ/IMG-20250412-144427-496.jpg" class="batch-thumbnail"/>
-        <div class="batch-title">LAKSHAYA JEE BY PW</div>
-        <a href="https://t.me/LAKSHAYA_JEE_2026_27" class="button">LET'S START</a>
-          </div>
-      </div>
-    </div>
+  <!-- Example Batch -->
+  <div class="batch-card" data-class="9th">
+    <div class="badge">Active</div>
+    <img src="https://i.ibb.co/23YSqd30/401500133113-aarambh-class-9th-banner-app.png" class="batch-thumbnail"/>
+    <div class="batch-title">Aarambh Batch 9th</div>
+    <a href="#" class="button" onclick="showLoader(event, 'Aarambh9th.html')">LET'S START</a>
   </div>
 
-  <footer>
-    Made with ❤️ by Power Study
-  </footer>
+  <div class="batch-card" data-class="10th">
+    <div class="badge">v Active</div>
+    <img src="https://i.ibb.co/KxJdKZFx/IMG-20250225-201659-071.jpg" class="batch-thumbnail"/>
+    <div class="batch-title">Aarambh batch 10th</div>
+    <a href="#" class="button" onclick="showLoader(event, 'Aarambhclasses.html')">LET'S START</a>
+  </div>
 
-  <script>
-    particlesJS("particles-js", {
-      particles: {
-        number: { value: 80, density: { enable: true, value_area: 800 } },
-        color: { value: "#FFD700" },
-        shape: { type: "circle" },
-        opacity: { value: 0.4 },
-        size: { value: 4 },
-        line_linked: {
-          enable: true,
-          distance: 150,
-          color: "#FFD700",
-          opacity: 0.3,
-          width: 1
-        },
-        move: { enable: true, speed: 2 }
-      },
-      interactivity: {
-        events: {
-          onhover: { enable: true, mode: "repulse" },
-          onclick: { enable: true, mode: "push" }
-        },
-        modes: {
-          repulse: { distance: 100 },
-          push: { particles_nb: 4 }
-        }
-      }
-    });
+  <div class="batch-card" data-class="11TH">
+    <div class="badge">Hot</div>
+    <img src ="https://i.ibb.co/PZdXSCYK/PA-Science-2.jpg"class="batch-thumbnail"/>
+    <div class="batch-title">Prarambh PCMB</div>
+    <a href="#" class="button" onclick="showLoader(event, 'prarbhscience.html')">Let's Start</a>
+  </div>
+  <div class="batch-card" data-class="11TH">
+    <div class="badge">Hot</div>
+    <img src="https://i.ibb.co/cSvpgs73/PA-Comm-1.jpg" class="batch-thumbnail"/>
+    <div class="batch-title">Prarambh Commerce</div>
+    <a href="#" class="button" onclick="showLoader(event, 'Prarambhcommerce.html')">Let's Start</a>
+  </div>
+  <div class="batch-card" data-class="11TH">
+    <div class="badge">New</div>
+    <img src="https://i.ibb.co/0y7sk6kD/407786128517-11th-prarambh-hum-app-final-3499-1.jpg" class="batch-thumbnail"/>
+    <div class="batch-title">Prarambh Humanities</div>
+    <a href="#" class="button" onclick="showLoader(event, 'Prarambharts.html')">Let's Start</a>
+  </div>
+</div>
 
-    function filterBatches() {
-      const filter = document.getElementById('classFilter').value;
-      const cards = document.querySelectorAll('.batch-card');
-      cards.forEach(card => {
-        const classes = card.getAttribute('data-class');
-        card.style.display = (filter === 'all' || classes.includes(filter)) ? 'block' : 'none';
-      });
+<!-- LOADER -->
+<div id="loader">
+  <div class="spinner-box">
+    <div class="configure-border-1">
+      <div class="configure-core"></div>
+    </div>
+    <div class="configure-border-2">
+      <div class="configure-core"></div>
+    </div>
+  </div>
+  <div class="loading-text">Loading...</div>
+</div>
+
+<!-- Snowflakes -->
+<script>
+for (let i = 0; i < 50; i++) {
+  const snowflake = document.createElement('div');
+  snowflake.className = 'snowflake';
+  snowflake.style.left = Math.random() * window.innerWidth + 'px';
+  snowflake.style.animationDuration = (Math.random() * 3 + 2) + 's';
+  snowflake.style.animationDelay = Math.random() * 5 + 's';
+  snowflake.style.fontSize = (Math.random() * 10 + 10) + 'px';
+  snowflake.innerHTML = '❄';
+  document.body.appendChild(snowflake);
+}
+</script>
+
+<!-- Batch filter & loader -->
+<script>
+function showLoader(event, url) {
+  event.preventDefault();
+  document.getElementById("loader").style.display = "flex";
+  setTimeout(function() {
+    window.location.href = url;
+  }, 3000);
+}
+
+function filterBatches(className) {
+  const batches = document.querySelectorAll('.batch-card');
+  batches.forEach(batch => {
+    if (className === 'all') {
+      batch.style.display = "block";
+    } else if (batch.getAttribute('data-class').includes(className)) {
+      batch.style.display = "block";
+    } else {
+      batch.style.display = "none";
     }
-  </script>
+  });
+}
+
+function searchBatches() {
+  const input = document.getElementById('search-bar').value.toLowerCase();
+  const batches = document.querySelectorAll('.batch-card');
+  batches.forEach(batch => {
+    const title = batch.querySelector('.batch-title').textContent.toLowerCase();
+    if (title.includes(input)) {
+      batch.style.display = "block";
+    } else {
+      batch.style.display = "none";
+    }
+  });
+}
+</script>
+
 </body>
 </html>
