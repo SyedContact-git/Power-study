@@ -1,162 +1,162 @@
-<!DOCTYPE html>
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
 <html lang="en">
 <head>
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Power Study Access</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <title>Generate Key - Power Study</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    /* General Styling */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
       font-family: 'Poppins', sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      margin: 0;
+      padding: 0;
       height: 100vh;
-      background: #f5f5ff; /* Light purple-ish background */
-      overflow: hidden;
-      position: relative;
-      color: #4b0082; /* Dark purple text */
-    }
-
-    /* Particle Background */
-    #particles-js {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-    }
-
-    /* Cyberpunk-Themed Box */
-    .container {
-      background: rgba(255, 255, 255, 0.8);
-      border-radius: 15px;
-      padding: 30px;
-      width: 400px;
-      text-align: center;
-      box-shadow: 0 0 20px rgba(128, 0, 255, 0.4);
-      border: 1px solid rgba(128, 0, 255, 0.3);
-      backdrop-filter: blur(6px);
-    }
-
-    h2 {
-      font-size: 24px;
-      color: #7b1fa2; /* Soft purple */
-      text-shadow: 0 0 10px rgba(128, 0, 255, 0.5);
-    }
-
-    p {
-      font-size: 14px;
-      margin-bottom: 20px;
-      color: #5c4084; /* Mid purple */
-    }
-
-    /* Buttons */
-    .button {
-      display: inline-block;
-      width: 100%;
-      padding: 12px;
-      font-size: 15px;
-      color: #ffffff;
-      border: 1px solid #7b1fa2;
-      background: #9b59b6;
-      border-radius: 8px;
-      cursor: pointer;
-      margin: 8px 0;
-      font-weight: 600;
-      transition: 0.3s;
-      text-transform: uppercase;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .button:hover {
-      background: #7b1fa2;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       color: #fff;
-      box-shadow: 0 0 15px rgba(123, 31, 162, 0.7);
     }
-
-    /* Key Generation Animation */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 0;
+    }
+    .container {
+      z-index: 1;
+      position: relative;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 40px 30px;
+      text-align: center;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+      max-width: 420px;
+      width: 90%;
+    }
+    h2 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: #ffffff;
+    }
+    p {
+      font-size: 16px;
+      margin-bottom: 20px;
+      color: #e0f7fa;
+    }
+    .button,
+    .recommend-button,
+    .video-button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .button {
+      background: linear-gradient(90deg, #00c6ff, #0072ff);
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(0, 114, 255, 0.4);
+    }
+    .recommend-button {
+      background: linear-gradient(90deg, #f7971e, #ffd200);
+      color: #222;
+      animation: pulse 2s infinite;
+      box-shadow: 0 4px 20px rgba(255, 210, 0, 0.5);
+    }
+    .video-button {
+      background: linear-gradient(90deg, #00f2fe, #4facfe);
+      color: #000;
+      box-shadow: 0 4px 15px rgba(0, 242, 254, 0.4);
+    }
+    .button:hover,
+    .recommend-button:hover,
+    .video-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
     .loading {
-      font-size: 13px;
-      color: #ff6ec7;
-      margin-top: 10px;
+      font-size: 14px;
+      color: #bbdefb;
       display: none;
-      animation: flicker 1.5s infinite alternate;
+      margin-top: 15px;
     }
-
-    /* Subtle Glow */
-    @keyframes flicker {
-      from {
-        opacity: 0.6;
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    @media (max-width: 480px) {
+      .container {
+        padding: 25px 20px;
       }
-      to {
-        opacity: 1;
+      h2 {
+        font-size: 22px;
+      }
+      .button, .recommend-button, .video-button {
+        font-size: 14px;
+        padding: 12px;
       }
     }
   </style>
 </head>
 <body>
-  <div id="particles-js"></div>
+
+  <div class="overlay"></div>
+  
   <div class="container">
-    <h2>Get Your Power Study Key</h2>
-    <p>Click the button below to access your key for Power Study.<br><br>Validity: 24 hours ⏰</p>
-    <button id="server02" class="button">Power Study Server - 1</button>
-    <button id="server03Url" class="button">Power Study Server - 2</button><br> 
-    <button id="recommendServer" class="button">Power Study Server - 3</button><br>
-    <button id="watchVideo" class="button">TUTORIAL VIDEO [EASY METHOD]</button>
-    <p>Please <strong>watch the TUTORIAL video first</strong> to avoid any problems.</p>
+    <h2>Get Access to Power Study</h2>
+    <p>Click a button below to generate your access key.</p>
+    <p>Your access key will remain valid for 1 Day (24 Hours). After that, you'll need to generate a new one.</p>
+
+    <button id="server02" class="button">Server 1 🚀</button>
+    <button id="server03Url" class="button">Server 2 ⚡️</button>
+    <button id="recommendServer" class="recommend-button">Server 3 🔥</button>
+    <button id="watchVideo" class="video-button">How To Generate Key</button>
+    
     <p class="loading" id="loadingMessage">Generating URL, please wait...</p>
   </div>
 
   <script>
-    /* Particles.js Configuration */
-    particlesJS("particles-js", {
-      particles: {
-        number: { value: 100, density: { enable: true, value_area: 800 } },
-        color: { value: "#9b59b6" },
-        shape: { type: "circle" },
-        opacity: { value: 0.5, anim: { enable: true, speed: 1, opacity_min: 0.1 } },
-        size: { value: 2.5, random: true },
-        line_linked: { enable: true, distance: 140, color: "#9b59b6", opacity: 0.3, width: 1 },
-        move: { enable: true, speed: 1.5, out_mode: "out" }
-      },
-      interactivity: {
-        detect_on: "canvas",
-        events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: true, mode: "push" } },
-        modes: { grab: { distance: 120, line_linked: { opacity: 1 } } }
-      },
-      retina_detect: true
-    });
-
-    /* JavaScript Logic */
-    const urls = {
-      server02: 'http://linkcents.com/r5BgmI',
-      server03: 'https://linkcents.com/r5BgmI',
-      recommendServer: 'https://linkcents.com/r5BgmI',
-      tutorialVideo: 'https://t.me/EduVerse_Network/589'
-    };
+    const server02Url = 'http://linkcents.com/ap7tI16j';
+    const server03Url = 'http://linkcents.com/ap7tI16j';
+    const recommendServerUrl = 'http://linkcents.com/ap7tI16j';
+    const tutorialVideoUrl = 'https://t.me/Files_Buddy_Bot?start=BQADAQADRAcAAm8cSEfQnySBc2bwAAEWBA';
 
     function setTemporaryCookieAndRedirect(cookieName, url) {
-      if (!url) return alert('Invalid URL!');
-      document.getElementById("loadingMessage").style.display = "block";
-      setTimeout(() => {
-        document.cookie = `${cookieName}=true; path=/; max-age=${6 * 60 * 60}`;
-        window.location.href = url;
-      }, 2000);
+      const now = new Date();
+      const tempExpirationTime = now.getTime() + 10 * 60 * 1000;
+      document.cookie = `${cookieName}=true; expires=${new Date(tempExpirationTime).toUTCString()}; path=/`;
+      window.location.href = url;
     }
 
-    document.getElementById('server02').addEventListener('click', () => setTemporaryCookieAndRedirect('server02KeyGenerated', urls.server02));
-    document.getElementById('server03Url').addEventListener('click', () => setTemporaryCookieAndRedirect('server03KeyGenerated', urls.server03));
-    document.getElementById('recommendServer').addEventListener('click', () => setTemporaryCookieAndRedirect('recommendServerKeyGenerated', urls.recommendServer));
-    document.getElementById('watchVideo').addEventListener('click', () => window.open(urls.tutorialVideo, '_blank'));
+    document.getElementById('server02').addEventListener('click', function() 
+      setTemporaryCookieAndRedirect('server02KeyGenerated', server02Url);
+    });
+
+    document.getElementById('server03Url').addEventListener('click', function() {
+      setTemporaryCookieAndRedirect('server03KeyGenerated', server03Url);
+    });
+
+    document.getElementById('recommendServer').addEventListener('click', function() {
+      setTemporaryCookieAndRedirect('recommendServerKeyGenerated', recommendServerUrl);
+    });
+
+    document.getElementById('watchVideo').addEventListener('click', function() {
+      window.open(tutorialVideoUrl, '_blank');
+    });
   </script>
+
 </body>
 </html>
