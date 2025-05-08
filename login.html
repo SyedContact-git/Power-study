@@ -416,21 +416,22 @@ p {
     };
 
     function setTemporaryCookieAndRedirect(cookieName, url) {
-      if (!url) return alert('Invalid URL!');
-      
-      const loadingMessage = document.getElementById("loadingMessage");
-      loadingMessage.style.display = "block";
-      
-      // Create particle burst effect
-      particles.burst(15);
-      
-      setTimeout(() => {
-        document.cookie = `${cookieName}=true; path=/; max-age=${06 * 60 * 60}`;
-        window.open(url, '_blank');
-        loadingMessage.style.display = "none";
-      }, 2000);
-    }
-
+  if (!url) return alert('Invalid URL!');
+  
+  const loadingMessage = document.getElementById("loadingMessage");
+  loadingMessage.style.display = "block";
+  
+  // Open the tab immediately (avoid popup blockers)
+  const newTab = window.open(url, '_blank');
+  
+  // Particle effect and cookie setting can happen later
+  particles.burst(15);
+  
+  setTimeout(() => {
+    document.cookie = `${cookieName}=true; path=/; max-age=${6 * 60 * 60}`;
+    loadingMessage.style.display = "none";
+  }, 2000);
+}
     document.getElementById('server02').addEventListener('click', () => {
       setTemporaryCookieAndRedirect('24key', urls.server02);
     });
