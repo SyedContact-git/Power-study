@@ -1,170 +1,352 @@
-<!DOCTYPE html>
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>Power Study ⚡</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Power Study - Free Learning Revolution</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Lucida Handwriting', cursive;
-    }
-
     body {
-      background: #080018;
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #0d0d0d;
       color: white;
+      overflow-x: hidden;
+    }
+
+    /* Preloader */
+    #preloader {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: #0d0d0d;
       display: flex;
-      justify-content: center;
       align-items: center;
-      height: 100vh;
+      justify-content: center;
+      flex-direction: column;
+      z-index: 9999;
       overflow: hidden;
-      text-align: center;
-      position: relative;
     }
 
-    .background {
+    .bg-animation {
       position: absolute;
       width: 100%;
       height: 100%;
+      top: 0;
+      left: 0;
       overflow: hidden;
-      z-index: -1;
+      z-index: 1;
     }
 
-    .wave {
+    .circle {
       position: absolute;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle, rgba(255, 215, 0, 0.15), #080018 60%);
-      animation: waveMotion 6s infinite alternate ease-in-out;
+      border-radius: 50%;
+      background: rgba(168, 85, 247, 0.2);
+      box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+      animation: float 6s infinite ease-in-out;
     }
 
-    @keyframes waveMotion {
-      0% { transform: rotate(0deg) scale(1); }
-      100% { transform: rotate(-5deg) scale(1.05); }
-    }
+    .circle:nth-child(1) { width: 100px; height: 100px; top: 20%; left: 30%; animation-duration: 7s; }
+    .circle:nth-child(2) { width: 150px; height: 150px; top: 60%; left: 10%; animation-duration: 5s; }
+    .circle:nth-child(3) { width: 80px; height: 80px; top: 40%; left: 70%; animation-duration: 6s; }
 
-    .container {
-      background: rgba(255, 215, 0, 0.07);
-      padding: 30px;
-      border-radius: 25px;
-      max-width: 500px;
-      width: 90%;
-      box-shadow: 0 0 25px #ffd70088, 0 0 60px #ff00ff33;
-      transition: 0.4s ease;
-      backdrop-filter: blur(6px);
-    }
-
-    .container:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 35px #ffd700cc, 0 0 55px #ff00ff88;
-    }
-
-    .container::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 25px;
-      padding: 3px;
-      background: linear-gradient(135deg, #FFD700, #FF00FF);
-      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      mask-composite: exclude;
-      -webkit-mask-composite: destination-out;
-      z-index: -1;
+    @keyframes float {
+      0% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-20px) scale(1.2); }
+      100% { transform: translateY(0) scale(1); }
     }
 
     .logo {
       width: 120px;
+      height: 120px;
       border-radius: 50%;
-      margin-bottom: 15px;
-      animation: glow 2s ease-in-out infinite alternate;
-    }
-
-    @keyframes glow {
-      0% { filter: drop-shadow(0 0 10px #ffd70066); }
-      100% { filter: drop-shadow(0 0 30px #ff00ff); }
-    }
-
-    .title {
-      font-size: 30px;
-      font-weight: bold;
-      color: #FFD700;
-      text-shadow: 0 0 20px #FFD700;
-      margin-bottom: 12px;
-    }
-
-    .description {
-      font-size: 16px;
-      color: #ffffffcc;
-      margin-bottom: 25px;
-      line-height: 1.6;
-    }
-
-    .btn {
-      display: block;
-      width: 100%;
-      background: rgba(255, 215, 0, 0.2);
-      color: white;
-      padding: 12px;
-      font-size: 18px;
-      font-weight: bold;
-      border: none;
-      border-radius: 12px;
-      text-decoration: none;
-      margin-bottom: 10px;
-      transition: all 0.3s ease;
-      position: relative;
+      background: #a855f7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 30px #a855f7;
+      animation: pulse 2s infinite;
+      z-index: 2;
       overflow: hidden;
     }
 
-    .btn:hover {
-      background: #FFD700;
-      color: #000;
-      transform: scale(1.08);
-      box-shadow: 0 0 15px #ffd700, 0 0 25px #ff00ff;
-    }
-
-    .btn::before {
-      content: '';
-      position: absolute;
-      top: -100%;
-      left: -100%;
-      width: 300%;
-      height: 300%;
-      background: radial-gradient(circle, #ff00ff88 10%, transparent 70%);
-      opacity: 0;
-      transition: 0.3s;
-    }
-
-    .btn:hover::before {
-      opacity: 1;
-      animation: pulse 0.6s infinite;
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
     }
 
     @keyframes pulse {
-      0% { transform: scale(1); opacity: 1; }
-      100% { transform: scale(1.5); opacity: 0; }
+      0% { transform: scale(1); box-shadow: 0 0 30px #a855f7; }
+      50% { transform: scale(1.1); box-shadow: 0 0 50px #a855f7; }
+      100% { transform: scale(1); box-shadow: 0 0 30px #a855f7; }
+    }
+
+    .loading {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      color: #aaa;
+      letter-spacing: 2px;
+      z-index: 2;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 30px;
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: white;
+    }
+
+    .brand .power {
+      color: #a855f7;
+      text-shadow: 0 0 10px #a855f7;
+    }
+
+    .brand .study {
+      color: #9333ea;
+      text-shadow: 0 0 10px #9333ea;
+    }
+
+    .brand img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #a855f7;
+    }
+
+    .menu-btn {
+      font-size: 2rem;
+      cursor: pointer;
+      color: white;
+    }
+
+    /* Drawer */
+    .drawer {
+      position: fixed;
+      top: 0;
+      right: -300px;
+      width: 250px;
+      height: 100%;
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(15px);
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
+      transition: 0.4s;
+      padding: 40px 20px;
+      box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+      z-index: 1100;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .drawer.open { right: 0; }
+    .drawer a {
+      color: white;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+    .back-btn {
+      align-self: flex-end;
+      font-size: 1.5rem;
+      cursor: pointer;
+      margin-bottom: 20px;
+      color: #aaa;
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 100px 20px 50px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: white;
+    }
+
+    .glow {
+      color: white;
+      text-shadow: 0 0 10px #a855f7, 0 0 20px #9333ea;
+    }
+
+    .tagline {
+      font-size: 1.2rem;
+      color: #ccc;
+      margin-bottom: 30px;
+    }
+
+    .get-started {
+      background: linear-gradient(45deg, #a855f7, #9333ea);
+      padding: 15px 30px;
+      border: none;
+      border-radius: 30px;
+      color: white;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+      transition: 0.3s;
+    }
+
+    .get-started:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 30px rgba(168, 85, 247, 0.7);
+    }
+
+    /* Cards */
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 20px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      padding: 30px;
+      width: 280px;
+      text-align: center;
+      box-shadow: 0 8px 30px rgba(168, 85, 247, 0.2);
+      backdrop-filter: blur(15px);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 40px rgba(168, 85, 247, 0.4);
+    }
+
+    .card h3 { color: #a855f7; margin-bottom: 10px; }
+    .card p { color: #aaa; font-size: 0.95rem; }
+
+    /* Telegram Button */
+    .telegram-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(45deg, #0088cc, #00bfff);
+      padding: 15px;
+      border-radius: 50%;
+      box-shadow: 0 0 20px rgba(0, 136, 204, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.3s;
+      text-decoration: none;
+    }
+
+    .telegram-btn img {
+      width: 30px;
+      height: 30px;
+    }
+
+    .telegram-btn:hover { transform: scale(1.1); }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .cards { flex-direction: column; align-items: center; }
     }
   </style>
 </head>
 <body>
 
-  <div class="background">
-    <div class="wave"></div>
+<!-- Preloader -->
+<div id="preloader">
+  <div class="bg-animation">
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
   </div>
+  <div class="logo">
+    <img src="https://i.ibb.co/rPNWP45/IMG-20250510-161054-042.jpg" alt="Logo">
+  </div>
+  <div class="loading">Launching Power Study...</div>
+</div>
 
-  <div class="container">
-    <img src="https://i.ibb.co/PvkmDvVy/IMG-20250412-082856-213.jpg" class="logo" alt="Power Study Logo">
-    <div class="title">Power Study ⚡</div>
-    <div class="description">
-      Welcome to <strong>Power Study</strong> — A futuristic study revolution for students!  
-      Access AI-powered roadmaps, next-level study material, and join a thriving student community to fuel your journey to the top!  
-      It’s time to power up your preparation!
-    </div>
-    <a href="https://t.me/POWERSTUDYHUB" class="btn">📲 Join Telegram Community</a>
-    <a href="mainpage.html" class="btn">🚀 Explore Website</a>
+<!-- Header -->
+<header>
+  <div class="brand">
+    <span class="power">Power</span>
+    <img src="https://i.ibb.co/rPNWP45/IMG-20250510-161054-042.jpg" alt="Logo">
+    <span class="study">Study</span>
   </div>
+  <div class="menu-btn" onclick="toggleDrawer()">☰</div>
+</header>
+
+<!-- Drawer -->
+<div class="drawer" id="drawer">
+  <div class="back-btn" onclick="toggleDrawer()">←</div>
+  <a href="index.html">Home</a>
+  <a href="liveschedule.html">Live Classes</a>
+  <a href="Books.html">Books</a>
+  <a href="aboutus.html">About Us</a>
+  <a href="Batches.html">explore Batches </a>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+  <h1 class="glow">EDUCATED INDIA</h1>
+  <p class="tagline">Power Study - Free Learning Resources For Every Student</p>
+  <a href="Choosecontent.html"><button class="get-started">Get Started</button></a>
+</section>
+
+<!-- Info Cards -->
+<section class="cards">
+  <div class="card">
+    <h3>Live Classes</h3>
+    <p>Attend free live classes daily and upgrade your knowledge with India's top educators.</p>
+  </div>
+  <div class="card">
+    <h3>Free Resources</h3>
+    <p>Download notes, PDFs, and practice materials absolutely free anytime, anywhere.</p>
+  </div>
+  <div class="card">
+    <h3>Join the Community</h3>
+    <p>Connect with thousands of learners like you in our student community.</p>
+  </div>
+</section>
+
+<!-- Telegram Button -->
+<a href="#" class="telegram-btn">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
+</a>
+
+<script>
+  // Preloader timeout
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      document.getElementById('preloader').style.display = 'none';
+    }, 3000);
+  });
+
+  // Drawer toggle
+  function toggleDrawer() {
+    document.getElementById('drawer').classList.toggle('open');
+  }
+</script>
 
 </body>
 </html>

@@ -9,186 +9,247 @@ if (!getCookie('🚀')) { window.location.href = 'login.html'; } </script>
 
 
   <style>
-    /* [Your same CSS as before -- no changes needed] */
-    /* GLOBAL STYLES */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to bottom right, #f8f0ff, #efe0ff);
-      color: #4b0082;
-      overflow-x: hidden;
-      min-height: 100vh;
-      position: relative;
-    }
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('https://cdn.jsdelivr.net/gh/Julienh/ShinySnow/snow.png') repeat;
-      animation: snow 50s linear infinite;
-      opacity: 0.2;
-      z-index: -1;
-    }
-    @keyframes snow {
-      0% { background-position: 0 0; }
-      100% { background-position: 0 1000px; }
-    }
-    header {
-      text-align: center;
-      padding: 30px 10px 20px;
-      font-size: 36px;
-      font-weight: 900;
-      color: #6a0dad;
-      text-shadow: 0 0 12px #d8b4fe;
-      background: #f0e6ff;
-      border-bottom: 1px solid #d8b4fe;
-      box-shadow: 0 4px 8px #d8b4fe88;
-    }
-    .search-bar {
-      display: flex;
-      justify-content: center;
-      margin: 25px 0 10px;
-    }
-    .search-bar input {
-      padding: 12px 30px;
-      border-radius: 30px;
-      width: 320px;
-      border: 2px solid #c084fc;
-      background: #faf5ff;
-      color: #4b0082;
-      font-size: 16px;
-      outline: none;
-      box-shadow: 0 0 15px #e0cfff;
-      transition: 0.3s ease;
-    }
-    .search-bar input::placeholder {
-      color: #9c4dcc;
-    }
-    .search-bar input:focus {
-      background: #f0e0ff;
-      box-shadow: 0 0 25px #c084fc;
-      border-color: #a855f7;
-    }
-    .subject-tags {
-      text-align: center;
-      margin: 10px 0 20px;
-      overflow-x: auto;
-      white-space: nowrap;
-      padding: 0 10px;
-    }
-    .subject-tags button {
-      display: inline-block;
-      padding: 10px 20px;
-      margin: 5px;
-      border-radius: 20px;
-      border: 2px solid #c084fc;
-      background: #faf5ff;
-      color: #6a0dad;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s ease;
-    }
-    .subject-tags button:hover,
-    .subject-tags button.active {
-      background: #c084fc;
-      color: #fff;
-    }
-    .toggle-buttons {
-      text-align: center;
-      margin: 15px 0;
-    }
-    .toggle-buttons button {
-      padding: 12px 30px;
-      margin: 0 10px;
-      border-radius: 30px;
-      border: 2px solid #c084fc;
-      background: transparent;
-      color: #6a0dad;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s ease;
-      box-shadow: 0 0 10px #e9d5ff;
-    }
-    .toggle-buttons button:hover,
-    .toggle-buttons button.active {
-      background: #c084fc;
-      color: #fff;
-      box-shadow: 0 0 20px #c084fc88;
-      transform: scale(1.05);
-    }
-    .card-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px;
-      padding: 10px 20px 50px;
-    }
-    .card {
-      background: #f9f3ff;
-      border: 1px solid #d8b4fe;
-      border-radius: 25px;
-      width: 320px;
-      overflow: hidden;
-      box-shadow: 0 0 20px #d8b4fe77;
-      transition: 0.4s ease;
-      position: relative;
-    }
-    .card:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 0 30px #c084fcaa;
-    }
-    .card img {
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-      border-bottom: 1px solid #d8b4fe;
-    }
-    .card h3 {
-      padding: 15px 10px 5px;
-      font-size: 18px;
-      color: #4b0082;
-      text-align: center;
-    }
-    .card .btn {
-      display: block;
-      margin: 15px auto 20px;
-      padding: 10px 20px;
-      background: #c084fc;
-      color: #fff;
-      border-radius: 25px;
-      font-weight: bold;
-      text-decoration: none;
-      width: fit-content;
-      transition: 0.3s ease;
-      box-shadow: 0 0 15px #e0cfff;
-    }
-    .card .btn:hover {
-      background: #a855f7;
-      box-shadow: 0 0 20px #c084fcaa;
-    }
-    .hidden {
-      display: none;
-    }
-    @media screen and (max-width: 768px) {
-      header {
-        font-size: 26px;
-      }
-      .toggle-buttons button {
-        margin: 10px 6px;
-        padding: 10px 20px;
-      }
-      .search-bar input {
-        width: 250px;
-      }
-    }
+/* GLOBAL STYLES */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to bottom right, #0d0d0d, #1a001a);
+  color: #ffe6ff;
+  overflow-x: hidden;
+  min-height: 100vh;
+  position: relative;
+}
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://cdn.jsdelivr.net/gh/Julienh/ShinySnow/snow.png') repeat;
+  animation: snow 50s linear infinite;
+  opacity: 0.03;
+  z-index: -1;
+}
+@keyframes snow {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 1000px; }
+}
+
+/* HEADER */
+header {
+  text-align: center;
+  padding: 30px 10px 20px;
+  font-size: 38px;
+  font-weight: 900;
+  color: #ff33cc;
+  text-shadow: 0 0 20px #ff33cc;
+  background: #120012;
+  border-bottom: 2px solid #ff33cc;
+  box-shadow: 0 6px 12px #ff33cc66;
+  border-radius: 0 0 30px 30px;
+}
+
+/* SEARCH BAR */
+.search-bar {
+  display: flex;
+  justify-content: center;
+  margin: 25px 0 10px;
+}
+.search-bar input {
+  padding: 14px 30px;
+  border-radius: 30px;
+  width: 320px;
+  border: 2px solid #ff33cc;
+  background: #1a001a;
+  color: #ff66cc;
+  font-size: 16px;
+  outline: none;
+  box-shadow: 0 0 20px #ff33cc66;
+  transition: 0.3s ease;
+}
+.search-bar input::placeholder {
+  color: #ff99dd;
+}
+.search-bar input:focus {
+  background: #120012;
+  box-shadow: 0 0 30px #ff33cc;
+  border-color: #ff33cc;
+}
+
+/* SUBJECT TAGS */
+.subject-tags {
+  text-align: center;
+  margin: 10px 0 20px;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 0 10px;
+}
+.subject-tags button {
+  display: inline-block;
+  padding: 12px 24px;
+  margin: 5px;
+  border-radius: 30px;
+  border: 2px solid #ff33cc;
+  background: linear-gradient(to right, #1a001a, #330033);
+  color: #ff33cc;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+  box-shadow: 0 0 10px #ff33cc66;
+}
+.subject-tags button:hover,
+.subject-tags button.active {
+  background: linear-gradient(to right, #ff33cc, #ff6600);
+  color: #000;
+  box-shadow: 0 0 20px #ff33cc;
+  transform: scale(1.1);
+}
+
+/* TOGGLE BUTTONS */
+.toggle-buttons {
+  text-align: center;
+  margin: 15px 0;
+}
+.toggle-buttons button {
+  padding: 12px 30px;
+  margin: 0 10px;
+  border-radius: 30px;
+  border: 2px solid #ff33cc;
+  background: linear-gradient(to right, #1a001a, #330033);
+  color: #ff33cc;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+  box-shadow: 0 0 15px #ff33cc66;
+}
+.toggle-buttons button:hover,
+.toggle-buttons button.active {
+  background: linear-gradient(to right, #ff33cc, #ff6600);
+  color: #000;
+  box-shadow: 0 0 25px #ff33cc;
+  transform: scale(1.1);
+}
+
+/* CARD CONTAINER */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  padding: 10px 20px 50px;
+}
+
+/* CARD */
+.card {
+  background: #1a001a;
+  border: 2px solid #ff33cc;
+  border-radius: 25px;
+  width: 320px;
+  overflow: hidden;
+  box-shadow: 0 0 25px #ff33cc44;
+  transition: 0.4s ease;
+  position: relative;
+}
+.card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 0 50px #ff33cc;
+}
+.card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-bottom: 2px solid #ff33cc;
+}
+.card h3 {
+  padding: 15px 10px 5px;
+  font-size: 19px;
+  color: #ff66cc;
+  text-align: center;
+  text-shadow: 0 0 10px #ff33cc;
+}
+.card .btn {
+  display: block;
+  margin: 15px auto 20px;
+  padding: 12px 25px;
+  background: linear-gradient(to right, #ff33cc, #ff6600);
+  color: #000;
+  border-radius: 25px;
+  font-weight: bold;
+  text-decoration: none;
+  width: fit-content;
+  transition: 0.3s ease;
+  box-shadow: 0 0 20px #ff33cc88;
+}
+.card .btn:hover {
+  background: linear-gradient(to right, #ff6600, #ff33cc);
+  box-shadow: 0 0 40px #ff33cc;
+  transform: scale(1.1);
+}
+
+/* BADGE */
+.badge {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: linear-gradient(45deg, #ff6600, #ff33cc, #ff6600);
+  background-size: 300% 300%;
+  animation: gradientShift 3s ease infinite, glow 1.5s infinite alternate;
+  color: #000;
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 0 25px rgba(255, 102, 0, 0.9);
+  text-shadow: 0 0 5px #fff, 0 0 10px #ff33cc, 0 0 15px #ff6600;
+  transition: 0.3s ease;
+}
+.badge:hover {
+  transform: scale(1.2) rotate(-5deg);
+  box-shadow: 0 0 50px rgba(255, 102, 0, 1), 0 0 60px rgba(255, 51, 204, 0.9);
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 20px rgba(255, 102, 0, 0.7), 0 0 30px rgba(255, 51, 204, 0.6);
+  }
+  to {
+    box-shadow: 0 0 40px rgba(255, 102, 0, 1), 0 0 60px rgba(255, 51, 204, 0.9);
+  }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* HIDDEN */
+.hidden {
+  display: none;
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 768px) {
+  header {
+    font-size: 26px;
+  }
+  .toggle-buttons button {
+    margin: 10px 6px;
+    padding: 10px 20px;
+  }
+  .search-bar input {
+    width: 250px;
+  }
+}
+
   </style>
 </head>
 
@@ -414,7 +475,87 @@ if (!getCookie('🚀')) { window.location.href = 'login.html'; } </script>
   <h3>Maths - Complex Numbers Lecture 4</h3>
   <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4367111/174610963914991261798/index_3.m3u8" class="btn">Watch</a>
 </div>
+<!-- accounts - Introduction to Accounting Lecture - 5 -->
+<div class="card" data-subject="accounts" data-title="Introduction to Accounting Lecture - 5">
+  <img src="https://i.ibb.co/ymQ2SsCD/IMG-20250427-093724.jpg" alt="Introduction to Accounting Lecture - 5">
+  <h3>Accounts - Introduction to Accounting Lecture - 5</h3>
+  <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4370044/174627841879878037481/index_3.m3u8" class="btn">Watch</a>
+</div>
 
+<!-- accounts - Accounting Equations Lecture - 1 -->
+<div class="card" data-subject="accounts" data-title="Accounting Equations Lecture - 1">
+  <img src="https://i.ibb.co/ymQ2SsCD/IMG-20250427-093724.jpg" alt="Accounting Equations Lecture - 1">
+  <h3>Accounts - Accounting Equations Lecture - 1</h3>
+  <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4376039/174670969584618037481/index_3.m3u8" class="btn">Watch</a>
+</div>
+
+<!-- accounts - Accounting Equations Lecture - 2 -->
+<div class="card" data-subject="accounts" data-title="Accounting Equations Lecture - 2">
+  <img src="https://i.ibb.co/ymQ2SsCD/IMG-20250427-093724.jpg" alt="Accounting Equations Lecture - 2">
+  <h3>Accounts - Accounting Equations Lecture - 2</h3>
+  <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4377210/174679578632678037481/index_3.m3u8" class="btn">Watch</a>
+</div>
+<!-- economics - Introduction to Economics Lecture - 1 -->
+<div class="card" data-subject="economics" data-title="Introduction to Economics Lecture - 1">
+  <img src="https://i.ibb.co/ymQ2SsCD/IMG-20250427-093724.jpg" alt="Introduction to Economics Lecture - 1">
+  <h3>Economics - Introduction to Economics Lecture - 1</h3>
+  <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4363914/174591024154512805408/index_3.m3u8" class="btn">Watch</a>
+</div>
+
+<!-- economics - Stats For Eco Lecture - 1 -->
+<div class="card" data-subject="economics" data-title="Stats For Eco Lecture - 1">
+  <img src="https://i.ibb.co/ymQ2SsCD/IMG-20250427-093724.jpg" alt="Stats For Eco Lecture - 1">
+  <h3>Economics - Stats For Eco Lecture - 1</h3>
+  <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4367643/174617438052112805408/index_3.m3u8" class="btn">Watch</a>
+</div>
+
+<!-- economics - Stats For Eco Lecture - 2 -->
+<div class="card" data-subject="economics" data-title="Stats For Eco Lecture - 2">
+  <img src="https://i.ibb.co/ymQ2SsCD/IMG-20250427-093724.jpg" alt="Stats For Eco Lecture - 2">
+  <h3>Economics - Stats For Eco Lecture - 2</h3>
+  <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4368696/174625119772212805408/index_3.m3u8" class="btn">Watch</a>
+</div>
+
+<!-- economics - Stats For Eco Lecture - 3 -->
+<div class="card" data-subject="economics" data-title="Stats For Eco Lecture - 3">
+  <img src="https://i.ibb.co/ymQ2SsCD/IMG-20250427-093724.jpg" alt="Stats For Eco Lecture - 3">
+  <h3>Economics - Stats For Eco Lecture - 3</h3>
+  <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4370292/174636039220762805408/index_3.m3u8" class="btn">Watch</a>
+</div>
+
+<!-- economics - Stats For Eco Lecture - 4 -->
+<div class="card" data-subject="economics" data-title="Stats For Eco Lecture - 4">
+  <img src="https://i.ibb.co/ymQ2SsCD/IMG-20250427-093724.jpg" alt="Stats For Eco Lecture - 4">
+  <h3>Economics - Stats For Eco Lecture - 4</h3>
+  <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4376224/174672114274758165220/index_3.m3u8" class="btn">Watch</a>
+</div>
+<!-- business-studies - Business Organizations Lecture - 1 -->
+<div class="card" data-subject="business-studies" data-title="Business Organizations Lecture - 1">
+  <img src="https://i.ibb.co/ymQ2SsCD/IMG-20250427-093724.jpg" alt="Business Organizations Lecture - 1">
+  <h3>Business-Studies - Business Organizations Lecture - 1</h3>
+  <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4372297/174646087088698661500/index_3.m3u8" class="btn">Watch</a>
+</div>
+
+<!-- business-studies - Business Organizations Lecture - 2 -->
+<div class="card" data-subject="business-studies" data-title="Business Organizations Lecture - 2">
+  <img src="https://i.ibb.co/ymQ2SsCD/IMG-20250427-093724.jpg" alt="Business Organizations Lecture - 2">
+  <h3>Business-Studies - Business Organizations Lecture - 2</h3>
+  <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4373926/174654697344648661500/index_3.m3u8" class="btn">Watch</a>
+</div>
+
+<!-- business-studies - Business Organizations Lecture - 3 -->
+<div class="card" data-subject="business-studies" data-title="Business Organizations Lecture - 3">
+  <img src="https://i.ibb.co/ymQ2SsCD/IMG-20250427-093724.jpg" alt="Business Organizations Lecture - 3">
+  <h3>Business-Studies - Business Organizations Lecture - 3</h3>
+  <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4374884/174662261770168661500/index_3.m3u8" class="btn">Watch</a>
+</div>
+
+<!-- business-studies - Business Organizations Lecture - 4 -->
+<div class="card" data-subject="business-studies" data-title="Business Organizations Lecture - 4">
+  <img src="https://i.ibb.co/ymQ2SsCD/IMG-20250427-093724.jpg" alt="Business Organizations Lecture - 4">
+  <h3>Business-Studies - Business Organizations Lecture - 4</h3>
+  <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4379158/174706487485118661500/index_3.m3u8" class="btn">Watch</a>
+</div>
 </div>
 
 <!-- NOTES SECTION -->
@@ -544,6 +685,61 @@ if (!getCookie('🚀')) { window.location.href = 'login.html'; } </script>
   <img src="https://i.ibb.co/sd69yHbX/IMG-20250427-093758.jpg" alt="Business Trade and Commerce Gullak">
   <h3>Business Studies - Business Trade and Commerce Gullak 1</h3>
   <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/316602523849184500.pdf" class="btn" target="_blank">View Note</a>
+</div>
+<!-- accounts - Accounting Equations Notes - 1 -->
+<div class="card" data-subject="accounts">
+  <img src="https://i.ibb.co/sd69yHbX/IMG-20250427-093758.jpg" alt="Accounting Equations Notes - 1">
+  <h3>Accounting Equations Notes - 1</h3>
+  <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/854530337505626200.PDF" class="btn">📝 View PDF</a>
+</div>
+
+<!-- economics - Stats For Economics Notes - 1 -->
+<div class="card" data-subject="economics">
+  <img src="https://i.ibb.co/sd69yHbX/IMG-20250427-093758.jpg" alt="Stats For Economics Notes - 1">
+  <h3>Stats For Economics Notes - 1</h3>
+  <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/815871941920871200.pdf" class="btn">📄 View PDF</a>
+</div>
+
+<!-- economics - Stats For Economics Notes - 2 -->
+<div class="card" data-subject="economics">
+  <img src="https://i.ibb.co/sd69yHbX/IMG-20250427-093758.jpg" alt="Stats For Economics Notes - 2">
+  <h3>Stats For Economics Notes - 2</h3>
+  <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/553380392380322560.pdf" class="btn">📄 View PDF</a>
+</div>
+
+<!-- economics - Stats For Economics Notes - 3 -->
+<div class="card" data-subject="economics">
+  <img src="https://i.ibb.co/sd69yHbX/IMG-20250427-093758.jpg" alt="Stats For Economics Notes - 3">
+  <h3>Stats For Economics Notes - 3</h3>
+  <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/867479051750629000.pdf" class="btn">📄 View PDF</a>
+</div>
+
+<!-- economics - Stats For Economics Notes - 4 -->
+<div class="card" data-subject="economics">
+  <img src="https://i.ibb.co/sd69yHbX/IMG-20250427-093758.jpg" alt="Stats For Economics Notes - 4">
+  <h3>Stats For Economics Notes - 4</h3>
+  <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/14998680856602730.pdf" class="btn">📄 View PDF</a>
+</div>
+
+<!-- economics - Intro To Economics Notes - 1 -->
+<div class="card" data-subject="economics">
+  <img src="https://i.ibb.co/sd69yHbX/IMG-20250427-093758.jpg" alt="Intro To Economics Notes - 1">
+  <h3>Intro To Economics Notes - 1</h3>
+  <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/285372219208644450.pdf" class="btn">📄 View PDF</a>
+</div>
+
+<!-- bussiness-studies - Business Organizations L1 Notes -->
+<div class="card" data-subject="bussiness-studies">
+  <img src="https://i.ibb.co/sd69yHbX/IMG-20250427-093758.jpg" alt="Business Organizations L1 Notes">
+  <h3>Business Organizations L1 Notes</h3>
+  <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/757750182556575400.pdf" class="btn">📄 View PDF</a>
+</div>
+
+<!-- bussiness-studies - Business Organizations L2 Notes -->
+<div class="card" data-subject="bussiness-studies">
+  <img src="https://i.ibb.co/sd69yHbX/IMG-20250427-093758.jpg" alt="Business Organizations L2 Notes">
+  <h3>Business Organizations L2 Notes</h3>
+  <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/157859244933986080.pdf" class="btn">📄 View PDF</a>
 </div>
 <script>
   const lecturesBtn = document.getElementById('lecturesBtn');

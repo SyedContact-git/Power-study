@@ -9,162 +9,168 @@ if (!getCookie('🚀')) { window.location.href = 'login.html'; } </script>
 
 
   <style>
-    body {
-      background: linear-gradient(135deg, #faf5ff, #f0ebff);
-      color: #4b0082;
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-      text-align: center;
-    }
 
-    header {
-      font-size: 36px;
-      padding: 30px 10px;
-      font-weight: bold;
-      background: rgba(168, 85, 247, 0.1);
-      backdrop-filter: blur(10px);
-      text-shadow: 0 0 20px #a855f7aa;
-      box-shadow: 0 0 15px #c084fc44;
-      border-bottom: 2px solid #a855f733;
-      color: #6b21a8;
-    }
+body {
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  color: #ffffff;
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  text-align: center;
+}
 
-    .toggle-buttons {
-      margin: 25px;
-    }
+header {
+  font-size: 40px;
+  padding: 30px 10px;
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  text-shadow: 0 0 30px #00f0ffcc;
+  box-shadow: 0 0 30px #00f0ff55;
+  border-bottom: 2px solid #00f0ff33;
+  color: #00f0ff;
+  border-radius: 0 0 25px 25px;
+}
 
-    .toggle-buttons button {
-      padding: 12px 30px;
-      border: 2px solid #a855f7;
-      background: transparent;
-      color: #a855f7;
-      font-weight: bold;
-      border-radius: 30px;
-      cursor: pointer;
-      margin: 10px;
-      transition: 0.3s;
-      box-shadow: 0 0 10px #c084fc33;
-    }
+.toggle-buttons {
+  margin: 25px;
+}
 
-    .toggle-buttons button.active,
-    .toggle-buttons button:hover {
-      background-color: #a855f7;
-      color: white;
-      transform: scale(1.08);
-      box-shadow: 0 0 20px #a855f7aa;
-    }
+.toggle-buttons button {
+  padding: 12px 30px;
+  border: 2px solid #00f0ff;
+  background: rgba(0, 240, 255, 0.1);
+  color: #00f0ff;
+  font-weight: bold;
+  border-radius: 30px;
+  cursor: pointer;
+  margin: 10px;
+  transition: 0.3s;
+  box-shadow: 0 0 20px #00f0ff33;
+}
 
-    select {
-      margin-bottom: 25px;
-      padding: 10px 20px;
-      border-radius: 20px;
-      font-weight: bold;
-      background-color: #a855f7;
-      color: white;
-      border: none;
-      box-shadow: 0 0 10px #c084fc55;
-    }
+.toggle-buttons button.active,
+.toggle-buttons button:hover {
+  background-color: #00f0ff;
+  color: #000;
+  transform: scale(1.08);
+  box-shadow: 0 0 30px #00f0ffaa;
+}
 
-    .card-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 25px;
-      padding: 30px 10px;
-    }
+select {
+  margin-bottom: 25px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  background-color: #00f0ff;
+  color: #000;
+  border: none;
+  box-shadow: 0 0 20px #00f0ff66;
+}
 
-    .card {
-      background: rgba(168, 85, 247, 0.05);
-      border: 1px solid #a855f722;
-      border-radius: 20px;
-      width: 340px;
-      padding-bottom: 25px;
-      overflow: hidden;
-      backdrop-filter: blur(8px);
-      box-shadow: 0 0 20px #c084fc22;
-      transition: 0.4s ease;
-      position: relative;
-    }
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  padding: 30px 10px;
+}
 
-    .card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 25px #c084fc88;
-    }
+.card {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  border-radius: 30px;
+  width: 340px;
+  padding-bottom: 25px;
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 30px #00f0ff44;
+  transition: 0.4s ease;
+  position: relative;
+}
 
-    .card img {
-      width: 100%;
-      height: 155px;
-      object-fit: cover;
-      border-bottom: 1px solid #c084fc22;
-    }
+.card:hover {
+  transform: scale(1.07);
+  box-shadow: 0 0 40px #00f0ffaa;
+}
 
-    .card h3 {
-      padding: 15px 10px 5px;
-      font-size: 18px;
-      color: #4b0082;
-    }
+.card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-bottom: 1px solid #00f0ff33;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
 
-    .card .btn {
-      margin-top: 12px;
-      padding: 10px 24px;
-      background-color: #a855f7;
-      color: white;
-      border-radius: 25px;
-      font-weight: bold;
-      text-decoration: none;
-      display: inline-block;
-      transition: 0.3s ease;
-    }
+.card h3 {
+  padding: 15px 10px 5px;
+  font-size: 20px;
+  color: #00f0ff;
+}
 
-    .card .btn:hover {
-      background-color: #9333ea;
-      box-shadow: 0 0 15px #c084fc;
-    }
+.card .btn {
+  margin-top: 12px;
+  padding: 12px 30px;
+  background-color: #00f0ff;
+  color: #000;
+  border-radius: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  transition: 0.3s ease;
+  box-shadow: 0 0 20px #00f0ff66;
+}
 
-    .live-card {
-      background: linear-gradient(135deg, #9333ea, #c084fc);
-      border: 2px solid #fff;
-      color: white;
-      animation: pulseGlow 2s infinite ease-in-out;
-      box-shadow: 0 0 25px #9333eaaa, 0 0 10px #c084fccc;
-    }
+.card .btn:hover {
+  background-color: #00c0cc;
+  box-shadow: 0 0 30px #00f0ff;
+}
 
-    .live-card h3 {
-      color: white;
-      font-size: 20px;
-    }
+.live-card {
+  background: linear-gradient(135deg, #ff00ff, #ff0099);
+  border: 2px solid #fff;
+  color: white;
+  animation: pulseGlow 2s infinite ease-in-out;
+  box-shadow: 0 0 30px #ff00ffaa, 0 0 15px #ff0099cc;
+  border-radius: 30px;
+}
 
-    .live-badge {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      background-color: #fff;
-      color: #9333ea;
-      font-weight: bold;
-      padding: 4px 10px;
-      border-radius: 20px;
-      font-size: 12px;
-      box-shadow: 0 0 10px #fff;
-    }
+.live-card h3 {
+  color: white;
+  font-size: 20px;
+}
 
-    @keyframes pulseGlow {
-      0% { box-shadow: 0 0 15px #9333eaaa; }
-      50% { box-shadow: 0 0 25px #9333eacc, 0 0 40px #c084fcbb; }
-      100% { box-shadow: 0 0 15px #9333eaaa; }
-    }
+.live-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background-color: #fff;
+  color: #ff0099;
+  font-weight: bold;
+  padding: 5px 12px;
+  border-radius: 25px;
+  font-size: 12px;
+  box-shadow: 0 0 15px #fff;
+}
 
-    .hidden {
-      display: none;
-    }
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 20px #ff00ffaa; }
+  50% { box-shadow: 0 0 40px #ff00ffcc, 0 0 50px #ff0099bb; }
+  100% { box-shadow: 0 0 20px #ff00ffaa; }
+}
 
-    .pdf-icon {
-      font-size: 48px;
-      margin-top: 20px;
-      color: #a855f7;
-    }
-  </style>
+.hidden {
+  display: none;
+}
+
+.pdf-icon {
+  font-size: 48px;
+  margin-top: 20px;
+  color: #00f0ff;
+}  
+</style>
 </head>
 <body>
 
@@ -452,6 +458,68 @@ if (!getCookie('🚀')) { window.location.href = 'login.html'; } </script>
   <h3>Science - Light Lecture 4</h3>
   <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4370026/174627675448638296383/174627675448638296383_8296383.m3u8" class="btn">Watch</a>
 </div>
+<!-- Maths - Linear Equation Lecture 3 -->
+<div class="card" data-subject="Maths" data-title="Linear Equation Lecture 3">
+  <img src="https://i.ibb.co/5hRHL2xT/IMG-20250427-093724.jpg" alt="Linear Equation Lecture 3">
+  <h3>Maths - Linear Equation Lecture 3</h3>
+  <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4377325/174680602725391097666/index_3.m3u8" class="btn">Watch</a>
+</div>
+
+<!-- Maths - Linear Equation Lecture 4 -->
+<div class="card" data-subject="Maths" data-title="Linear Equation Lecture 4">
+  <img src="https://i.ibb.co/5hRHL2xT/IMG-20250427-093724.jpg" alt="Linear Equation Lecture 4">
+  <h3>Maths - Linear Equation Lecture 4</h3>
+  <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4377995/174689370672401097666/index_3.m3u8" class="btn">Watch</a>
+</div>
+
+<!-- Maths - Linear Equation Lecture 5 -->
+<div class="card" data-subject="Maths" data-title="Linear Equation Lecture 5">
+  <img src="https://i.ibb.co/5hRHL2xT/IMG-20250427-093724.jpg" alt="Linear Equation Lecture 5">
+  <h3>Maths - Linear Equation Lecture 5</h3>
+  <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4379163/174706562215611097666/index_3.m3u8" class="btn">Watch</a>
+</div>
+
+<!-- Science - Light Lecture 5 -->
+<div class="card" data-subject="Science" data-title="Light Lecture 5">
+  <img src="https://i.ibb.co/5hRHL2xT/IMG-20250427-093724.jpg" alt="Light Lecture 5">
+  <h3>Science - Light Lecture 5</h3>
+  <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4374886/174662262789208296383/index_3.m3u8" class="btn">Watch</a>
+</div>
+
+<!-- Science - Light Lecture 6 -->
+<div class="card" data-subject="Science" data-title="Light Lecture 6">
+  <img src="https://i.ibb.co/5hRHL2xT/IMG-20250427-093724.jpg" alt="Light Lecture 6">
+  <h3>Science - Light Lecture 6</h3>
+  <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4376022/174670906343678296383/index_3.m3u8" class="btn">Watch</a>
+</div>
+
+<!-- Science - Light Lecture 7 -->
+<div class="card" data-subject="Science" data-title="Light Lecture 7">
+  <img src="https://i.ibb.co/5hRHL2xT/IMG-20250427-093724.jpg" alt="Light Lecture 7">
+  <h3>Science - Light Lecture 7</h3>
+  <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4377192/174679471966318296383/index_3.m3u8" class="btn">Watch</a>
+</div>
+
+<!-- Social Science - Power Sharing Lecture 3 -->
+<div class="card" data-subject="Social Science" data-title="Power Sharing Lecture 3">
+  <img src="https://i.ibb.co/5hRHL2xT/IMG-20250427-093724.jpg" alt="Power Sharing Lecture 3">
+  <h3>Social Science - Power Sharing Lecture 3</h3>
+  <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4374999/174663266860947880624/index_3.m3u8" class="btn">Watch</a>
+</div>
+
+<!-- Social Science - Power Sharing Lecture 4 -->
+<div class="card" data-subject="Social Science" data-title="Power Sharing Lecture 4">
+  <img src="https://i.ibb.co/5hRHL2xT/IMG-20250427-093724.jpg" alt="Power Sharing Lecture 4">
+  <h3>Social Science - Power Sharing Lecture 4</h3>
+  <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4376187/174671890371767880624/index_3.m3u8" class="btn">Watch</a>
+</div>
+
+<!-- Social Science - Power Sharing + Doubts Lecture 5 -->
+<div class="card" data-subject="Social Science" data-title="Power Sharing + Doubts Lecture 5">
+  <img src="https://i.ibb.co/5hRHL2xT/IMG-20250427-093724.jpg" alt="Power Sharing + Doubts Lecture 5">
+  <h3>Social Science - Power Sharing + Doubts Lecture 5</h3>
+  <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4379050/174705654256247880624/index_3.m3u8" class="btn">Watch</a>
+</div>
   </div>
 
   <!-- NOTES SECTION -->
@@ -687,6 +755,54 @@ if (!getCookie('🚀')) { window.location.href = 'login.html'; } </script>
   <div class="pdf-icon">📜</div>
   <h3>Resources and Development - Full Chapter Notes</h3>
   <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/348520797704779900.pdf" class="btn" target="_blank">View PDF</a>
+</div>
+<!-- Social Science - Power Sharing Notes 2 -->
+<div class="card" data-subject="Social Science">
+  <div class="pdf-icon">📜</div>
+  <h3>Power Sharing Notes 2</h3>
+  <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/111150181186659630.pdf" class="btn" target="_blank">View PDF</a>
+</div>
+
+<!-- Social Science - Power Sharing Notes 3 -->
+<div class="card" data-subject="Social Science">
+  <div class="pdf-icon">📜</div>
+  <h3>Power Sharing Notes 3</h3>
+  <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/576161860331452400.pdf" class="btn" target="_blank">View PDF</a>
+</div>
+
+<!-- Science - Light L4 Notes -->
+<div class="card" data-subject="Science">
+  <div class="pdf-icon">📜</div>
+  <h3>Light L4 Notes</h3>
+  <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/568390841661464500.pdf" class="btn" target="_blank">View PDF</a>
+</div>
+
+<!-- Science - Light L5 Notes -->
+<div class="card" data-subject="Science">
+  <div class="pdf-icon">📜</div>
+  <h3>Light L5 Notes</h3>
+  <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/855806543563515300.pdf" class="btn" target="_blank">View PDF</a>
+</div>
+
+<!-- Science - Light L6 Notes -->
+<div class="card" data-subject="Science">
+  <div class="pdf-icon">📜</div>
+  <h3>Light L6 Notes</h3>
+  <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/355378778094591700.pdf" class="btn" target="_blank">View PDF</a>
+</div>
+
+<!-- Science - Light L7 Notes -->
+<div class="card" data-subject="Science">
+  <div class="pdf-icon">📜</div>
+  <h3>Light L7 Notes</h3>
+  <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/303485460972520450.pdf" class="btn" target="_blank">View PDF</a>
+</div>
+
+<!-- Science - Light ACP 1 -->
+<div class="card" data-subject="Science">
+  <div class="pdf-icon">📜</div>
+  <h3>Light ACP 1</h3>
+  <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/553368258434162370.pdf" class="btn" target="_blank">View PDF</a>
 </div>
   <script>
     const lecturesBtn = document.getElementById('lecturesBtn');
