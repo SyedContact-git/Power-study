@@ -1,238 +1,248 @@
 <meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name='viewport' content='width=device-width, initial-scale=1'/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Power Study - Live Classes</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <script src="/cookie-validator.js"></script> <script> function getCookie(name) { const value = `; ${document.cookie}`; const parts = value.split(`; ${name}=`); if (parts.length === 2) return parts.pop().split(';').shift(); }
-if (!getCookie('🚀')) { window.location.href = 'login.html'; } </script>
-
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg: linear-gradient(120deg, #f6d365, #fda085); /* Light theme default */
-      --text: #222222;
-      --card-bg: rgba(255, 255, 255, 0.7);
-      --btn-bg: linear-gradient(135deg, #ff7e5f, #feb47b);
-      --btn-shadow: rgba(255, 206, 150, 0.8);
-      --batch-border: #ff7e5f;
-    }
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      padding: 40px 20px;
-      transition: 0.5s ease;
+      background: radial-gradient(ellipse at top, #1e0033, #0d001a);
+      color: white;
+      padding: 20px;
     }
+
     h1 {
       text-align: center;
-      font-size: 3rem;
-      margin-bottom: 50px;
-      color: var(--text);
-      text-shadow: 0 0 10px var(--btn-shadow);
-      letter-spacing: 1px;
+      font-size: 3em;
+      color: #e9d5ff;
+      text-shadow: 0 0 15px #9333ea;
+      margin-bottom: 10px;
     }
-    .batch-group {
+
+    .section-heading {
+      text-align: center;
+      font-size: 1.2em;
+      color: #d8b4fe;
+      margin-bottom: 40px;
+    }
+
+    .batch {
       margin-bottom: 60px;
     }
+
     .batch-title {
-      font-size: 1.8rem;
-      margin-bottom: 25px;
-      text-transform: uppercase;
-      border-left: 6px solid var(--batch-border);
-      padding-left: 15px;
-      color: var(--text);
-      text-shadow: 0 0 5px var(--btn-shadow);
+      font-size: 1.7em;
+      color: #f5d0fe;
+      text-align: center;
+      text-shadow: 0 0 10px #9333ea;
+      margin-bottom: 6px;
     }
-    .class-card {
-      background: var(--card-bg);
-      border-radius: 20px;
-      padding: 25px 30px;
-      margin-bottom: 25px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+
+    .time-table {
+      font-size: 1em;
+      text-align: center;
+      color: #c084fc;
+      margin-bottom: 16px;
+    }
+
+    .batch-img {
+      display: block;
+      margin: 0 auto 20px;
+      width: 280px;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 16px;
+      box-shadow: 0 0 20px #9333ea;
+    }
+
+    .cards {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: 0.4s ease;
-      border: 1px solid rgba(0, 0, 0, 0.05);
-      backdrop-filter: blur(12px);
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
     }
-    .class-card:hover {
-      transform: translateY(-5px) scale(1.02);
-      background: rgba(255, 255, 255, 0.85);
-      box-shadow: 0 12px 30px var(--btn-shadow);
+
+    .card {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1.5px solid #a855f7;
+      border-radius: 18px;
+      padding: 15px;
+      width: 280px;
+      box-shadow: 0 0 20px #7c3aed;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .class-info {
-      font-size: 1.4rem;
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px #d946ef;
+    }
+
+    .card h3 {
+      font-size: 1.1em;
+      color: #f3e8ff;
+      margin-bottom: 5px;
+    }
+
+    .card p {
+      font-size: 0.9em;
+      color: #c4b5fd;
+      margin: 0 0 10px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 8px 16px;
+      font-size: 0.9em;
       font-weight: 600;
-      color: var(--text);
-      text-shadow: 0 0 5px var(--btn-shadow);
-    }
-    .live-btn {
-      padding: 14px 26px;
-      font-size: 1.1rem;
-      font-weight: 600;
-      border: none;
-      border-radius: 14px;
-      background: var(--btn-bg);
-      color: #fff;
-      cursor: pointer;
-      transition: 0.3s ease;
-      box-shadow: 0 0 15px var(--btn-shadow);
-    }
-    .live-btn:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 25px var(--btn-shadow), 0 0 50px var(--btn-shadow);
-    }
-    a {
+      color: white;
+      border-radius: 8px;
+      background: #9333ea;
+      box-shadow: 0 0 10px #c084fc;
       text-decoration: none;
+      transition: all 0.3s ease;
     }
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 2.2rem;
+
+    .btn:hover {
+      background: #7e22ce;
+      box-shadow: 0 0 20px #d8b4fe;
+    }
+
+    .btn.disabled {
+      background: gray;
+      pointer-events: none;
+      box-shadow: none;
+    }
+
+    .glow {
+      animation: glow 1.4s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        box-shadow: 0 0 10px #c084fc;
       }
-      .class-info {
-        font-size: 1.2rem;
-      }
-      .live-btn {
-        padding: 10px 20px;
-        font-size: 1rem;
+      to {
+        box-shadow: 0 0 25px #c084fc, 0 0 30px #9333ea;
       }
     }
   </style>
 </head>
 <body>
 
-<h1>Power Study - Live Classes</h1>
+  <h1>Next Toppers Live Classes</h1>
+  <div class="section-heading">This Week Time Table</div>
 
-<!-- Aarambh Class 9th -->
-<div class="batch-group">
-  <div class="batch-title">Class 9 - Aarambh Batch</div>
-  <div class="class-card">
-    <div class="class-info">Evening Class - 5:10 PM</div>
-    <a href=""><button class="live-btn">Attend Live</button></a>
+  <!-- Aarambh Class 10th -->
+  <div class="batch">
+    <div class="batch-title">Aarambh Class 10th</div>
+    <div class="time-table">This Week Timetable</div>
+    <img src="https://i.ibb.co/Nb0BWyX/IMG-20250516-184640.jpg" alt="Batch Image" class="batch-img">
+    <div class="cards">
+      <div class="card">
+        <h3>5:05 PM - 7:00 PM</h3>
+        <p>Evening Class</p>
+        <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=" class="btn glow" id="aarambh1">Join Class Now</a>
+      </div>
+      <div class="card">
+        <h3>8:05 PM - 9:50 PM</h3>
+        <p>Night Class</p>
+        <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1kw75zcv4u98c.cloudfront.net/out/v1/287810d967cc428e9bd992002e55b72c/index_1.m3u8" class="btn glow" id="aarambh2">Join Class Now</a>
+      </div>
+    </div>
   </div>
-  <div class="class-card">
-    <div class="class-info">Night Class - 8:10 PM</div>
-    <a href=""><button class="live-btn">Attend Live</button></a>
-  </div>
-</div>
 
-<!-- Aarambh Class 10th -->
-<div class="batch-group">
-  <div class="batch-title">Class 10 - Aarambh Batch</div>
-  <div class="class-card">
-    <div class="class-info">Evening Class - 5:10 PM</div>
-    <a href=""><button class="live-btn">Attend Live</button></a>
+  <!-- Prarambh Science 11th -->
+  <div class="batch">
+    <div class="batch-title">Prarambh Science 11th</div>
+    <div class="time-table">This Week Timetable</div>
+    <img src="https://i.ibb.co/Mx20zb1L/IMG-20250516-185048-831.jpg" alt="Batch Image" class="batch-img">
+    <div class="cards">
+      <div class="card">
+        <h3>5:05 PM - 7:00 PM</h3>
+        <p>Evening Class</p>
+        <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=" class="btn glow" id="science1">Join Class Now</a>
+      </div>
+      <div class="card">
+        <h3>8:05 PM - 9:50 PM</h3>
+        <p>Night Class</p>
+        <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1kw75zcv4u98c.cloudfront.net/out/v1/c843fae2d8ac47ffbe15b3988abf9adb/index_3.m3u8" class="btn glow" id="science2">Join Class Now</a>
+      </div>
+    </div>
   </div>
-  <div class="class-card">
-    <div class="class-info">Night Class - 8:10 PM</div>
-    <a href=""><button class="live-btn">Attend Live</button></a>
-  </div>
-</div>
 
-<!-- Prarambh PCMB 11th -->
-<div class="batch-group">
-  <div class="batch-title">Class 11 - Prarambh PCMB</div>
-  <div class="class-card">
-    <div class="class-info">Evening Class - 5:10 PM</div>
-    <a href="https://d1kw75zcv4u98c.cloudfront.net/out/v1/c843fae2d8ac47ffbe15b3988abf9adb/index_3.m3u8"><button class="live-btn">Attend Live</button></a>
+  <!-- Prarambh Commerce 11th -->
+  <div class="batch">
+    <div class="batch-title">Prarambh Commerce 11th</div>
+    <div class="time-table">This Week Timetable</div>
+    <img src="https://i.ibb.co/Cs0y3HKp/IMG-20250516-184806.jpg" alt="Batch Image" class="batch-img">
+    <div class="cards">
+      <div class="card">
+        <h3>5:05 PM - 7:00 PM</h3>
+        <p>Evening Class</p>
+        <a href="https://power-study.vercel.app/Videoplayer.html" class="btn glow" id="commerce1">Join Class Now</a>
+      </div>
+      <div class="card">
+        <h3>8:05 PM - 9:50 PM</h3>
+        <p>Night Class</p>
+        <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d2ypa0i2sdc0h2.cloudfront.net/out/v1/953b87b302b04b50a75b8ed04c215cc4/index_1.m3u8" class="btn glow" id="commerce2">Join Class Now</a>
+      </div>
+    </div>
   </div>
-  <div class="class-card">
-    <div class="class-info">Night Class - 8:10 PM</div>
-    <a href=""><button class="live-btn">Attend Live</button></a>
-  </div>
-</div>
 
-<!-- Prarambh Commerce 11th -->
-<div class="batch-group">
-  <div class="batch-title">Class 11 - Prarambh Commerce</div>
-  <div class="class-card">
-    <div class="class-info">Evening Class - 5:10 PM</div>
-    <a href="https://d3rho91jos7925.cloudfront.net/out/v1/a63dd48a9268402b8961662fc9993c8d/index_1.m3u8"><button class="live-btn">Attend Live</button></a>
+  <!-- Prarambh Humanities 11th -->
+  <div class="batch">
+    <div class="batch-title">Prarambh Humanities 11th</div>
+    <div class="time-table">This Week Timetable</div>
+    <img src="https://i.ibb.co/JjXvyyGw/IMG-20250516-184727.jpg" alt="Batch Image" class="batch-img">
+    <div class="cards">
+      <div class="card">
+        <h3>5:05 PM - 7:00 PM</h3>
+        <p>Evening Class</p>
+        <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=" class="btn glow" id="humanities1">Join Class Now</a>
+      </div>
+      <div class="card">
+        <h3>8:05 PM - 9:50 PM</h3>
+        <p>Night Class</p>
+        <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d2ypa0i2sdc0h2.cloudfront.net/out/v1/a54f2045efc244dd95334158a87d5405/index_1.m3u8" class="btn glow" id="humanities2">Join Class Now</a>
+      </div>
+    </div>
   </div>
-  <div class="class-card">
-    <div class="class-info">Night Class - 8:10 PM</div>
-    <a href=""><button class="live-btn">Attend Live</button></a>
-  </div>
-</div>
-<div class="batch-group">
-  <div class="batch-title">Class 11 - Prarambh Humanities</div>
-  <div class="class-card">
-    <div class="class-info">Evening Class - 5:10 PM</div>
-    <a href="https://d2ypa0i2sdc0h2.cloudfront.net/out/v1/a54f2045efc244dd95334158a87d5405/index_1.m3u8"><button class="live-btn">Attend Live</button></a>
-  </div>
-  <div class="class-card">
-    <div class="class-info">Night Class - 8:10 PM</div>
-    <a href=""><button class="live-btn">Attend Live</button></a>
-  </div>
-</div>
 
-<!-- Prarambh Science 12th -->
-<div class="batch-group">
-  <div class="batch-title">Class 12 - Prarambh Science</div>
-  <div class="class-card">
-    <div class="class-info">Evening Class - 5:10 PM</div>
-    <a href=""><button class="live-btn">Attend Live</button></a>
-  </div>
-  <div class="class-card">
-    <div class="class-info">Night Class - 8:10 PM</div>
-    <a href=""><button class="live-btn">Attend Live</button></a>
-  </div>
-</div>
-
-<!-- Prarambh Commerce 12th -->
-<div class="batch-group">
-  <div class="batch-title">Class 12 - Prarambh Commerce</div>
-  <div class="class-card">
-    <div class="class-info">Evening Class - 5:10 PM</div>
-    <a href=""><button class="live-btn">Attend Live</button></a>
-  </div>
-  <div class="class-card">
-    <div class="class-info">Night Class - 8:10 PM</div>
-    <a href=""><button class="live-btn">Attend Live</button></a>
-  </div>
-</div>
-
-<!-- Prarambh Humanities 12th -->
-<div class="batch-group">
-  <div class="batch-title">Class 12 - Prarambh Humanities</div>
-  <div class="class-card">
-    <div class="class-info">Evening Class - 5:10 PM</div>
-    <a href=""><button class="live-btn">Attend Live</button></a>
-  </div>
-  <div class="class-card">
-    <div class="class-info">Night Class - 8:10 PM</div>
-    <a href=""><button class="live-btn">Attend Live</button></a>
-  </div>
-</div>
-<script>
-  function setTheme() {
-    const hour = new Date().getHours();
-    const root = document.documentElement;
-
-    if (hour >= 19 || hour < 10) {
-      // Dark Theme
-      root.style.setProperty('--bg', 'linear-gradient(120deg, #0f0c29, #302b63, #24243e)');
-      root.style.setProperty('--text', '#ffffff');
-      root.style.setProperty('--card-bg', 'rgba(255, 255, 255, 0.05)');
-      root.style.setProperty('--btn-bg', 'linear-gradient(135deg, #a855f7, #9333ea)');
-      root.style.setProperty('--btn-shadow', 'rgba(168, 85, 247, 0.8)');
-      root.style.setProperty('--batch-border', '#a855f7');
-    } else {
-      // Light Theme
-      root.style.setProperty('--bg', 'linear-gradient(120deg, #f6d365, #fda085)');
-      root.style.setProperty('--text', '#222222');
-      root.style.setProperty('--card-bg', 'rgba(255, 255, 255, 0.7)');
-      root.style.setProperty('--btn-bg', 'linear-gradient(135deg, #ff7e5f, #feb47b)');
-      root.style.setProperty('--btn-shadow', 'rgba(255, 206, 150, 0.8)');
-      root.style.setProperty('--batch-border', '#ff7e5f');
+  <script>
+    function isWithinTime(start, end) {
+      const now = new Date();
+      const s = new Date(now);
+      const e = new Date(now);
+      const [sh, sm] = start.split(":").map(Number);
+      const [eh, em] = end.split(":").map(Number);
+      s.setHours(sh, sm, 0);
+      e.setHours(eh, em, 0);
+      return now >= s && now <= e;
     }
-  }
 
-  setTheme(); // Run on load
-</script>
+    function toggleButtons() {
+      const timeRanges = [
+        { id: ['aarambh1','science1','commerce1','humanities1'], start: "17:05", end: "18:40" },
+        { id: ['aarambh2','science2','commerce2','humanities2'], start: "20:05", end: "21:30" }
+      ];
 
+      timeRanges.forEach(range => {
+        range.id.forEach(btnId => {
+          const btn = document.getElementById(btnId);
+          if (!isWithinTime(range.start, range.end)) {
+            btn.classList.add("disabled");
+            btn.classList.remove("glow");
+          }
+        });
+      });
+    }
+
+    toggleButtons();
+    setInterval(toggleButtons, 60000);
+  </script>
 </body>
 </html>
