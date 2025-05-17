@@ -123,11 +123,18 @@
     const params = new URLSearchParams(window.location.search);
     const lessonUrl = params.get("lessonurl");
 
-    // Define base URLs for different resolutions (you must replace with real URLs)
+    // Extract base name from lessonurl
+    function getBaseName(url) {
+      return url?.split('?')[0]?.replace(".mp4", "");
+    }
+
+    const baseName = getBaseName(lessonUrl);
+
+    // Construct resolution-specific URLs
     let videoSources = {
-      "360": lessonUrl?.replace(".mp4", "_360p.mp4"),
-      "480": lessonUrl?.replace(".mp4", "_480p.mp4"),
-      "720": lessonUrl?.replace(".mp4", "_720p.mp4")
+      "360": `${baseName}_360p.mp4`,
+      "480": `${baseName}_480p.mp4`,
+      "720": `${baseName}_720p.mp4`
     };
 
     if (lessonUrl && lessonUrl.startsWith("https://")) {
@@ -151,6 +158,17 @@
       video.playbackRate = parseFloat(speed);
     }
 
+    function changeResolution(res) {
+      const currentTime = video.currentTime;
+      const isPlaying = !video.paused;
+
+      video.src = videoSources[res];
+      video.load();
+      video.currentTime = currentTime;
+
+      if (isPlaying) video.play();
+    }
+
     function playFullscreen() {
       if (video.requestFullscreen) {
         video.requestFullscreen().then(() => video.play());
@@ -161,17 +179,6 @@
         video.msRequestFullscreen();
         video.play();
       }
-    }
-
-    function changeResolution(res) {
-      const currentTime = video.currentTime;
-      const isPlaying = !video.paused;
-
-      video.src = videoSources[res];
-      video.load();
-      video.currentTime = currentTime;
-
-      if (isPlaying) video.play();
     }
   </script>
 </body>
