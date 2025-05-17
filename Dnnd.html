@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Custom Video Player</title>
+  <style>
+    body {
+      background: #0f0f0f;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: sans-serif;
+      flex-direction: column;
+    }
+    video {
+      max-width: 90%;
+      border: 3px solid #7f5af0;
+      border-radius: 12px;
+    }
+    .controls {
+      margin-top: 15px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .controls button,
+    .controls select {
+      padding: 8px 15px;
+      border-radius: 8px;
+      border: none;
+      background: #7f5af0;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .controls button:hover,
+    .controls select:hover {
+      background: #9c88ff;
+    }
+  </style>
+</head>
+<body>
+
+  <video id="videoPlayer" controls>
+    Your browser does not support the video tag.
+  </video>
+
+  <div class="controls">
+    <button onclick="togglePlay()">PLAY</button>
+    
+    <select onchange="changeSpeed(this.value)">
+      <option value="1">Speed: 1x</option>
+      <option value="0.5">0.5x</option>
+      <option value="1.25">1.25x</option>
+      <option value="1.5">1.5x</option>
+      <option value="2">2x</option>
+    </select>
+
+    <select onchange="changeQuality(this.value)">
+      <option value="1080">1080p</option>
+      <option value="720">720p</option>
+      <option value="480">480p</option>
+    </select>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const lessonUrl = urlParams.get("lessonurl");
+
+    const video = document.getElementById("videoPlayer");
+
+    if (lessonUrl && lessonUrl.includes("https://ik.imagekit.io/")) {
+      // Simulating multiple resolutions by swapping query params
+      const baseUrl = lessonUrl.split("?")[0];
+
+      const sources = {
+        "1080": baseUrl.replace(".mp4", "_1080p.mp4"),
+        "720": baseUrl.replace(".mp4", "_720p.mp4"),
+        "480": baseUrl.replace(".mp4", "_480p.mp4")
+      };
+
+      // Set initial source (720p default)
+      video.src = sources["720"];
+      video.load();
+    } else {
+      alert("Invalid lessonurl");
+    }
+
+    function togglePlay() {
+      if (video.paused) {
+        video.play();
+      } else {
+        video.pause();
+      }
+    }
+
+    function changeSpeed(rate) {
+      video.playbackRate = parseFloat(rate);
+    }
+
+    function changeQuality(q) {
+      const currentTime = video.currentTime;
+      const isPaused = video.paused;
+      video.src = sources[q];
+      video.load();
+      video.currentTime = currentTime;
+      if (!isPaused) video.play();
+    }
+  </script>
+</body>
+</html>
