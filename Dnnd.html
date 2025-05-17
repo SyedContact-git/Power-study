@@ -106,7 +106,14 @@
       <option value="2">2x</option>
     </select>
 
-    <button onclick="playFullscreen()">Full Screen </button>
+    <select onchange="changeResolution(this.value)">
+      <option disabled selected>Resolution</option>
+      <option value="360">360p</option>
+      <option value="480">480p</option>
+      <option value="720">720p</option>
+    </select>
+
+    <button onclick="playFullscreen()">Full Screen</button>
   </div>
 
   <a class="telegram-button" href="https://t.me/+fJDiJ9DTVPBiZmE9" target="_blank">Join Telegram</a>
@@ -116,9 +123,16 @@
     const params = new URLSearchParams(window.location.search);
     const lessonUrl = params.get("lessonurl");
 
+    // Define base URLs for different resolutions (you must replace with real URLs)
+    let videoSources = {
+      "360": lessonUrl?.replace(".mp4", "_360p.mp4"),
+      "480": lessonUrl?.replace(".mp4", "_480p.mp4"),
+      "720": lessonUrl?.replace(".mp4", "_720p.mp4")
+    };
+
     if (lessonUrl && lessonUrl.startsWith("https://")) {
       setTimeout(() => {
-        video.src = lessonUrl;
+        video.src = videoSources["720"]; // default to 720p
         video.load();
       }, 2000); // 2 second poster preview
     } else {
@@ -147,6 +161,17 @@
         video.msRequestFullscreen();
         video.play();
       }
+    }
+
+    function changeResolution(res) {
+      const currentTime = video.currentTime;
+      const isPlaying = !video.paused;
+
+      video.src = videoSources[res];
+      video.load();
+      video.currentTime = currentTime;
+
+      if (isPlaying) video.play();
     }
   </script>
 </body>
