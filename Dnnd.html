@@ -3,56 +3,101 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Custom Video Player</title>
+  <title>Power Study Player</title>
   <style>
     body {
-      background: #0f0f0f;
+      margin: 0;
+      background: linear-gradient(to right, #0f0f0f, #1a1a2e);
+      font-family: 'Segoe UI', sans-serif;
       color: white;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      font-family: sans-serif;
       flex-direction: column;
+      align-items: center;
     }
-    video {
-      max-width: 90%;
-      border: 3px solid #7f5af0;
-      border-radius: 12px;
-    }
-    .controls {
-      margin-top: 15px;
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .controls button,
-    .controls select {
-      padding: 8px 15px;
-      border-radius: 8px;
-      border: none;
+
+    header {
+      width: 100%;
+      padding: 20px;
       background: #7f5af0;
       color: white;
+      font-size: 1.8em;
+      text-align: center;
       font-weight: bold;
-      cursor: pointer;
+      box-shadow: 0 0 15px #7f5af0;
+      letter-spacing: 1px;
     }
+
+    .video-container {
+      margin-top: 30px;
+      width: 90%;
+      max-width: 1000px;
+      position: relative;
+    }
+
+    video {
+      width: 100%;
+      border-radius: 12px;
+      border: 3px solid #7f5af0;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin: 25px 0;
+    }
+
+    .controls button,
+    .controls select {
+      background: #7f5af0;
+      border: none;
+      padding: 10px 16px;
+      font-size: 1em;
+      font-weight: bold;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
     .controls button:hover,
     .controls select:hover {
       background: #9c88ff;
+    }
+
+    .telegram-button {
+      background: #229ED9;
+      color: white;
+      text-decoration: none;
+      padding: 12px 22px;
+      font-size: 1.1em;
+      border-radius: 10px;
+      font-weight: bold;
+      box-shadow: 0 0 10px #229ED9;
+      transition: 0.3s;
+      margin-bottom: 40px;
+    }
+
+    .telegram-button:hover {
+      background: #1c8cb6;
+      box-shadow: 0 0 20px #1c8cb6;
     }
   </style>
 </head>
 <body>
 
-  <video id="videoPlayer" controls>
-    Your browser does not support the video tag.
-  </video>
+  <header>Power Study - Video Player</header>
+
+  <div class="video-container">
+    <video id="videoPlayer" controls crossorigin="anonymous" poster="https://i.ibb.co/Hq0yLn9/poster.jpg">
+      Your browser does not support HTML5 video.
+    </video>
+  </div>
 
   <div class="controls">
-    <button onclick="togglePlay()">PLAY</button>
-    
+    <button onclick="togglePlay()">Play / Pause</button>
+
     <select onchange="changeSpeed(this.value)">
       <option value="1">Speed: 1x</option>
       <option value="0.5">0.5x</option>
@@ -61,34 +106,23 @@
       <option value="2">2x</option>
     </select>
 
-    <select onchange="changeQuality(this.value)">
-      <option value="1080">1080p</option>
-      <option value="720">720p</option>
-      <option value="480">480p</option>
-    </select>
+    <button onclick="playFullscreen()">Full Screen </button>
   </div>
 
+  <a class="telegram-button" href="https://t.me/+fJDiJ9DTVPBiZmE9" target="_blank">Join Telegram</a>
+
   <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const lessonUrl = urlParams.get("lessonurl");
-
     const video = document.getElementById("videoPlayer");
+    const params = new URLSearchParams(window.location.search);
+    const lessonUrl = params.get("lessonurl");
 
-    if (lessonUrl && lessonUrl.includes("https://ik.imagekit.io/")) {
-      // Simulating multiple resolutions by swapping query params
-      const baseUrl = lessonUrl.split("?")[0];
-
-      const sources = {
-        "1080": baseUrl.replace(".mp4", "_1080p.mp4"),
-        "720": baseUrl.replace(".mp4", "_720p.mp4"),
-        "480": baseUrl.replace(".mp4", "_480p.mp4")
-      };
-
-      // Set initial source (720p default)
-      video.src = sources["720"];
-      video.load();
+    if (lessonUrl && lessonUrl.startsWith("https://")) {
+      setTimeout(() => {
+        video.src = lessonUrl;
+        video.load();
+      }, 2000); // 2 second poster preview
     } else {
-      alert("Invalid lessonurl");
+      alert("Invalid or missing lessonurl.");
     }
 
     function togglePlay() {
@@ -99,17 +133,20 @@
       }
     }
 
-    function changeSpeed(rate) {
-      video.playbackRate = parseFloat(rate);
+    function changeSpeed(speed) {
+      video.playbackRate = parseFloat(speed);
     }
 
-    function changeQuality(q) {
-      const currentTime = video.currentTime;
-      const isPaused = video.paused;
-      video.src = sources[q];
-      video.load();
-      video.currentTime = currentTime;
-      if (!isPaused) video.play();
+    function playFullscreen() {
+      if (video.requestFullscreen) {
+        video.requestFullscreen().then(() => video.play());
+      } else if (video.webkitRequestFullscreen) {
+        video.webkitRequestFullscreen();
+        video.play();
+      } else if (video.msRequestFullscreen) {
+        video.msRequestFullscreen();
+        video.play();
+      }
     }
   </script>
 </body>
