@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Video Player with Fullscreen</title>
+  <title>Video Player with lessonurl Param</title>
   <style>
     body {
       margin: 0;
@@ -15,7 +15,6 @@
       color: white;
       font-family: Arial, sans-serif;
     }
-
     video {
       width: 80%;
       height: 60vh;
@@ -24,7 +23,6 @@
       outline: 2px solid #6a0dad;
       background: black;
     }
-
     button {
       margin-top: 15px;
       padding: 10px 20px;
@@ -35,7 +33,6 @@
       color: white;
       cursor: pointer;
     }
-
     button:hover {
       background: #4b0082;
     }
@@ -50,30 +47,28 @@
   <button onclick="goFullscreen()">Go Fullscreen</button>
 
   <script>
-    const lessonurl = "https://cdn.streamable.com/video/mp4/vu5nzw.mp4"; // Replace with your direct video URL
+    const video = document.getElementById("videoPlayer");
+    const params = new URLSearchParams(window.location.search);
+    const lessonUrl = params.get("lessonurl");
 
-    const video = document.getElementById('videoPlayer');
-    video.src = lessonurl;
+    if (lessonUrl && lessonUrl.startsWith("https://")) {
+      setTimeout(() => {
+        video.src = lessonUrl;
+        video.load();
+      }, 2000);
+    } else {
+      alert("Invalid or missing lessonurl.");
+    }
 
     function goFullscreen() {
       if (video.requestFullscreen) {
         video.requestFullscreen();
-      } else if (video.webkitRequestFullscreen) {
+      } else if (video.webkitRequestFullscreen) { // Safari
         video.webkitRequestFullscreen();
-      } else if (video.msRequestFullscreen) {
+      } else if (video.msRequestFullscreen) { // IE11
         video.msRequestFullscreen();
       }
     }
-
-    document.addEventListener('fullscreenchange', () => {
-      if (document.fullscreenElement) {
-        if (screen.orientation && screen.orientation.lock) {
-          screen.orientation.lock('landscape').catch(() => {
-            console.warn('Orientation lock failed');
-          });
-        }
-      }
-    });
   </script>
 
 </body>
