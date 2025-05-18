@@ -2,40 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Video Player with lessonurl Param</title>
+  <title>Video Player from lessonurl param</title>
   <style>
     body {
-      margin: 0;
-      background-color: #000;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      color: white;
+      margin: 0; background: #000;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      height: 100vh; color: white;
       font-family: Arial, sans-serif;
     }
     video {
-      width: 80%;
-      height: 60vh;
-      max-width: 100%;
-      border-radius: 8px;
-      outline: 2px solid #6a0dad;
+      width: 80%; height: 60vh; max-width: 100%;
+      border-radius: 8px; outline: 2px solid #6a0dad;
       background: black;
     }
     button {
-      margin-top: 15px;
-      padding: 10px 20px;
-      font-size: 16px;
-      border: none;
-      border-radius: 6px;
-      background: #6a0dad;
-      color: white;
-      cursor: pointer;
+      margin-top: 15px; padding: 10px 20px;
+      font-size: 16px; border: none;
+      border-radius: 6px; background: #6a0dad;
+      color: white; cursor: pointer;
     }
-    button:hover {
-      background: #4b0082;
-    }
+    button:hover { background: #4b0082; }
   </style>
 </head>
 <body>
@@ -51,23 +38,17 @@
     const params = new URLSearchParams(window.location.search);
     const lessonUrl = params.get("lessonurl");
 
-    if (lessonUrl && lessonUrl.startsWith("https://")) {
-      setTimeout(() => {
-        video.src = lessonUrl;
-        video.load();
-      }, 2000);
+    if (lessonUrl && lessonUrl.match(/^https?:\/\/.*\.(mp4|webm|ogg)$/i)) {
+      video.src = lessonUrl;
+      video.load();
     } else {
-      alert("Invalid or missing lessonurl.");
+      alert("Invalid or missing lessonurl param (must be direct video URL ending with .mp4/.webm/.ogg)");
     }
 
     function goFullscreen() {
-      if (video.requestFullscreen) {
-        video.requestFullscreen();
-      } else if (video.webkitRequestFullscreen) { // Safari
-        video.webkitRequestFullscreen();
-      } else if (video.msRequestFullscreen) { // IE11
-        video.msRequestFullscreen();
-      }
+      if (video.requestFullscreen) video.requestFullscreen();
+      else if (video.webkitRequestFullscreen) video.webkitRequestFullscreen();
+      else if (video.msRequestFullscreen) video.msRequestFullscreen();
     }
   </script>
 
