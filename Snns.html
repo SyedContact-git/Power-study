@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Video Player with Fullscreen</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    video {
+      width: 80%;
+      height: 60vh;
+      max-width: 100%;
+      border-radius: 8px;
+      outline: 2px solid #6a0dad;
+      background: black;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      background: #6a0dad;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #4b0082;
+    }
+  </style>
+</head>
+<body>
+
+  <video id="videoPlayer" controls>
+    Your browser does not support the video tag.
+  </video>
+
+  <button onclick="goFullscreen()">Go Fullscreen</button>
+
+  <script>
+    const lessonurl = "https://cdn.streamable.com/video/mp4/vu5nzw.mp4"; // Replace with your direct video URL
+
+    const video = document.getElementById('videoPlayer');
+    video.src = lessonurl;
+
+    function goFullscreen() {
+      if (video.requestFullscreen) {
+        video.requestFullscreen();
+      } else if (video.webkitRequestFullscreen) {
+        video.webkitRequestFullscreen();
+      } else if (video.msRequestFullscreen) {
+        video.msRequestFullscreen();
+      }
+    }
+
+    document.addEventListener('fullscreenchange', () => {
+      if (document.fullscreenElement) {
+        if (screen.orientation && screen.orientation.lock) {
+          screen.orientation.lock('landscape').catch(() => {
+            console.warn('Orientation lock failed');
+          });
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
