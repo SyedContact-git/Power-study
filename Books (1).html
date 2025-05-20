@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Power Study - Books</title>
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to right, #6a11cb, #2575fc);
+      color: #fff;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 30px 0;
+      font-size: 2.5rem;
+      text-shadow: 0 0 10px rgba(255,255,255,0.4);
+    }
+
+    .book-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .book-card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      backdrop-filter: blur(20px);
+      transition: transform 0.3s ease;
+    }
+
+    .book-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .book-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 15px;
+      border: 2px solid white;
+    }
+
+    .book-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    .book-card p {
+      font-size: 0.95rem;
+      margin-bottom: 15px;
+      color: #e0e0e0;
+    }
+
+    .btn {
+      text-decoration: none;
+      display: inline-block;
+      padding: 10px 18px;
+      margin: 5px;
+      border-radius: 8px;
+      background: #fff;
+      color: #6a11cb;
+      font-weight: 600;
+      transition: background 0.2s ease;
+    }
+
+    .btn:hover {
+      background: #ddd;
+    }
+  </style>
+</head>
+<body>
+  <h1>Power Study - Free Books</h1>
+  <div class="book-container" id="booksList"></div>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyCa5tQtJXtilizD4NYSiAqS_5XDzOdEyjk", // full key here
+      authDomain: "books-5447b.firebaseapp.com",
+      projectId: "books-5447b",
+      storageBucket: "books-5447b.appspot.com",
+      messagingSenderId: "686342348264",
+      appId: "1:686342348264:android:355164bbb045ba6ab3d85d"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    function displayBook(book) {
+      return `
+        <div class="book-card">
+          <img src="${book.image}" alt="${book.name}">
+          <h3>${book.name}</h3>
+          <p>By ${book.author}</p>
+          <a href="https://t.me/EDUPROCBSE/41?single" class="btn">How to Download?</a>
+          <a href="${book.link}" target="_blank" class="btn">Download</a>
+        </div>
+      `;
+    }
+
+    db.collection("books").orderBy("timestamp", "desc").onSnapshot(snapshot => {
+      const booksList = document.getElementById("booksList");
+      booksList.innerHTML = "";
+      snapshot.forEach(doc => {
+        booksList.innerHTML += displayBook(doc.data());
+      });
+    });
+  </script>
+</body>
+</html>
