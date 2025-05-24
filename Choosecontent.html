@@ -1,479 +1,134 @@
-<meta name='viewport' content='width=device-width, initial-scale=1'/> <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Power Study - One stop Learning Platform</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-:root {
-  --purple: #a855f7;
-  --purple-glow: rgba(168, 85, 247, 0.7);
-  --dark-bg: #0a0a0a;
-  --dark-card: #131313;
-  --white: #ffffff;
-  --gray: #bbbbbb;
-}
+  <meta charset="UTF-8">
+  <title>Power Study</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f8f9fd;
+      color: #222;
+      overflow-x: hidden;
+    }
 
-body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: var(--dark-bg);
-  color: var(--white);
-}
+    h1, h2 {
+      text-align: center;
+      color: #7a28ff;
+      margin-top: 40px;
+      font-size: 2.2em;
+      letter-spacing: 1px;
+    }
 
-header#mainHeader {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1.5rem 2rem;
-  background: rgba(10, 10, 10, 0.95);
-  box-shadow: 0 0 20px var(--purple-glow);
-  position: sticky;
-  top: 0;
-  z-index: 999;
-}
+    .section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      padding: 30px 20px;
+      justify-items: center;
+    }
 
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  text-decoration: none;
-  color: var(--white);
-}
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 25px;
+      text-align: center;
+      width: 90%;
+      max-width: 300px;
+      box-shadow: 0 0 20px #e0d4ff;
+      transition: 0.4s ease;
+      text-decoration: none;
+      color: #333;
+      border: 2px solid #b88cff60;
+    }
 
-.logo-icon {
-  font-size: 2rem;
-  color: var(--purple);
-  text-shadow: 0 0 15px var(--purple-glow);
-}
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px #b88cff;
+    }
 
-.brand-name {
-  font-size: 1.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
+    .card img {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+      margin-bottom: 10px;
+      border-radius: 50%;
+      background: #fff;
+      padding: 8px;
+      box-shadow: 0 0 10px #d2b7ff;
+    }
 
-.container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  padding: 3rem 2rem;
-  max-width: 1400px;
-  margin: auto;
-  justify-content: center;
-}
+  
+    .btn {
+      display: block;
+      margin: 50px auto;
+      padding: 15px 35px;
+      background: #7a28ff;
+      color: white;
+      font-weight: bold;
+      font-size: 1em;
+      border: none;
+      border-radius: 30px;
+      text-decoration: none;
+      text-align: center;
+      box-shadow: 0 0 25px #c29fff, 0 0 8px #fff inset;
+      transition: 0.3s ease;
+    }
 
-.study-box {
-  background: var(--dark-card);
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 0 20px rgba(0,0,0,0.7);
-  transition: transform 0.4s, box-shadow 0.4s;
-  position: relative;
-}
+    .btn:hover {
+      background: #6b22e6;
+      box-shadow: 0 0 35px #c49eff, 0 0 10px #fff inset;
+    }
 
-.study-box:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 0 40px var(--purple-glow);
-}
+    @media (max-width: 600px) {
+      .card {
+        max-width: 100%;
+      }
 
-.image-container {
-  position: relative;
-  width: 100%;
-  height: 220px;
-  overflow: hidden;
-}
+      .book-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
 
-.image-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.7s;
-}
-
-.study-box:hover .image-container img {
-  transform: scale(1.05);
-}
-
-.image-tag {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background: var(--purple);
-  color: var(--white);
-  padding: 0.4rem 0.8rem;
-  border-radius: 8px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  box-shadow: 0 0 15px var(--purple-glow);
-}
-
-.study-content {
-  padding: 2rem;
-}
-
-.course-title {
-  font-size: 1.5rem;
-  margin-bottom: 1.5rem;
-  color: var(--white);
-  font-weight: 700;
-  text-shadow: 0 0 10px var(--purple-glow);
-}
-
-.stats-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-  margin: 1.5rem 0;
-}
-
-.stat-box {
-  background: #1a1a1a;
-  padding: 1rem;
-  border-radius: 12px;
-  text-align: center;
-  border: 1px solid #292929;
-  color: var(--gray);
-}
-
-.stat-value {
-  font-weight: 700;
-  color: var(--purple);
-  font-size: 1.2rem;
-}
-
-.stat-label {
-  font-size: 0.85rem;
-}
-
-.study-link {
-  display: inline-block;
-  margin-top: 1rem;
-  background: var(--purple);
-  color: var(--white);
-  padding: 0.8rem 1.5rem;
-  border-radius: 12px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: 0.3s ease;
-  box-shadow: 0 0 20px var(--purple-glow);
-}
-
-.study-link:hover {
-  background: #8b5cf6;
-  transform: translateY(-5px);
-  box-shadow: 0 0 30px var(--purple-glow);
-}
-
-footer {
-  text-align: center;
-  padding: 3rem 2rem;
-  background: #0f0f0f;
-  margin-top: 3rem;
-  color: var(--gray);
-  font-size: 0.9rem;
-  box-shadow: 0 0 20px var(--purple-glow);
-}
-
-.floating-telegram-btn {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  background: var(--purple);
-  color: var(--white);
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-  box-shadow: 0 0 20px var(--purple-glow);
-  transition: 0.3s ease;
-  z-index: 1000;
-}
-
-.floating-telegram-btn:hover {
-  background: #8b5cf6;
-  transform: scale(1.1) translateY(-5px);
-  box-shadow: 0 0 30px var(--purple-glow);
-}
-
-/* Mobile Fix: Make stats 1 column on small screens */
-@media (max-width: 480px) {
-  .stats-container {
-    grid-template-columns: 1fr;
-  }
-}
-    </style>
+      .book-card div {
+        font-size: 1em;
+      }
+    }
+  </style>
 </head>
 <body>
 
-
-    <!-- Optimized Header -->
-    <header id="mainHeader">
-        <a href="/" class="logo">
-            <i class="logo-icon"></i>
-            <h1 class="brand-name">Power Study</h1>
-
-    </header>
-
-    <main class="container">
-        <!-- Study Box 1 - Mathematics -->
-        <article class="study-box">
-            <div class="image-container">
-                <div class="image-tag tag-hot">Special</div>
-                <img src="https://i.ibb.co/XkFFQLVt/IMG-20250510-143837-538.jpg" alt="Mathematics Course">
-            </div>
-            <div class="study-content">
-                <h3 class="course-title"> Books Collection</h3>
-                <div class="stats-container">
-                    <div class="stat-box">
-                        <div class="stat-value">200+</div>
-                        <div class="stat-label">Books</div>
-                    </div>
-
-
-                    <div class="stat-box">
-                        <div class="stat-value">24/7</div>
-                        <div class="stat-label">Support</div>
-                    </div>
-                </div>
-                <a href="Psbooks.html" class="study-link">
-                    Explore Books <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-        </article>
-
-        <!-- Study Box 2 - Science -->
-        <article class="study-box">
-            <div class="image-container">
-                <div class="image-tag tag-hot">New</div>
-                <img src="https://i.postimg.cc/sDKv9vm5/Picsart-25-02-06-20-16-59-227.png" alt="Science Course">
-            </div>
-            <div class="study-content">
-                <h3 class="course-title">Next Topper Courses</h3>
-                <div class="stats-container">
-                    <div class="stat-box">
-                        <div class="stat-value">15+</div>
-                        <div class="stat-label">Teachers</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-value">10+</div>
-                        <div class="stat-label">Courses</div>
-                    </div>
-
-                </div>
-                <a href="Batches.html" class="study-link">
-                    Explore Courses <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-        </article>
-
-        <!-- Study Box 3 - Telegram -->
-        <article class="study-box">
-            <div class="image-container">
-                <div class="image-tag tag-new">Telegram</div>
-                <img src="https://i.ibb.co/BVPJh52S/file-00000000db906230bebb51991162680e-conversation-id-680e41e6-2c2c-8013-9f55-a59109e52282-message-i.png" alt="Telegram Community">
-            </div>
-            <div class="study-content">
-                <h3 class="course-title">LIVE CLASSES</h3>
-                <div class="stats-container">
-                    <div class="stat-box">
-                        <div class="stat-value">LIVE</div>
-                        <div class="stat-label">Teachers</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-value">24/7</div>
-                        <div class="stat-label">Service</div>
-                    </div>
-
-                </div>
-                <a href="liveschedule.html" class="study-link" target="_blank">
-                    Join Community <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-        </article>
-    </main>
-
-    <footer>
-
-            <div class="copyright">&copy; 2023 Power Study. All rights reserved.</div>
-        </div>
-    </footer>
-
-    <!-- Floating Telegram Button -->
-    <a href="https://t.me/+fJDiJ9DTVPBiZmE9" class="floating-telegram-btn" id="telegramBtn" target="_blank">
-        <i class="fab fa-telegram-plane"></i>
+  <h1>Recorded Batches </h1>
+  <div class="section">
+    <a href="Batches.html" class="card" target="_blank">
+      <img src="https://i.ibb.co/CKHMrJ9R/images-3-18.jpg">
+      <div><strong>Next Toppers</strong></div>
     </a>
-    <script>
+    <a href="comingsoon.html" class="card" target="_blank">
+      <img src="https://i.ibb.co/Y4JFPcCH/images-2.png" alt="Physics Wallah">
+      <div><strong>Physics Wallah</strong></div>
+    </a>
+  </div>
 
+  <h2>Books</h2>
+  <div class="section">
+    <a href="https://power-study.vercel.app/Psbooks.html" class="card book-card" target="_blank">
+      <img src="https://i.ibb.co/9kTvVgXc/images-3-19.jpg" alt="Book">
+      <div>Explore Books</div>
+    </a>
+  </div>
 
-        // Scroll animations with Intersection Observer
-        const animateOnScroll = () => {
-            const studyBoxes = document.querySelectorAll('.study-box');
-            const footer = document.querySelector('footer');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        if (entry.target.classList.contains('study-box')) {
-                            entry.target.classList.add('visible');
-                        } else if (entry.target === footer) {
-                            footer.classList.add('visible');
-                        }
-                    }
-                });
-            }, { threshold: 0.1 });
+  <h2>Live Classes</h2>
+  <div class="section">
+    <a href="https://power-study.vercel.app/liveschedule.html" class="card" target="_blank">
+      <img src="https://i.ibb.co/nMhRnLVf/images-3.png" alt="Live Class 1">
+      <div>Next Topers Live Classes</div>
+    </a>
+   
 
-            studyBoxes.forEach(box => {
-                observer.observe(box);
-            });
-            observer.observe(footer);
-        };
+  <a class="btn" href="https://t.me/+fJDiJ9DTVPBiZmE9" target="_blank">Join Official Telegram Channel</a>
 
-        // Feedback System
-        const initFeedbackSystem = () => {
-            const feedbackModal = document.getElementById('feedbackModal');
-            const feedbackClose = document.getElementById('feedbackClose');
-            const feedbackSubmit = document.getElementById('feedbackSubmit');
-            const feedbackDone = document.getElementById('feedbackDone');
-            const feedbackForm = document.getElementById('feedbackForm');
-            const feedbackThankyou = document.getElementById('feedbackThankyou');
-            const ratingContainer = document.getElementById('ratingContainer');
-            const feedbackText = document.getElementById('feedbackText');
-            
-            let selectedRating = 0;
-            let stars = [];
-            
-            // Check if feedback was already given today
-            const lastFeedbackDate = localStorage.getItem('lastFeedbackDate');
-            const today = new Date().toDateString();
-            
-            // Only show feedback if it wasn't shown today
-            if (lastFeedbackDate !== today) {
-                // Show feedback after 25 seconds
-                setTimeout(() => {
-                    feedbackModal.classList.add('active');
-                    
-                    // Initialize stars
-                    stars = Array.from(ratingContainer.querySelectorAll('.rating-star'));
-                    
-                    // Star hover effect
-                    stars.forEach(star => {
-                        star.addEventListener('mouseover', () => {
-                            const rating = parseInt(star.getAttribute('data-rating'));
-                            highlightStars(rating);
-                        });
-                        
-                        star.addEventListener('mouseout', () => {
-                            if (selectedRating === 0) {
-                                resetStars();
-                            } else {
-                                highlightStars(selectedRating);
-                            }
-                        });
-                        
-                        star.addEventListener('click', () => {
-                            selectedRating = parseInt(star.getAttribute('data-rating'));
-                            highlightStars(selectedRating);
-                            feedbackSubmit.disabled = false;
-                        });
-                    });
-                }, 10000); // 25 seconds
-            }
-            
-            // Highlight stars up to the given rating
-            function highlightStars(rating) {
-                stars.forEach(star => {
-                    const starRating = parseInt(star.getAttribute('data-rating'));
-                    if (starRating <= rating) {
-                        star.classList.add('hovered');
-                        star.classList.add('active');
-                        star.classList.remove('far');
-                        star.classList.add('fas');
-                    } else {
-                        star.classList.remove('hovered');
-                        star.classList.remove('active');
-                        star.classList.add('far');
-                        star.classList.remove('fas');
-                    }
-                });
-            }
-            
-            // Reset all stars to default state
-            function resetStars() {
-                stars.forEach(star => {
-                    star.classList.remove('hovered');
-                    star.classList.remove('active');
-                    star.classList.add('far');
-                    star.classList.remove('fas');
-                });
-            }
-            
-            // Close modal
-            feedbackClose.addEventListener('click', () => {
-                feedbackModal.classList.remove('active');
-            });
-            
-            // Submit feedback
-            feedbackSubmit.addEventListener('click', () => {
-                const feedback = feedbackText.value.trim();
-                const timestamp = new Date().toISOString();
-                
-                // Save to Firebase
-                const feedbackRef = database.ref('feedback').push();
-                feedbackRef.set({
-                    rating: selectedRating,
-                    feedback: feedback,
-                    timestamp: timestamp,
-                    pageUrl: window.location.href
-                }).then(() => {
-                    // Show thank you message
-                    feedbackForm.style.display = 'none';
-                    feedbackThankyou.style.display = 'block';
-                    
-                    // Remember feedback was given today
-                    localStorage.setItem('lastFeedbackDate', today);
-                }).catch(error => {
-                    console.error('Error saving feedback:', error);
-                    alert('There was an error submitting your feedback. Please try again.');
-                });
-            });
-            
-            // Close after thank you
-            feedbackDone.addEventListener('click', () => {
-                feedbackModal.classList.remove('active');
-                // Reset form for next time
-                setTimeout(() => {
-                    feedbackForm.style.display = 'block';
-                    feedbackThankyou.style.display = 'none';
-                    resetStars();
-                    feedbackText.value = '';
-                    selectedRating = 0;
-                    feedbackSubmit.disabled = true;
-                }, 300);
-            });
-        };
-
-        // Initialize animations when page loads
-        document.addEventListener('DOMContentLoaded', () => {
-            animateOnScroll();
-            initFeedbackSystem();
-            
-            // Add header scroll effect
-            const header = document.getElementById('mainHeader');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
-            }, { passive: true });
-        });
-    </script>
 </body>
 </html>
