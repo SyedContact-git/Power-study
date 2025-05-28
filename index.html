@@ -270,6 +270,7 @@
       .cards { flex-direction: column; align-items: center; }
     }
   </style>
+<!-- ...[HEAD CONTENT REMAINS UNCHANGED]... -->
 </head>
 <body>
 
@@ -286,6 +287,16 @@
   <div class="loading">Launching Power Study...</div>
 </div>
 
+<!-- Telegram Popup -->
+<div id="telegramPopup" class="popup">
+  <div class="popup-content">
+    <div class="popup-header">IMPORTANT</div>
+    <p class="popup-text">Join our official Telegram for instant updates and important notices!</p>
+    <a href="https://t.me/+c7KAULUbAJ9hYjI1" target="_blank" class="popup-btn">Join Telegram</a>
+    <div class="popup-close" onclick="closePopup()">×</div>
+  </div>
+</div>
+
 <!-- Header -->
 <header>
   <div class="brand">
@@ -293,18 +304,7 @@
     <img src="https://i.ibb.co/rPNWP45/IMG-20250510-161054-042.jpg" alt="Logo">
     <span class="study">Study</span>
   </div>
-  <div class="menu-btn" onclick="toggleDrawer()">☰</div>
 </header>
-
-<!-- Drawer -->
-<div class="drawer" id="drawer">
-  <div class="back-btn" onclick="toggleDrawer()">←</div>
-  <a href="index.html">Home</a>
-  <a href="liveschedule.html">Live Classes</a>
-  <a href="Psbooks.html">Books</a>
-  <a href="aboutus.html">About Us</a>
-  <a href="Batches.html">explore Batches </a>
-</div>
 
 <!-- Hero -->
 <section class="hero">
@@ -329,22 +329,100 @@
   </div>
 </section>
 
-<!-- Telegram Button -->
+<!-- Telegram Floating Button -->
 <a href="#" class="telegram-btn">
   <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
 </a>
 
+<style>
+  /* Popup Styles */
+  .popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(13, 13, 13, 0.9);
+    backdrop-filter: blur(10px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9998;
+  }
+
+  .popup-content {
+    background: #1e1e2f;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.5);
+    text-align: center;
+    max-width: 300px;
+    position: relative;
+    animation: popup-fade 0.4s ease-in-out;
+  }
+
+  @keyframes popup-fade {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+
+  .popup-header {
+    font-size: 1.5rem;
+    color: #a855f7;
+    margin-bottom: 15px;
+    font-weight: 700;
+    text-shadow: 0 0 10px #a855f7;
+  }
+
+  .popup-text {
+    color: #ddd;
+    margin-bottom: 20px;
+    font-size: 1rem;
+  }
+
+  .popup-btn {
+    display: inline-block;
+    background: linear-gradient(45deg, #0088cc, #00bfff);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 0 20px rgba(0, 136, 204, 0.5);
+    transition: 0.3s;
+  }
+
+  .popup-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(0, 136, 204, 0.7);
+  }
+
+  .popup-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    color: #aaa;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .popup-close:hover {
+    color: white;
+  }
+</style>
+
 <script>
-  // Preloader timeout
+  // Preloader timeout and popup show
   window.addEventListener("load", () => {
     setTimeout(() => {
       document.getElementById('preloader').style.display = 'none';
+      document.getElementById('telegramPopup').style.display = 'flex';
     }, 3000);
   });
 
-  // Drawer toggle
-  function toggleDrawer() {
-    document.getElementById('drawer').classList.toggle('open');
+  function closePopup() {
+    document.getElementById('telegramPopup').style.display = 'none';
   }
 </script>
 
