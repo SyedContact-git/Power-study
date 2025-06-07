@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Power Study - Player</title>
+  <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+  <style>
+    body {
+      margin: 0;
+      background: #0a0a0a;
+      font-family: 'Poppins', sans-serif;
+    }
+    #player {
+      width: 100%;
+      height: 100vh;
+      max-height: 100vh;
+      object-fit: contain;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="w-full fixed top-0 left-0 z-50 px-4 py-3 flex items-center justify-between bg-gradient-to-r from-purple-900 via-red-800 to-black shadow-xl text-white">
+  <div class="flex items-center space-x-2">
+    <img src="https://i.ibb.co/v4JLWVmw/IMG-20250510-161054-042.jpg" class="h-10 w-10 rounded-full border-2 border-white" />
+    <span class="text-xl font-bold" style="font-family: 'Orbitron'">Power Study</span>
+  </div>
+  <div class="flex gap-4 items-center">
+    <span id="qualityLabel" class="text-sm hidden"></span>
+    <button onclick="changeQuality()" class="hover:text-gray-300"><i data-feather="settings"></i></button>
+    <button onclick="copyM3U8()" class="hover:text-gray-300"><i data-feather="download"></i></button>
+  </div>
+</div>
+
+<!-- Glowing Progress Bar -->
+<div class="w-full fixed top-[4rem] z-40 bg-transparent">
+  <div class="relative w-full h-1">
+    <div id="progressBar" class="absolute left-0 top-0 h-full bg-red-500 shadow-[0_0_10px_2px_rgba(239,68,68,0.7)] transition-all duration-300 ease-in-out" style="width: 0%;"></div>
+  </div>
+</div>
+
+<!-- Video Player -->
+<video id="player" controls poster="https://i.ibb.co/v4JLWVmw/IMG-20250510-161054-042.jpg" class="mt-20"></video>
+
+<!-- Floating Note Buttons -->
+<div class="fixed z-50 bottom-4 right-4 flex flex-col gap-3">
+  <button onclick="makeNote()" class="bg-purple-700 hover:bg-purple-800 text-white p-3 rounded-full shadow-lg transition-all duration-300" title="Make Note">
+    <i data-feather="edit-2"></i>
+  </button>
+  <button onclick="toggleNoteDrawer()" class="bg-gray-800 hover:bg-gray-700 text-white p-3 rounded-full shadow-lg transition-all duration-300" title="View Notes">
+    <i data-feather="book-open"></i>
+  </button>
+</div>
+
+<!-- Notes Drawer -->
+<div id="noteDrawer" class="fixed bottom-0 left-0 w-full max-h-[50%] bg-gray-900 text-white overflow-y-auto rounded-t-2xl shadow-lg transform translate-y-full transition-transform duration-300 z-50 p-4">
+  <div class="flex justify-between items-center mb-4">
+    <h2 class="text-lg font-semibold">📒 My Notes</h2>
+    <button onclick="toggleNoteDrawer()" class="text-gray-400 hover:text-white"><i data-feather="x"></i></button>
+  </div>
+  <div id="noteList" class="space-y-3"></div>
+</div>
+
+<!-- Video Logic Script (same as original) -->
+<script>
+ document.addEventListener("DOMContentLoaded", () => {
+  feather.replace();
+
+  const video = document.getElementById("player");
+  const progressBar = document.getElementById("progressBar");
+  const params = new URLSearchParams(window.location.search);
+  const originalUrl = decodeURIComponent(params.get("lessonurl") || "");
+  let currentUrl = originalUrl;
+
+  const resumeKey = `resume_${originalUrl}`;
+  const watchKey = `watched_${originalUrl}`;
+  const completedKey = `completed_${originalUrl}`;
+  let errorShown = false; // To prevent multiple error alerts
+
+  if (!originalUrl) {
+    Swal.fire("Error", "Video URL is required.", "error");
+    return;
+  }
+
+  // Quality Display
+  window.addEventListener("load", () => {
+    const qualityLabel = document.getElementById("qualityLabel");
+    const qCode = getQualityFromUrl(originalUrl);
+    qualityLabel.textContent = `Quality: ${getQualityLabel(qCode)}`;
+    qualityLabel.classList.remove("hidden");
+  });
+
+  function loadVideo(url, resumeTime = 0) {
+    if (Hls.isSupported()) {
+      const hls = new Hls();
+      hls.loadSource(url);
+      hls.attachMedia(video);
+      hls.on(Hls.Events.MANIFEST_PARSED, () => {
+        video.play().catch(() => {});
+        video.currentTime = resumeTime;
+      });
+    } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
+      video.src = url;
+      video.currentTime = resumeTime;
+      video.play().catch(() => {});
+    }
+  }
+
+  const savedTime = parseFloat(localStorage.getItem(resumeKey));
+  if (savedTime) {
+    Swal.fire({
+      title: "Resume Video",
+      text: `Continue from ${formatTime(savedTime)}?`,
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonText: "Yes",
+      cancelButtonText: "No",
+    }).then((res) => {
+      loadVideo(currentUrl, res.isConfirmed ? savedTime : 0);
+    });
+  } else {
+    loadVideo(currentUrl);
+  }
+
+  setInterval(() => {
+    if (!isNaN(video.currentTime) && video.duration) {
+      const percentWatched = ((video.currentTime / video.duration) * 100).toFixed(2);
+      localStorage.setItem(resumeKey, video.currentTime);
+      localStorage.setItem(watchKey, percentWatched);
+      progressBar.style.width = `${percentWatched}%`;
+
+      if (percentWatched < 30) {
+        progressBar.className = "absolute left-0 top-0 h-full bg-red-500 shadow-[0_0_10px_2px_rgba(239,68,68,0.7)] transition-all duration-300 ease-in-out";
+      } else if (percentWatched < 70) {
+        progressBar.className = "absolute left-0 top-0 h-full bg-yellow-400 shadow-[0_0_10px_2px_rgba(251,191,36,0.7)] transition-all duration-300 ease-in-out";
+      } else {
+        progressBar.className = "absolute left-0 top-0 h-full bg-green-500 shadow-[0_0_10px_2px_rgba(34,197,94,0.7)] transition-all duration-300 ease-in-out";
+      }
+
+      if (percentWatched >= 90 && !localStorage.getItem(completedKey)) {
+        localStorage.setItem(completedKey, "true");
+        Swal.fire({
+          toast: true,
+          icon: "success",
+          title: "рџЋ‰ Video Completed!",
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 2000
+        });
+      }
+    }
+  }, 5000);
+
+  function formatTime(seconds) {
+    const h = Math.floor(seconds / 3600);
+    const m = Math.floor((seconds % 3600) / 60);
+    const s = Math.floor(seconds % 60);
+    return `${h > 0 ? h + ":" : ""}${m.toString().padStart(2, "0")}:${s.toString().padStart(2, "0")}`;
+  }
+
+  window.copyM3U8 = () => {
+    navigator.clipboard.writeText(originalUrl).then(() => {
+      Swal.fire("Copied!", "Download Link has been copied to clipboard. Go to 1DM App and download your video with link.", "success");
+    });
+  };
+
+  window.changeQuality = () => {
+    Swal.fire({
+      title: "Select Quality",
+      input: "radio",
+      inputOptions: {
+        index_1: "240p",
+        index_2: "360p",
+        index_3: "480p",
+        index_4: "1080p"
+      },
+      inputValidator: (value) => {
+        if (!value) return "You need to choose a quality!";
+      }
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const newQuality = result.value;
+        const newUrl = originalUrl.replace(/index_\d\.m3u8/, `${newQuality}.m3u8`);
+        const time = video.currentTime;
+
+        Swal.fire({
+          title: `Change to ${getQualityLabel(newQuality)}?`,
+          text: "Are you sure?",
+          showCancelButton: true,
+          confirmButtonText: "Yes"
+        }).then((res) => {
+          if (res.isConfirmed) {
+            const redirectUrl = `${window.location.pathname}?lessonurl=${encodeURIComponent(newUrl)}&resume=${time}`;
+            window.location.href = redirectUrl;
+          }
+        });
+      }
+    });
+  };
+
+  const resumeParam = parseFloat(params.get("resume"));
+  if (!isNaN(resumeParam)) {
+    video.currentTime = resumeParam;
+  }
+
+  function getQualityFromUrl(url) {
+    const match = url.match(/index_(\d)\.m3u8/);
+    return match ? `index_${match[1]}` : "";
+  }
+
+  function getQualityLabel(code) {
+    return {
+      index_1: "240p",
+      index_2: "360p",
+      index_3: "480p",
+      index_5: "1080p"
+    }[code] || "Unknown";
+  }
+
+  // Note System
+  window.makeNote = () => {
+    const currentTime = video.currentTime;
+    const noteKey = `notes_${originalUrl}`;
+    const existingNotes = JSON.parse(localStorage.getItem(noteKey) || "[]");
+    video.pause();
+
+    Swal.fire({
+      title: "Take a Note",
+      input: "textarea",
+      inputLabel: `Timestamp: ${formatTime(currentTime)}`,
+      inputPlaceholder: "Write your notes here...",
+      showCancelButton: true,
+      confirmButtonText: "Save",
+      preConfirm: (note) => {
+        if (!note.trim()) return "Notes cannot be empty.";
+      }
+    }).then((res) => {
+      if (res.isConfirmed) {
+        existingNotes.push({
+          id: Date.now(),
+          time: currentTime,
+          timestamp: formatTime(currentTime),
+          text: res.value.trim()
+        });
+        localStorage.setItem(noteKey, JSON.stringify(existingNotes));
+        loadNotes();
+        Swal.fire("Saved!", "Your note was saved.", "success");
+      }
+    });
+  };
+
+  window.loadNotes = () => {
+    const noteKey = `notes_${originalUrl}`;
+    const notes = JSON.parse(localStorage.getItem(noteKey) || "[]");
+    const list = document.getElementById("noteList");
+    list.innerHTML = "";
+
+    if (notes.length === 0) {
+      list.innerHTML = `<p class="text-gray-400 text-sm">No notes yet.</p>`;
+      return;
+    }
+
+    notes.forEach(note => {
+      const item = document.createElement("div");
+      item.className = "bg-gray-800 p-3 rounded-lg shadow flex justify-between items-start";
+      item.innerHTML = `
+        <div class="flex-1">
+          <p class="text-sm text-gray-300 mb-1">вЏ± <span class="font-semibold">${note.timestamp}</span></p>
+          <p class="text-sm">${note.text}</p>
+        </div>
+        <div class="flex gap-2 ml-3">
+          <button onclick="editNote(${note.id})" class="text-yellow-400 hover:text-yellow-300" title="Edit"><i data-feather="edit-3"></i></button>
+          <button onclick="deleteNote(${note.id})" class="text-red-500 hover:text-red-400" title="Delete"><i data-feather="trash-2"></i></button>
+        </div>
+      `;
+      list.appendChild(item);
+    });
+    feather.replace();
+  };
+
+  window.editNote = (id) => {
+    const noteKey = `notes_${originalUrl}`;
+    const notes = JSON.parse(localStorage.getItem(noteKey) || "[]");
+    const note = notes.find(n => n.id === id);
+    if (!note) return;
+
+    Swal.fire({
+      title: "Edit Note",
+      input: "textarea",
+      inputValue: note.text,
+      inputLabel: `Timestamp: ${note.timestamp}`,
+      showCancelButton: true,
+      confirmButtonText: "Update",
+      preConfirm: (value) => {
+        if (!value.trim()) return "Note cannot be empty.";
+      }
+    }).then((res) => {
+      if (res.isConfirmed) {
+        note.text = res.value.trim();
+        localStorage.setItem(noteKey, JSON.stringify(notes));
+        loadNotes();
+        Swal.fire("Updated", "Note updated successfully", "success");
+      }
+    });
+  };
+
+  window.deleteNote = (id) => {
+    const noteKey = `notes_${originalUrl}`;
+    let notes = JSON.parse(localStorage.getItem(noteKey) || "[]");
+    notes = notes.filter(n => n.id !== id);
+    localStorage.setItem(noteKey, JSON.stringify(notes));
+    loadNotes();
+  };
+
+  window.toggleNoteDrawer = () => {
+    const drawer = document.getElementById("noteDrawer");
+    drawer.classList.toggle("translate-y-0");
+    drawer.classList.toggle("translate-y-full");
+    loadNotes();
+  };
+
+  loadNotes();
+
+  // Error handler for unsupported video format or failure
+  video.addEventListener("error", () => {
+    const error = video.error;
+    if (!errorShown && error && (error.code === 3 || error.code === 4)) {
+      errorShown = true;
+      Swal.fire({
+        icon: "warning",
+        title: "Video Playback Error",
+        text: "This video might not support the selected quality. Please try switching to another quality.",
+        confirmButtonText: "Change Quality",
+        confirmButtonColor: "#6366f1"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          changeQuality();
+        }
+      });
+    }
+  });
+
+});
+</script>
+
+</body>
+
+</html>
