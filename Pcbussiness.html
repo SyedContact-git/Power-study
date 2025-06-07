@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Power Study - Class 11</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+  
+    <script src="/cookie-validator.js"></script> <script> function getCookie(name) { const value = `; ${document.cookie}`; const parts = value.split(`; ${name}=`); if (parts.length === 2) return parts.pop().split(';').shift(); }
+if (!getCookie('🚀')) { window.location.href = 'login.html'; } </script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #0d0d1a;
+      color: #f2f2f2;
+    }
+
+    /* Header */
+    .header {
+      background: linear-gradient(90deg, #6a00ff, #001f3f);
+      color: white;
+      padding: 20px 30px;
+      font-size: 22px;
+      font-weight: 600;
+      text-align: center;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 10px rgba(255, 0, 0, 0.3);
+    }
+
+    /* Toggle Buttons */
+    .toggle-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .toggle-buttons button {
+      padding: 10px 22px;
+      background: #6a00ff;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .toggle-buttons button:hover {
+      background: #ff0033;
+      transform: scale(1.05);
+    }
+
+    .toggle-buttons button.active {
+      background: #001f3f;
+    }
+
+    /* Search */
+    .search-bar {
+      text-align: center;
+      margin: 10px 20px 30px;
+    }
+
+    .search-bar input {
+      width: 90%;
+      max-width: 450px;
+      padding: 12px 20px;
+      font-size: 16px;
+      background: #1a1a2e;
+      color: white;
+      border: 2px solid #ff0033;
+      border-radius: 30px;
+      outline: none;
+    }
+
+    /* Cards Grid */
+    .content-grid {
+      display: none;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      padding: 0 20px 40px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .content-grid.active {
+      display: grid;
+    }
+
+    /* Cards */
+    .content-item {
+      background: #111122;
+      padding: 20px;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(255, 0, 55, 0.25);
+      transition: transform 0.2s ease;
+      text-align: center;
+    }
+
+    .content-item:hover {
+      transform: translateY(-4px);
+    }
+
+    .content-item h3 {
+      margin: 10px 0;
+      font-size: 18px;
+      color: #ff0033;
+    }
+
+    .content-item p {
+      margin: 0 0 15px;
+      font-size: 14px;
+      color: #ccc;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #6a00ff, #ff0033);
+      color: white;
+      padding: 10px 18px;
+      border-radius: 25px;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #ff0033, #6a00ff);
+      transform: scale(1.05);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      font-size: 13px;
+      color: #888;
+      padding: 30px 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">Prarambh Commerce Power Study</div>
+
+  <!-- Toggle Buttons -->
+  <div class="toggle-buttons">
+    <button id="lecturesBtn" class="active" onclick="toggleContent('lectures')">📘 Lectures</button>
+    <button id="notesBtn" onclick="toggleContent('notes')">📄 Notes</button>
+  </div>
+
+  <!-- Search -->
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="🔍 Search Lectures or Notes..." oninput="filterContent()" />
+  </div>
+
+  <!-- Lectures -->
+  <div id="lectures" class="content-grid active">
+    <div class="content-item">
+    <h3>Business Trade and Commerce L1</h3>
+    <p>14/04/25</p>
+    <a href="https://www.youtube.com/live/PUa2-buHJII?si=nKOMtgZP4_pa_drT" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Business Trade and Commerce L2</h3>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4352997/174481925589108661500/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Business Trade and Commerce L3</h3>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4354036/174490571525318661500/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Business Trade and Commerce L4</h3>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4356791/174525158582868661500/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Business Trade and Commerce L5</h3>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4357840/174533779119448661500/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Business Trade and Commerce L6</h3>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4358827/174541222825788661500/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Business Trade and Commerce L7</h3>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4363370/174585516974368661500/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Business Trade and Commerce L8</h3>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4364782/174594193147598661500/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Business Trade and Commerce</h3>
+    <p>Doubt Solving</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4365823/174601759672428661500/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Business Organizations</h3>
+    <p>Lecture - 1</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4372297/174646087088698661500/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Business Organizations</h3>
+    <p>Lecture - 2</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4373926/174654697344648661500/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Business Organizations</h3>
+    <p>Lecture - 3</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4374884/174662261770168661500/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Business Organizations</h3>
+    <p>Lecture - 4</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4379158/174706487485118661500/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Business Organizations</h3>
+    <p>Lecture - 5</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4380752/174715045969568661500/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Business Organizations</h3>
+    <p>Lecture - 6</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4385844/174767049839008661500/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Business Organizations</h3>
+    <p>Lecture - 7</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4387080/174775705352788661500/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Business Organizations</h3>
+    <p>Lecture - 8</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4388072/174783296668778661500/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Business Organizations</h3>
+    <p>Lecture - 9</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4392903/174827554771168661500/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Business Organizations</h3>
+    <p>Lecture - 10</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4394020/174836176027458661500/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Business Organizations</h3>
+    <p>Lecture - 11</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4394995/174843818528908661500/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+  </div>
+
+  <!-- Notes -->
+  <div id="notes" class="content-grid">
+           <div class="content-item">
+            <h3>Business, Trade and Commerce L1</h3>
+            <p>Notes</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/277767275437755360.pdf" class="btn-primary">📄 View PDF</a>
+        </div>
+        <div class="content-item">
+            <h3>Business, Trade and Commerce L2</h3>
+            <p>Notes</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/289731167636018000.pdf" class="btn-primary">📄 View PDF</a>
+        </div>
+        <div class="content-item">
+            <h3>Business, Trade and Commerce L3</h3>
+            <p>Notes</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/818707773744364900.pdf" class="btn-primary" target="_blank">▶ Watch Now</a>
+        </div>
+        <div class="content-item">
+            <h3>Business, Trade and Commerce L4</h3>
+            <p>Notes</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/445097973128453200.pdf" class="btn-primary" target="_blank">▶ Watch Now</a>
+        </div>
+        <div class="content-item">
+            <h3>Business, Trade and Commerce L5</h3>
+            <p>Notes</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/533526925056925500.pdf" class="btn-primary" target="_blank">▶ Watch Now</a>
+        </div>
+        <div class="content-item">
+            <h3>Business, Trade and Commerce L6</h3>
+            <p>Notes</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/757750182556575400.pdf" class="btn-primary" target="_blank">▶ Watch Now</a>
+        </div>
+        <div class="content-item">
+            <h3>Business, Trade and Commerce</h3>
+            <p>GULLAK - 1</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/316602523849184500.pdf" class="btn-primary" target="_blank">▶ Watch Now</a>
+        </div>
+                <div class="content-item">
+            <h3>Business Organizations L1</h3>
+            <p>Notes</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/757750182556575400.pdf" class="btn-primary">📄 View PDF</a>
+        </div>        
+        <div class="content-item">
+            <h3>Business Organizations L2</h3>
+            <p>Notes</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/157859244933986080.pdf" class="btn-primary">📄 View PDF</a>
+        </div>        
+        <div class="content-item">
+            <h3>Business Organizations L3</h3>
+            <p>Notes</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/172211302848233380.pdf" class="btn-primary">📄 View PDF</a>
+        </div>       
+        <div class="content-item">
+            <h3>Business Organizations L4</h3>
+            <p>Notes</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/575516221347988000.pdf" class="btn-primary">📄 View PDF</a>
+        </div>      
+        <div class="content-item">
+            <h3>Business Organizations L5</h3>
+            <p>Notes</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/514183563299279100.pdf" class="btn-primary">📄 View PDF</a>
+        </div>       
+        <div class="content-item">
+            <h3>Business Organizations L6</h3>
+            <p>Notes</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/93050589060278740.pdf" class="btn-primary">📄 View PDF</a>
+        </div>       
+        <div class="content-item">
+            <h3>Business Organizations L7</h3>
+            <p>Notes</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/225497626209866100.pdf" class="btn-primary">📄 View PDF</a>
+        </div>
+        <div class="content-item">
+            <h3>Business Organizations L8</h3>
+            <p>Notes</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/357905941387830660.pdf" class="btn-primary">📄 View PDF</a>
+        </div>
+        <div class="content-item">
+            <h3>Business Organizations L9</h3>
+            <p>Notes</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/521771810676537860.pdf" class="btn-primary">📄 View PDF</a>
+        </div>
+        <div class="content-item">
+            <h3>Business Organizations L10</h3>
+            <p>Notes</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/115384204466978060.pdf" class="btn-primary">📄 View PDF</a>
+        </div>
+        <div class="content-item">
+            <h3>Business Organizations L11</h3>
+            <p>Notes</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/111043958041913060.pdf" class="btn-primary">📄 View PDF</a>
+        </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 Power Study | Dark Mode Edition
+  </footer>
+
+  <!-- JS -->
+  <script>
+    const lecturesBtn = document.getElementById('lecturesBtn');
+    const notesBtn = document.getElementById('notesBtn');
+    const lectures = document.getElementById('lectures');
+    const notes = document.getElementById('notes');
+
+    function toggleContent(type) {
+      if (type === 'lectures') {
+        lectures.classList.add('active');
+        notes.classList.remove('active');
+        lecturesBtn.classList.add('active');
+        notesBtn.classList.remove('active');
+      } else {
+        notes.classList.add('active');
+        lectures.classList.remove('active');
+        notesBtn.classList.add('active');
+        lecturesBtn.classList.remove('active');
+      }
+      filterContent(); // Apply search again on toggle
+    }
+
+    function filterContent() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const activeGrid = document.querySelector('.content-grid.active');
+      const items = activeGrid.querySelectorAll('.content-item');
+
+      items.forEach(item => {
+        const text = item.innerText.toLowerCase();
+        item.style.display = text.includes(input) ? 'block' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

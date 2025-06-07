@@ -2,84 +2,200 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Power Study - Books</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Power Study - Free Books</title>
   <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-     
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="/cookie-validator.js"></script> <script> function getCookie(name) { const value = `; ${document.cookie}`; const parts = value.split(`; ${name}=`); if (parts.length === 2) return parts.pop().split(';').shift(); }
+if (!getCookie('🚀')) { window.location.href = 'login.html'; } </script>
+
   <style>
+    /* RESET & BASE */
+    * {
+      box-sizing: border-box;
+    }
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(to right, #6a11cb, #2575fc);
-      color: #fff;
+      background: #0a0a0f;
+      color: #eee;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Animated subtle gradient background behind container */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(270deg, #440062, #23001a, #0a0a0f, #4b0053);
+      background-size: 800% 800%;
+      animation: gradientShift 30s ease infinite;
+      z-index: -1;
+      opacity: 0.35;
+      filter: blur(60px);
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%;}
+      50% { background-position: 100% 50%;}
+      100% { background-position: 0% 50%;}
     }
 
     h1 {
+      font-weight: 700;
+      font-size: 3rem;
+      color: #ff3e3e; /* bright red */
       text-align: center;
-      margin: 30px 0;
-      font-size: 2.5rem;
-      text-shadow: 0 0 10px rgba(255,255,255,0.4);
+      margin-bottom: 40px;
+      letter-spacing: 1.5px;
+      text-shadow:
+        0 0 8px #ff3e3e,
+        0 0 25px #9b1c1c;
+      user-select: none;
     }
 
+    /* BOOK GRID */
     .book-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 12px;
-      padding: 20px;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    .book-card {
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 16px;
-      padding: 30px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-      text-align: center;
-      backdrop-filter: blur(20px);
-      transition: transform 0.3s ease;
-    }
-
-    .book-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .book-card img {
+      gap: 28px;
       width: 100%;
-      height: 300px;
-      object-fit: cover;
-      border-radius: 12px;
-      margin-bottom: 15px;
-      border: 2px solid white;
+      max-width: 1200px;
+      padding-bottom: 40px;
     }
 
+    /* CARD STYLE */
+    .book-card {
+      background: linear-gradient(145deg, #1a003f, #270024);
+      border-radius: 16px;
+      box-shadow:
+        0 0 8px #5c007a,
+        0 4px 15px rgba(255, 62, 62, 0.45);
+      padding: 22px 20px 30px;
+      color: #ddd;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      backdrop-filter: blur(12px);
+      border: 1.5px solid #4a007d;
+      cursor: default;
+      user-select: none;
+    }
+    .book-card:hover {
+      transform: translateY(-8px) scale(1.04);
+      box-shadow:
+        0 0 14px #ff3e3e,
+        0 8px 30px rgba(255, 62, 62, 0.7);
+    }
+
+    /* IMAGE */
+   .book-card img {
+  width: 100%;
+  aspect-ratio: 2 / 3; /* Typical book cover ratio */
+  object-fit: contain;
+  border-radius: 14px;
+  border: 2px solid #8c008c;
+  box-shadow: 0 0 14px #a100a1;
+  margin-bottom: 18px;
+  user-select: none;
+  transition: transform 0.3s ease;
+}
+.book-card:hover img {
+  transform: scale(1.05);
+}
+    /* TITLE */
     .book-card h3 {
-      font-size: 1.2rem;
-      margin-bottom: 10px;
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: #ff5151;
+      margin-bottom: 6px;
+      text-align: center;
+      text-shadow: 0 0 6px #ff3e3e;
+      letter-spacing: 0.02em;
     }
 
+    /* AUTHOR */
     .book-card p {
-      font-size: 0.95rem;
-      margin-bottom: 15px;
-      color: #e0e0e0;
+      font-size: 1rem;
+      color: #c17eff;
+      margin-bottom: 20px;
+      font-style: italic;
+      user-select: none;
+      text-align: center;
+      letter-spacing: 0.02em;
     }
 
+    /* BUTTONS CONTAINER */
+    .btn-group {
+      display: flex;
+      gap: 12px;
+      flex-wrap: nowrap;
+      justify-content: center;
+      width: 100%;
+    }
+
+    /* BUTTONS */
     .btn {
+      flex: 0 0 auto;
       text-decoration: none;
-      display: inline-block;
-      padding: 10px 18px;
-      margin: 5px;
-      border-radius: 8px;
-      background: #fff;
-      color: #6a11cb;
-      font-weight: 600;
-      transition: background 0.2s ease;
+      padding: 8px 18px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      border-radius: 12px;
+      text-align: center;
+      color: #1e003a;
+      background: linear-gradient(145deg, #ff3e3e, #8a0000);
+      box-shadow:
+        0 0 6px #ff3e3e,
+        inset 0 -3px 6px rgba(255, 62, 62, 0.6);
+      transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+      user-select: none;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+      min-width: 120px;
     }
 
-    .btn:hover {
-      background: #ddd;
+    .btn:hover, .btn:focus {
+      background: linear-gradient(145deg, #a10000, #ff5c5c);
+      color: #fff;
+      box-shadow:
+        0 0 12px #ff3e3e,
+        inset 0 -5px 10px rgba(255, 62, 62, 0.85);
+      outline: none;
+      transform: scale(1.05);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2.2rem;
+        margin-bottom: 28px;
+      }
+      .book-card {
+        padding: 18px 14px 26px;
+      }
+      .book-card img {
+        max-height: 240px;
+      }
+      .btn-group {
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .btn {
+        flex: 1 1 45%;
+        min-width: unset;
+        padding: 10px 0;
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
@@ -89,7 +205,7 @@
 
   <script>
     const firebaseConfig = {
-      apiKey: "AIzaSyCa5tQtJXtilizD4NYSiAqS_5XDzOdEyjk", // full key here
+      apiKey: "AIzaSyCa5tQtJXtilizD4NYSiAqS_5XDzOdEyjk",
       authDomain: "books-5447b.firebaseapp.com",
       projectId: "books-5447b",
       storageBucket: "books-5447b.appspot.com",
@@ -102,12 +218,14 @@
 
     function displayBook(book) {
       return `
-        <div class="book-card">
-          <img src="${book.image}" alt="${book.name}">
+        <div class="book-card" tabindex="0" aria-label="Book titled ${book.name} by ${book.author}">
+          <img src="${book.image}" alt="Cover of ${book.name}" loading="lazy" />
           <h3>${book.name}</h3>
           <p>By ${book.author}</p>
-          <a href="https://t.me/EDUPROCBSE/41?single" class="btn">How to Download?</a>
-          <a href="${book.link}" target="_blank" class="btn">Download 📚 📥</a>
+          <div class="btn-group">
+            <a href="https://t.me/EDUPROCBSE/41?single" target="_blank" rel="noopener" class="btn" aria-label="How to download ${book.name}">How to Download?</a>
+            <a href="${book.link}" target="_blank" rel="noopener" class="btn" aria-label="Download ${book.name}">Download 📚</a>
+          </div>
         </div>
       `;
     }

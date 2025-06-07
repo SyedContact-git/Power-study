@@ -1,134 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UT,F-8">
-  <title>Power Study</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Explore Power Study</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #f8f9fd;
-      color: #222;
-      overflow-x: hidden;
-    }
+  /* Body with smooth gradient and subtle noise overlay for texture */
+body {
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  color: #eee;
+  overflow-x: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+  min-height: 100vh;
+  /* Optional subtle noise texture overlay for richness */
+  background-image: 
+    linear-gradient(135deg, #0f0c29, #302b63, #24243e),
+    url('https://www.transparenttextures.com/patterns/noise.png');
+  background-blend-mode: overlay;
+  background-repeat: repeat;
+}
 
-    h1, h2 {
-      text-align: center;
-      color: #7a28ff;
-      margin-top: 40px;
-      font-size: 2.2em;
-      letter-spacing: 1px;
-    }
+/* Text clamp with modern typography */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 1rem;
+  line-height: 1.4;
+  color: #ddd;
+}
 
-    .section {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 30px;
-      padding: 30px 20px;
-      justify-items: center;
-    }
+/* Smooth fade-in animation with easing */
+.animate-fade-in {
+  animation: fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
 
-    .card {
-      background: #ffffff;
-      border-radius: 20px;
-      padding: 25px;
-      text-align: center;
-      width: 90%;
-      max-width: 300px;
-      box-shadow: 0 0 20px #e0d4ff;
-      transition: 0.4s ease;
-      text-decoration: none;
-      color: #333;
-      border: 2px solid #b88cff60;
-    }
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-    .card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 25px #b88cff;
-    }
+/* Glowing button with dual-tone neon shadows and smooth scale */
+.glow-button {
+  background: linear-gradient(145deg, #6610f2, #c084fc);
+  color: white;
+  padding: 0.7em 1.8em;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow:
+    0 0 8px rgba(198, 132, 252, 0.7),
+    0 0 20px rgba(102, 16, 242, 0.8);
+  transition: box-shadow 0.35s ease, transform 0.35s ease;
+  user-select: none;
+  letter-spacing: 0.04em;
+}
 
-    .card img {
-      width: 120px;
-      height: 120px;
-      object-fit: contain;
-      margin-bottom: 10px;
-      border-radius: 50%;
-      background: #fff;
-      padding: 8px;
-      box-shadow: 0 0 10px #d2b7ff;
-    }
+.glow-button:hover,
+.glow-button:focus {
+  box-shadow:
+    0 0 18px rgba(198, 132, 252, 1),
+    0 0 40px rgba(102, 16, 242, 1),
+    0 0 60px rgba(198, 132, 252, 0.8);
+  transform: scale(1.1);
+  outline: none;
+}
 
-  
-    .btn {
-      display: block;
-      margin: 50px auto;
-      padding: 15px 35px;
-      background: #7a28ff;
-      color: white;
-      font-weight: bold;
-      font-size: 1em;
-      border: none;
-      border-radius: 30px;
-      text-decoration: none;
-      text-align: center;
-      box-shadow: 0 0 25px #c29fff, 0 0 8px #fff inset;
-      transition: 0.3s ease;
-    }
+/* Circle image with refined border and shadow glow */
+.circle-img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 1.5rem;
+  border: 5px solid rgba(198, 132, 252, 0.3);
+  box-shadow:
+    0 0 15px rgba(198, 132, 252, 0.4),
+    inset 0 0 8px rgba(255, 255, 255, 0.15);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  cursor: pointer;
+}
 
-    .btn:hover {
-      background: #6b22e6;
-      box-shadow: 0 0 35px #c49eff, 0 0 10px #fff inset;
-    }
+.circle-img:hover {
+  transform: scale(1.07);
+  box-shadow:
+    0 0 40px rgba(198, 132, 252, 0.8),
+    inset 0 0 15px rgba(255, 255, 255, 0.3);
+}
 
-    @media (max-width: 600px) {
-      .card {
-        max-width: 100%;
-      }
+/* Glowing Particle Background with subtle opacity */
+.background-animate {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  background: url('https://raw.githubusercontent.com/Julian-Nash/particles.js/main/particles.gif') center/cover no-repeat;
+  opacity: 0.08;
+  mix-blend-mode: screen;
+  filter: blur(1.2px);
+  will-change: transform, opacity;
+  animation: pulseGlow 6s ease-in-out infinite;
+}
 
-      .book-card {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-
-      .book-card div {
-        font-size: 1em;
-      }
-    }
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.08;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.12;
+    transform: scale(1.02);
+  }
+}
   </style>
 </head>
-<body>
+<body class="relative min-h-screen text-white">
+  <!-- Background Particles -->
+  <div class="background-animate"></div>
 
-  <h1>Recorded Batches </h1>
-  <div class="section">
-    <a href="Batches.html" class="card" target="_blank">
-      <img src="https://i.ibb.co/CKHMrJ9R/images-3-18.jpg">
-      <div><strong>Next Toppers</strong></div>
-    </a>
-    <a href="Comingsoon.html" class="card" target="_blank">
-      <img src="https://i.ibb.co/Y4JFPcCH/images-2.png" alt="Physics Wallah">
-      <div><strong>Physics Wallah</strong></div>
-    </a>
+  <!-- Header -->
+  <div class="bg-white/5 backdrop-blur-sm border-b border-white/10 sticky top-0 z-40 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 py-4 md:py-6 flex justify-between items-center">
+      <h1 class="text-xl md:text-3xl font-bold text-white">🚀 Explore <span class="text-pink-400">Power Study</span></h1>
+    </div>
   </div>
 
-  <h2>Books</h2>
-  <div class="section">
-    <a href="https://power-study.vercel.app/Psbooks.html" class="card book-card" target="_blank">
-      <img src="https://i.ibb.co/9kTvVgXc/images-3-19.jpg" alt="Book">
-      <div>Explore Books</div>
-    </a>
+  <!-- Loading -->
+  <div id="loading" class="flex items-center justify-center min-h-[60vh] z-10 relative">
+    <div class="text-center">
+      <svg class="w-12 h-12 text-pink-400 animate-spin mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+      </svg>
+      <p class="text-lg text-purple-200">Loading options...</p>
+    </div>
   </div>
 
-  <h2>Live Classes</h2>
-  <div class="section">
-    <a href="https://power-study.vercel.app/liveschedule.html" class="card" target="_blank">
-      <img src="https://i.ibb.co/nMhRnLVf/images-3.png" alt="Live Class 1">
-      <div>Next Topers Live Classes</div>
-    </a>
-   
+  <!-- Options Grid -->
+  <div id="options" class="max-w-6xl mx-auto px-4 py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 hidden z-10 relative">
+    
+    <!-- Books -->
+    <div class="bg-white/10 backdrop-blur-lg p-6 rounded-2xl shadow-2xl hover:scale-105 transition-all duration-300 animate-fade-in border border-purple-500/30">
+      <img src="https://ik.imagekit.io/frwzww85g/images%20(3)%20(19).jpeg?updatedAt=1749136032029" alt="Books" class="circle-img">
+      <h2 class="text-2xl font-semibold mb-2 text-pink-300 text-center">Free Books</h2>
+      <p class="text-sm text-gray-200 line-clamp-2 text-center">Download CBSE, NEET, JEE, and other premium books completely free.</p>
+      <a href="Psbooks.html" class="mt-4 inline-block px-4 py-2 rounded-lg glow-button bg-gradient-to-r from-red-500 to-pink-500 text-white font-medium w-full text-center">📚 Explore Books</a>
+    </div>
 
-  <a class="btn" href="https://t.me/+fJDiJ9DTVPBiZmE9" target="_blank">Join Official Telegram Channel</a>
+    <!-- Physics Wallah -->
+    <div class="bg-white/10 backdrop-blur-lg p-6 rounded-2xl shadow-2xl hover:scale-105 transition-all duration-300 animate-fade-in border border-red-500/30">
+      <img src="https://ik.imagekit.io/frwzww85g/images%20(2).png?updatedAt=1749136032106" alt="Physics Wallah" class="circle-img">
+      <h2 class="text-2xl font-semibold mb-2 text-purple-300 text-center">Physics Wallah Batches</h2>
+      <p class="text-sm text-gray-200 line-clamp-2 text-center">Access premium recorded batches from Physics Wallah for free.</p>
+      <a href="cmsoon.html" class="mt-4 inline-block px-4 py-2 rounded-lg glow-button bg-gradient-to-r from-purple-600 to-indigo-500 text-white font-medium w-full text-center">🔍 View PW Batches</a>
+    </div>
 
+    <!-- Next Toppers -->
+    <div class="bg-white/10 backdrop-blur-lg p-6 rounded-2xl shadow-2xl hover:scale-105 transition-all duration-300 animate-fade-in border border-blue-500/30">
+      <img src="https://ik.imagekit.io/frwzww85g/images%20(3)%20(18).jpeg?updatedAt=1749136031866" alt="Next Toppers" class="circle-img">
+      <h2 class="text-2xl font-semibold mb-2 text-red-300 text-center">Next Toppers Batches</h2>
+      <p class="text-sm text-gray-200 line-clamp-2 text-center">Get access to live and recorded Next Toppers content for JEE/NEET/Boards.</p>
+      <a href="Batches.html" class="mt-4 inline-block px-4 py-2 rounded-lg glow-button bg-gradient-to-r from-blue-600 to-purple-500 text-white font-medium w-full text-center">🎯 Explore Batches</a>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      setTimeout(() => {
+        document.getElementById("loading").classList.add("hidden");
+        document.getElementById("options").classList.remove("hidden");
+      }, 1000);
+    });
+  </script>
 </body>
 </html>

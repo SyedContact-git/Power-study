@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Power Study - Class 10</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+    <script src="/cookie-validator.js"></script> <script> function getCookie(name) { const value = `; ${document.cookie}`; const parts = value.split(`; ${name}=`); if (parts.length === 2) return parts.pop().split(';').shift(); }
+if (!getCookie('🚀')) { window.location.href = 'login.html'; } </script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #0d0d1a;
+      color: #f2f2f2;
+    }
+
+    /* Header */
+    .header {
+      background: linear-gradient(90deg, #6a00ff, #001f3f);
+      color: white;
+      padding: 20px 30px;
+      font-size: 22px;
+      font-weight: 600;
+      text-align: center;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 10px rgba(255, 0, 0, 0.3);
+    }
+
+    /* Toggle Buttons */
+    .toggle-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .toggle-buttons button {
+      padding: 10px 22px;
+      background: #6a00ff;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .toggle-buttons button:hover {
+      background: #ff0033;
+      transform: scale(1.05);
+    }
+
+    .toggle-buttons button.active {
+      background: #001f3f;
+    }
+
+    /* Search */
+    .search-bar {
+      text-align: center;
+      margin: 10px 20px 30px;
+    }
+
+    .search-bar input {
+      width: 90%;
+      max-width: 450px;
+      padding: 12px 20px;
+      font-size: 16px;
+      background: #1a1a2e;
+      color: white;
+      border: 2px solid #ff0033;
+      border-radius: 30px;
+      outline: none;
+    }
+
+    /* Cards Grid */
+    .content-grid {
+      display: none;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      padding: 0 20px 40px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .content-grid.active {
+      display: grid;
+    }
+
+    /* Cards */
+    .content-item {
+      background: #111122;
+      padding: 20px;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(255, 0, 55, 0.25);
+      transition: transform 0.2s ease;
+      text-align: center;
+    }
+
+    .content-item:hover {
+      transform: translateY(-4px);
+    }
+
+    .content-item h3 {
+      margin: 10px 0;
+      font-size: 18px;
+      color: #ff0033;
+    }
+
+    .content-item p {
+      margin: 0 0 15px;
+      font-size: 14px;
+      color: #ccc;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #6a00ff, #ff0033);
+      color: white;
+      padding: 10px 18px;
+      border-radius: 25px;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #ff0033, #6a00ff);
+      transform: scale(1.05);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      font-size: 13px;
+      color: #888;
+      padding: 30px 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">Aarambh Maths | power study </div>
+
+  <!-- Toggle Buttons -->
+  <div class="toggle-buttons">
+    <button id="lecturesBtn" class="active" onclick="toggleContent('lectures')">📘 Lectures</button>
+    <button id="notesBtn" onclick="toggleContent('notes')">📄 Notes</button>
+  </div>
+
+  <!-- Search -->
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="🔍 Search Lectures or Notes..." oninput="filterContent()" />
+  </div>
+
+  <!-- Lectures -->
+  <div id="lectures" class="content-grid active">
+    
+    <div class="content-item">
+        <h3>Real Numbers L1</h3>
+        <p>14/04/25</p>
+        <a href="https://www.youtube.com/live/_0ooaKrdubI?si=x-2K5YC-3XJo0RKw" class="btn-primary" target="_blank">▶ Watch Now</a>
+    </div>
+    <div class="content-item">
+        <h3>Real Numbers L2</h3>
+        <p>15/04/25</p>
+        <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4351817/174473442715988296383/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+    </div>
+    <div class="content-item">
+        <h3>Real Numbers L3</h3>
+        <p>17/04/25</p>
+        <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4354873/174499225616481097666/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+    </div>
+    <div class="content-item">
+        <h3>Real Numbers L4</h3>
+        <p>19/04/25</p>
+        <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4355458/174508004648941097666/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+    </div>
+    <div class="content-item">
+        <h3>Real Numbers L5</h3>
+        <p>21/04/25</p>
+        <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4356796/174525209654081097666/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+    </div>
+    <div class="content-item">
+        <h3>Real Numbers L6</h3>
+        <p>21/04/25</p>
+        <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4357843/174533856999441097666/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+    </div>
+    <div class="content-item">
+    <h3>Polynomials L1</h3>
+    <p>25/04/25</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4361323/174559737034061097666/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Polynomials L2</h3>
+    <p>26/04/25</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4362134/174568400490071097666/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Polynomials L3</h3>
+    <p>28/04/25</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4363379/174585623134271097666/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Polynomials L4</h3>
+    <p>29/04/25</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4364779/174594155534621097666/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Polynomials L5</h3>
+    <p>02/05/25</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4368398/174620142857631097666/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Polynomials L6</h3>
+    <p>03/05/25</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4370160/174628714218381097666/174628714218381097666_1097666.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Linear Equation</h3>
+    <p>Lecture - 1</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4372312/174646254284121097666/174646254284121097666_1097666.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Linear Equation</h3>
+    <p>Lecture - 2</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4373921/174654659565961097666/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Linear Equation</h3>
+    <p>Lecture - 3</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4377325/174680602725391097666/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Linear Equation</h3>
+    <p>Lecture - 4</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4377995/174689370672401097666/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Linear Equation</h3>
+    <p>Lecture - 5</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4379163/174706562215611097666/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Linear Equation</h3>
+    <p>Lecture - 6</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4384128/174741081479871097666/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Linear Equation</h3>
+    <p>Lecture - 7</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4384834/174749789730281097666/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Linear Equation</h3>
+    <p>Lecture - 8</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4385006/174758500568421097666/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<!-- Linear Equation Lectures -->
+<div class="content-item">
+    <h3>Linear Equation</h3>
+    <p>Lecture - 1</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4372312/174646254284121097666/174646254284121097666_1097666.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Linear Equation</h3>
+    <p>Lecture - 2</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4373921/174654659565961097666/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Linear Equation</h3>
+    <p>Lecture - 3</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4377325/174680602725391097666/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Linear Equation</h3>
+    <p>Lecture - 4</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4377995/174689370672401097666/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Linear Equation</h3>
+    <p>Lecture - 5</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4379163/174706562215611097666/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Linear Equation</h3>
+    <p>Lecture - 6</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4384128/174741081479871097666/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Linear Equation</h3>
+    <p>Lecture - 7</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4384834/174749789730281097666/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Linear Equation</h3>
+    <p>Lecture - 8</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4385006/174758500568421097666/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+
+<!-- Trigonometry Lectures -->
+<div class="content-item">
+    <h3>Trigonometry</h3>
+    <p>Lecture - 1</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4385837/174766945772321097666/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Trigonometry</h3>
+    <p>Lecture - 2</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4387086/174775745330681097666/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Trigonometry</h3>
+    <p>Lecture - 3</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4390972/174801504255421097666/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Trigonometry</h3>
+    <p>Lecture - 4</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4391537/174810128337891097666/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Trigonometry</h3>
+    <p>Lecture - 5</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4391700/174818000698001097666/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Trigonometry</h3>
+    <p>Lecture - 6</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4392906/174827565494671097666/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Trigonometry</h3>
+    <p>Lecture - 7</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4394019/174836153096901097666/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Trigonometry</h3>
+    <p>Lecture - 8</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4397236/174861941652361097666/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+</section>
+</section>
+  </div>
+
+  <!-- Notes -->
+  <div id="notes" class="content-grid">
+          <div class="content-item">
+            <h3>Real Numbers - 2</h3>
+            <p>Notes</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/22420916723093830.pdf" class="btn-primary">📄 View PDF</a>
+        </div>
+        <div class="content-item">
+            <h3>Real Numbers - 3</h3>
+            <p>Notes</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/440507540857891140.pdf" class="btn-primary">📄 View PDF</a>
+        </div>
+        <div class="content-item">
+            <h3>Real Numbers - 4</h3>
+            <p>Notes</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/805714130200073600.pdf" class="btn-primary">📄 View PDF</a>
+        </div>
+        <div class="content-item">
+            <h3>Real Numbers - 5</h3>
+            <p>Notes</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/187284260099181220.pdf" class="btn-primary">📄 View PDF</a>
+        </div>
+        <div class="content-item">
+            <h3>Real Numbers - 6</h3>
+            <p>Notes</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/601835403370027400.pdf" class="btn-primary">📄 View PDF</a>
+        </div>
+        <div class="content-item">
+            <h3>Real Numbers - 1</h3>
+            <p>DPP - 1</p>
+            <a href="https://drive.google.com/file/d/1M2C9SEvckkjzKpzR63fIpy-0GiDBYZYN/view?usp=sharing" class="btn-primary">📄 View PDF</a>
+        </div>
+        <div class="content-item">
+            <h3>Real Numbers - 2</h3>
+            <p>DPP - 2</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/754506419720273500.pdf" class="btn-primary">📄 View PDF</a>
+        </div>
+        <div class="content-item">
+            <h3>Real Numbers - 3</h3>
+            <p>DPP - 3</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/50352740213663790.pdf" class="btn-primary">📄 View PDF</a>
+        </div>
+        <div class="content-item">
+            <h3>Real Numbers - 4</h3>
+            <p>DPP - 4</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/77872188217647540.pdf" class="btn-primary">📄 View PDF</a>
+        </div>
+        <div class="content-item">
+            <h3>Real Numbers - 5</h3>
+            <p>DPP - 5</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/463630041745735040.pdf" class="btn-primary">📄 View PDF</a>
+        </div>
+        
+        <div class="content-item">
+            <h3>Polynomials L1</h3>
+            <p>Notes</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/461049038359672400.pdf" class="btn-primary" target="_blank">View PDF 📝</a>
+</div>
+        <div class="content-item">
+            <h3>Polynomials L2</h3>
+            <p>Notes</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/454067914091926400.pdf" class="btn-primary" target="_blank">View PDF 📝</a>
+        </div>
+        <div class="content-item">
+            <h3>Polynomials L3</h3>
+            <p>Notes</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/646208147845606100.pdf" class="btn-primary" target="_blank">View PDF 📝</a>
+</div>
+        <div class="content-item">
+            <h3>Polynomials L4</h3>
+            <p>Notes</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/555085639820711100.pdf" class="btn-primary" target="_blank">View PDF 📝</a>
+</div>
+        <div class="content-item">
+            <h3>Polynomials L5</h3>
+            <p>Notes</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540/admin_v1/file_manager/pdf/5742474Polynomials L5 Aarambh 2026.pdf_Polynomials L5 Aarambh 2026.pdf" class="btn-primary" target="_blank">View PDF 📝</a>
+</div>
+        <div class="content-item">
+            <h3>Polynomials</h3>
+            <p>DPP - 1</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/353737326249153000.pdf" class="btn-primary" target="_blank">View PDF 📝</a>
+        </div>
+        <div class="content-item">
+            <h3>Polynomials</h3>
+            <p>DPP - 2</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/17162183325825642.pdf" class="btn-primary" target="_blank">View PDF 📝</a>
+        </div>
+        <div class="content-item">
+            <h3>Polynomials</h3>
+            <p>DPP - 3</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/609681176298919600.pdf" class="btn-primary" target="_blank">View PDF 📝</a>
+        </div>
+        <div class="content-item">
+            <h3>Polynomials</h3>
+            <p>DPP - 4</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/609681176298919600.pdf" class="btn-primary" target="_blank">View PDF 📝</a>
+        </div>
+            <div class="content-item">
+            <h3>Linear Equation</h3>
+            <p>Notes - 1</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/459536335122701630.pdf" class="btn-primary" target="_blank">▶ Watch Now</a>
+    </div>
+        <div class="content-item">
+            <h3>Linear Equation</h3>
+            <p>Notes - 2</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/465914747232059840.pdf" class="btn-primary" target="_blank">▶ Watch Now</a>
+    </div>
+        <div class="content-item">
+            <h3>Linear Equation</h3>
+            <p>Notes - 3</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/17291855924611054.pdf" class="btn-primary" target="_blank">▶ Watch Now</a>
+    </div>
+    <div class="content-item">
+            <h3>Linear Equation</h3>
+            <p>Notes - 4</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/517673026874348160.pdf" class="btn-primary" target="_blank">▶ Watch Now</a>
+    </div>
+    <div class="content-item">
+            <h3>Linear Equation</h3>
+            <p>Notes - 5</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/198061429911618270.pdf" class="btn-primary" target="_blank">▶ Watch Now</a>
+    </div>
+    <div class="content-item">
+            <h3>Linear Equation</h3>
+            <p>Notes - 6</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/527607373820262850.pdf" class="btn-primary" target="_blank">▶ Watch Now</a>
+    </div>
+        <div class="content-item">
+            <h3>Linear Equation</h3>
+            <p>Notes - 7</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/775070612422014800.pdf" class="btn-primary" target="_blank">▶ Watch Now</a>
+        </div>
+        <div class="content-item">
+            <h3>Linear Equation</h3>
+            <p>Notes - 8</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/639498005252691500.pdf" class="btn-primary" target="_blank">▶ Watch Now</a>
+    </div>
+        <div class="content-item">
+            <h3>Trigonometry</h3>
+            <p>Notes - 1</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/271433073064721400.pdf" class="btn-primary" target="_blank">▶ Watch Now</a>
+    </div>
+
+        <div class="content-item">
+            <h3>Trigonometry</h3>
+            <p>Notes - 2</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/734221331851364500.pdf" class="btn-primary" target="_blank">▶ Watch Now</a>
+    </div>
+        <div class="content-item">
+            <h3>Trigonometry</h3>
+            <p>Notes - 3</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/808796890763276000.pdf" class="btn-primary" target="_blank">▶ Watch Now</a>
+    </div>
+        <div class="content-item">
+            <h3>Trigonometry</h3>
+            <p>Notes - 4</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540/admin_v1/file_manager/pdf/1042673Trignometry L4.pdf_Trignometry L4.pdf" class="btn-primary" target="_blank">▶ Watch Now</a>
+        </div>
+        <div class="content-item">
+            <h3>Trigonometry</h3>
+            <p>Notes - 5</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540/admin_v1/file_manager/pdf/6598812Trignometry L5.pdf_Trignometry L5.pdf" class="btn-primary" target="_blank">▶ Watch Now</a>
+    </div>
+        <div class="content-item">
+            <h3>Trigonometry</h3>
+            <p>Notes - 6</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/846209721527154400.pdf" class="btn-primary" target="_blank">▶ Watch Now</a>
+    </div>
+                <div class="content-item">
+            <h3>Trigonometry</h3>
+            <p>Notes - 7</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/57814913196021350.pdf" class="btn-primary" target="_blank">▶ Watch Now</a>
+    </div>
+        <div class="content-item">
+            <h3>Trigonometry</h3>
+            <p>Notes - 8</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/447306842114246300.pdf" class="btn-primary" target="_blank">▶ Watch Now</a>
+        </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 Power Study | Dark Mode Edition
+  </footer>
+
+  <!-- JS -->
+  <script>
+    const lecturesBtn = document.getElementById('lecturesBtn');
+    const notesBtn = document.getElementById('notesBtn');
+    const lectures = document.getElementById('lectures');
+    const notes = document.getElementById('notes');
+
+    function toggleContent(type) {
+      if (type === 'lectures') {
+        lectures.classList.add('active');
+        notes.classList.remove('active');
+        lecturesBtn.classList.add('active');
+        notesBtn.classList.remove('active');
+      } else {
+        notes.classList.add('active');
+        lectures.classList.remove('active');
+        notesBtn.classList.add('active');
+        lecturesBtn.classList.remove('active');
+      }
+      filterContent(); // Apply search again on toggle
+    }
+
+    function filterContent() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const activeGrid = document.querySelector('.content-grid.active');
+      const items = activeGrid.querySelectorAll('.content-item');
+
+      items.forEach(item => {
+        const text = item.innerText.toLowerCase();
+        item.style.display = text.includes(input) ? 'block' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

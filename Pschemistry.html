@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Power Study - Class 11</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+  
+    <script src="/cookie-validator.js"></script> <script> function getCookie(name) { const value = `; ${document.cookie}`; const parts = value.split(`; ${name}=`); if (parts.length === 2) return parts.pop().split(';').shift(); }
+if (!getCookie('🚀')) { window.location.href = 'login.html'; } </script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #0d0d1a;
+      color: #f2f2f2;
+    }
+
+    /* Header */
+    .header {
+      background: linear-gradient(90deg, #6a00ff, #001f3f);
+      color: white;
+      padding: 20px 30px;
+      font-size: 22px;
+      font-weight: 600;
+      text-align: center;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 10px rgba(255, 0, 0, 0.3);
+    }
+
+    /* Toggle Buttons */
+    .toggle-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .toggle-buttons button {
+      padding: 10px 22px;
+      background: #6a00ff;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .toggle-buttons button:hover {
+      background: #ff0033;
+      transform: scale(1.05);
+    }
+
+    .toggle-buttons button.active {
+      background: #001f3f;
+    }
+
+    /* Search */
+    .search-bar {
+      text-align: center;
+      margin: 10px 20px 30px;
+    }
+
+    .search-bar input {
+      width: 90%;
+      max-width: 450px;
+      padding: 12px 20px;
+      font-size: 16px;
+      background: #1a1a2e;
+      color: white;
+      border: 2px solid #ff0033;
+      border-radius: 30px;
+      outline: none;
+    }
+
+    /* Cards Grid */
+    .content-grid {
+      display: none;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      padding: 0 20px 40px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .content-grid.active {
+      display: grid;
+    }
+
+    /* Cards */
+    .content-item {
+      background: #111122;
+      padding: 20px;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(255, 0, 55, 0.25);
+      transition: transform 0.2s ease;
+      text-align: center;
+    }
+
+    .content-item:hover {
+      transform: translateY(-4px);
+    }
+
+    .content-item h3 {
+      margin: 10px 0;
+      font-size: 18px;
+      color: #ff0033;
+    }
+
+    .content-item p {
+      margin: 0 0 15px;
+      font-size: 14px;
+      color: #ccc;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #6a00ff, #ff0033);
+      color: white;
+      padding: 10px 18px;
+      border-radius: 25px;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #ff0033, #6a00ff);
+      transform: scale(1.05);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      font-size: 13px;
+      color: #888;
+      padding: 30px 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">Prarambh Chemistry Power Study</div>
+
+  <!-- Toggle Buttons -->
+  <div class="toggle-buttons">
+    <button id="lecturesBtn" class="active" onclick="toggleContent('lectures')">📘 Lectures</button>
+    <button id="notesBtn" onclick="toggleContent('notes')">📄 Notes</button>
+  </div>
+
+  <!-- Search -->
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="🔍 Search Lectures or Notes..." oninput="filterContent()" />
+  </div>
+
+  <!-- Lectures -->
+  <div id="lectures" class="content-grid active">
+    <div class="content-item">
+    <h3>Basic Concepts of Chemistry L-1</h3>
+    <p>14/04/25</p>
+    <a href="https://www.youtube.com/live/EVU_Bvc3HpE?si=nPI1rPll0QTRo_BX" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Basic Concepts of Chemistry - L2</h3>
+    <p>15/04/25</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4353000/174481993295887555169/index_3.m3u8&id=EduVerse" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Basic Concepts of Chemistry - L3</h3>
+    <p>18/04/25</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4355452/174507897732027555169/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Basic Concepts of Chemistry - L4</h3>
+    <p>21/04/25</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4357309/174530949861477555169/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Basic Concepts of Chemistry - L5</h3>
+    <p>22/04/25</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4357831/174533736975997555169/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Basic Concepts of Chemistry - L6</h3>
+    <p>23/04/25</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4358829/174541226159937555169/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Structure Of Atom L-1</h3>
+    <p>28/04/25</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4363320/174584946237347555169/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Structure Of Atom L-2</h3>
+    <p>29/04/25</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4364789/174594373555637555169/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Structure Of Atom L-3</h3>
+    <p>30/04/25</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4365831/174601791723957555169/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Structure Of Atom L-4</h3>
+    <p>05/05/25</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4372294/174646064983197555169/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Structure Of Atom L-5</h3>
+    <p>06/05/25</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4373927/174654700417617555169/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Structure Of Atom L-6</h3>
+    <p>07/05/25</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4374900/174662289939277555169/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Structure Of Atom L-7</h3>
+    <p>12/05/25</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4379161/174706558456287555169/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Structure Of Atom</h3>
+    <p>Lecture - 8</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4380760/174715119572127555169/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Structure Of Atom</h3>
+    <p>Lecture - 9</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4381822/174722718560337555169/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Structure Of Atom</h3>
+    <p>Lecture - 10</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4385842/174767006769507555169/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Classification of Elements</h3>
+    <p>Lecture - 1</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4387083/174775728734717555169/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Classification of Elements</h3>
+    <p>Lecture - 2</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4388067/174783286454367555169/index_2.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Classification of Elements</h3>
+    <p>Lecture - 3</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4392905/174827564478927555169/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Classification of Elements</h3>
+    <p>Lecture - 4</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4394025/174836245685127555169/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+<div class="content-item">
+    <h3>Classification of Elements</h3>
+    <p>Lecture - 5</p>
+    <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4394991/174843803458707555169/index_3.m3u8" class="btn-primary" target="_blank">▶ Watch Now</a>
+</div>
+  </div>
+
+  <!-- Notes -->
+  <div id="notes" class="content-grid">
+            <div class="content-item">
+            <h3>Basic Concepts of Chemistry </h3>
+            <p>Notes L1</p>
+            <a href="https://drive.google.com/file/d/1q48bP2D6mJ4yDd0EXKhyuifEDgfBVbuk/view?usp=drive_link" class="btn-primary">📄 View PDF</a>
+        </div>
+        <div class="content-item">
+            <h3>Basic Concepts of Chemistry</h3>
+            <p>Notes L2</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/60665227316336800.pdf" class="btn-primary">📄 View PDF</a>
+        </div>
+        <div class="content-item">
+            <h3>Basic Concepts of Chemistry</h3>
+            <p>Notes L3</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/563943491510636200.pdf" class="btn-primary">📄 View PDF</a>
+        </div>
+        <div class="content-item">
+            <h3>Basic Concepts of Chemistry</h3>
+            <p>Notes L4</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/646257785235418800.pdf" class="btn-primary">📄 View PDF</a>
+        </div>
+        <div class="content-item">
+            <h3>Basic Concepts of Chemistry</h3>
+            <p>Notes L5</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/492924385069963100.pdf" class="btn-primary">📄 View PDF</a>
+        </div>
+                <div class="content-item">
+            <h3>Structure Of Atom</h3>
+            <p>Notes L1</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/648524728566613900.pdf" class="btn-primary">📄 View PDF</a>
+        </div>
+<div class="content-item">
+            <h3>Structure Of Atom</h3>
+            <p>Notes L2</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/882253112379514100.pdf" class="btn-primary">📄 View PDF</a>
+</div>
+<div class="content-item">
+            <h3>Structure Of Atom</h3>
+            <p>Notes L3</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/725318515177342300.pdf" class="btn-primary">📄 View PDF</a>
+</div>
+        <div class="content-item">
+            <h3>Structure Of Atom</h3>
+            <p>Notes L4</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/129927195937409060.pdf" class="btn-primary">📄 View PDF</a>
+        </div>
+<div class="content-item">
+            <h3>Structure Of Atom</h3>
+            <p>Notes L5</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/64128366459183150.pdf" class="btn-primary">📄 View PDF</a>
+</div>
+        <div class="content-item">
+            <h3>Structure Of Atom</h3>
+            <p>Notes L6</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/295746695513876900.pdf" class="btn-primary">📄 View PDF</a>
+        </div>
+        <div class="content-item">
+            <h3>Structure Of Atom</h3>
+            <p>Notes L7</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/570113084186052900.pdf" class="btn-primary">📄 View PDF</a>
+        </div>
+        <div class="content-item">
+            <h3>Structure Of Atom</h3>
+            <p>Notes L8</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/793662167351692000.pdf" class="btn-primary">📄 View PDF</a>
+        </div>
+        <div class="content-item">
+            <h3>Structure Of Atom</h3>
+            <p>Notes L9</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/759793162637350300.pdf" class="btn-primary">📄 View PDF</a>
+        </div>
+        <div class="content-item">
+            <h3>Structure Of Atom</h3>
+            <p>Notes L10</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/286340414077823100.pdf" class="btn-primary">📄 View PDF</a>
+        </div>
+                <div class="content-item">
+            <h3>Classification of Elements</h3>
+            <p>Notes - 1</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/339389933433131260.pdf" class="btn-primary" target="_blank">▶ Watch Now</a>
+        </div>
+        <div class="content-item">
+            <h3>Classification of Elements</h3>
+            <p>Notes - 2</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/57056784804374670.pdf" class="btn-primary" target="_blank">▶ Watch Now</a>
+        </div>
+        <div class="content-item">
+            <h3>Classification of Elements</h3>
+            <p>Notes - 3</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/491303024172372400.pdf" class="btn-primary" target="_blank">▶ Watch Now</a>
+        </div>
+        <div class="content-item">
+            <h3>Classification of Elements</h3>
+            <p>Notes - 4</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/320680653076158800.pdf" class="btn-primary" target="_blank">▶ Watch Now</a>
+        </div>
+        <div class="content-item">
+            <h3>Classification of Elements</h3>
+            <p>Notes - 5</p>
+            <a href="https://dxixtlyravvxx.cloudfront.net/540admin_v1/file_manager/pdf/880517372972588500.pdf" class="btn-primary" target="_blank">▶ Watch Now</a>
+        </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 Power Study | Dark Mode Edition
+  </footer>
+
+  <!-- JS -->
+  <script>
+    const lecturesBtn = document.getElementById('lecturesBtn');
+    const notesBtn = document.getElementById('notesBtn');
+    const lectures = document.getElementById('lectures');
+    const notes = document.getElementById('notes');
+
+    function toggleContent(type) {
+      if (type === 'lectures') {
+        lectures.classList.add('active');
+        notes.classList.remove('active');
+        lecturesBtn.classList.add('active');
+        notesBtn.classList.remove('active');
+      } else {
+        notes.classList.add('active');
+        lectures.classList.remove('active');
+        notesBtn.classList.add('active');
+        lecturesBtn.classList.remove('active');
+      }
+      filterContent(); // Apply search again on toggle
+    }
+
+    function filterContent() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const activeGrid = document.querySelector('.content-grid.active');
+      const items = activeGrid.querySelectorAll('.content-item');
+
+      items.forEach(item => {
+        const text = item.innerText.toLowerCase();
+        item.style.display = text.includes(input) ? 'block' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>
