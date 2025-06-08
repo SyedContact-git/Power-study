@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Power Study - Class 10</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+  
+   <script src="/cookie-validator.js"></script> <script> function getCookie(name) { const value = `; ${document.cookie}`; const parts = value.split(`; ${name}=`); if (parts.length === 2) return parts.pop().split(';').shift(); }
+if (!getCookie('🚀')) { window.location.href = 'login.html'; } </script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #0d0d1a;
+      color: #f2f2f2;
+    }
+
+    /* Header */
+    .header {
+      background: linear-gradient(90deg, #6a00ff, #001f3f);
+      color: white;
+      padding: 20px 30px;
+      font-size: 22px;
+      font-weight: 600;
+      text-align: center;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 10px rgba(255, 0, 0, 0.3);
+    }
+
+    /* Toggle Buttons */
+    .toggle-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .toggle-buttons button {
+      padding: 10px 22px;
+      background: #6a00ff;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .toggle-buttons button:hover {
+      background: #ff0033;
+      transform: scale(1.05);
+    }
+
+    .toggle-buttons button.active {
+      background: #001f3f;
+    }
+
+    /* Search */
+    .search-bar {
+      text-align: center;
+      margin: 10px 20px 30px;
+    }
+
+    .search-bar input {
+      width: 90%;
+      max-width: 450px;
+      padding: 12px 20px;
+      font-size: 16px;
+      background: #1a1a2e;
+      color: white;
+      border: 2px solid #ff0033;
+      border-radius: 30px;
+      outline: none;
+    }
+
+    /* Cards Grid */
+    .content-grid {
+      display: none;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      padding: 0 20px 40px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .content-grid.active {
+      display: grid;
+    }
+
+    /* Cards */
+    .content-item {
+      background: #111122;
+      padding: 20px;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(255, 0, 55, 0.25);
+      transition: transform 0.2s ease;
+      text-align: center;
+    }
+
+    .content-item:hover {
+      transform: translateY(-4px);
+    }
+
+    .content-item h3 {
+      margin: 10px 0;
+      font-size: 18px;
+      color: #ff0033;
+    }
+
+    .content-item p {
+      margin: 0 0 15px;
+      font-size: 14px;
+      color: #ccc;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #6a00ff, #ff0033);
+      color: white;
+      padding: 10px 18px;
+      border-radius: 25px;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #ff0033, #6a00ff);
+      transform: scale(1.05);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      font-size: 13px;
+      color: #888;
+      padding: 30px 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">Power Study – Class 10 Content</div>
+
+  <!-- Toggle Buttons -->
+  <div class="toggle-buttons">
+    <button id="lecturesBtn" class="active" onclick="toggleContent('lectures')">📘 Lectures</button>
+    <button id="notesBtn" onclick="toggleContent('notes')">📄 Notes</button>
+  </div>
+
+  <!-- Search -->
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="🔍 Search Lectures or Notes..." oninput="filterContent()" />
+  </div>
+
+  <!-- Lectures -->
+  <div id="lectures" class="content-grid active">
+   <div class="content-item">
+  <h3>French Revolution - Lecture 1</h3>
+  <p>Uploaded: 08/06/25</p>
+  <a href="https://www.youtube.com/watch?v=EDMXz3jVgZA" class="btn-primary" target="_blank">▶️ Watch Lecture</a>
+</div>
+
+<div class="content-item">
+  <h3>French Revolution - Lecture 2</h3>
+  <p>Uploaded: 08/06/25</p>
+  <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4359911/174549813759727880624/174549813759727880624_7880624.m3u8" class="btn-primary" target="_blank">▶️ Watch Lecture</a>
+</div>
+
+<div class="content-item">
+  <h3>French Revolution - Lecture 3</h3>
+  <p>Uploaded: 08/06/25</p>
+  <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4364774/174594113722007880624/174594113722007880624_7880624.m3u8" class="btn-primary" target="_blank">▶️ Watch Lecture</a>
+</div>
+
+<div class="content-item">
+  <h3>French Revolution - Lecture 4</h3>
+  <p>Uploaded: 08/06/25</p>
+  <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4365809/174601655378227880624/174601655378227880624_7880624.m3u8" class="btn-primary" target="_blank">▶️ Watch Lecture</a>
+</div>
+
+<div class="content-item">
+  <h3>French Revolution - Lecture 5</h3>
+  <p>Uploaded: 08/06/25</p>
+  <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4366987/174610309713617880624/174610309713617880624_7880624.m3u8" class="btn-primary" target="_blank">▶️ Watch Lecture</a>
+</div>
+
+<div class="content-item">
+  <h3>French Revolution - Lecture 6</h3>
+  <p>Uploaded: 08/06/25</p>
+  <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4372289/174645974230447880624/174645974230447880624_7880624.m3u8" class="btn-primary" target="_blank">▶️ Watch Lecture</a>
+</div>
+
+<div class="content-item">
+  <h3>French Revolution - Lecture 7</h3>
+  <p>Uploaded: 08/06/25</p>
+  <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4373916/174654612513167880624/174654612513167880624_7880624.m3u8" class="btn-primary" target="_blank">▶️ Watch Lecture</a>
+</div>
+
+<div class="content-item">
+  <h3>French Revolution - Lecture 8</h3>
+  <p>Uploaded: 08/06/25</p>
+  <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4374872/174662189759057880624/174662189759057880624_7880624.m3u8" class="btn-primary" target="_blank">▶️ Watch Lecture</a>
+</div>
+
+<div class="content-item">
+  <h3>India: Size and Location - Lecture 1</h3>
+  <p>Uploaded: 08/06/25</p>
+  <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4379155/174706443135147880624/174706443135147880624_7880624.m3u8" class="btn-primary" target="_blank">▶️ Watch Lecture</a>
+</div>
+
+<div class="content-item">
+  <h3>India: Size and Location - Lecture 2</h3>
+  <p>Uploaded: 08/06/25</p>
+  <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4385836/174766937560807880624/174766937560807880624_7880624.m3u8" class="btn-primary" target="_blank">▶️ Watch Lecture</a>
+</div>
+
+<div class="content-item">
+  <h3>India: Size and Location - Lecture 3</h3>
+  <p>Uploaded: 08/06/25</p>
+  <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4387074/174775592115227880624/174775592115227880624_7880624.m3u8" class="btn-primary" target="_blank">▶️ Watch Lecture</a>
+</div>
+
+<div class="content-item">
+  <h3>India: Size and Location - Lecture 4</h3>
+  <p>Uploaded: 08/06/25</p>
+  <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4388030/174783135735827880624/174783135735827880624_7880624.m3u8" class="btn-primary" target="_blank">▶️ Watch Lecture</a>
+</div>
+
+<div class="content-item">
+  <h3>Story of Village Palampur - Lecture 1</h3>
+  <p>Uploaded: 08/06/25</p>
+  <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4392899/174827541880218165220/index_4.m3u8" class="btn-primary" target="_blank">▶️ Watch Lecture</a>
+</div>
+
+<div class="content-item">
+  <h3>Story of Village Palampur - Lecture 2</h3>
+  <p>Uploaded: 08/06/25</p>
+  <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4394021/174836179392228165220/index_1.m3u8" class="btn-primary" target="_blank">▶️ Watch Lecture</a>
+</div>
+
+<div class="content-item">
+  <h3>Story of Village Palampur - Lecture 3</h3>
+  <p>Uploaded: 08/06/25</p>
+  <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4394988/174843781540668165220/index_1.m3u8" class="btn-primary" target="_blank">▶️ Watch Lecture</a>
+</div>
+
+<div class="content-item">
+  <h3>Story of Village Palampur - Lecture 4</h3>
+  <p>Uploaded: 08/06/25</p>
+  <a href="https://power-study.vercel.app/Videoplayer.html?lessonurl=https://d1qcficr3lu37x.cloudfront.net/file_library/videos/channel_vod_non_drm_hls/4398034/174878305850708165220/index_1.m3u8" class="btn-primary" target="_blank">▶️ Watch Lecture</a>
+</div>
+  </div>
+
+  <!-- Notes -->
+  <div id="notes" class="content-grid">
+    <div class="content-item">
+      <h3> NOTES COMING SOON STAY TUNED </h3>
+      <p>Download and revise</p>
+      <a href="#" class="btn-primary" target="_blank"> 🎯 COMING SOON </a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 Power Study | Dark Mode Edition
+  </footer>
+
+  <!-- JS -->
+  <script>
+    const lecturesBtn = document.getElementById('lecturesBtn');
+    const notesBtn = document.getElementById('notesBtn');
+    const lectures = document.getElementById('lectures');
+    const notes = document.getElementById('notes');
+
+    function toggleContent(type) {
+      if (type === 'lectures') {
+        lectures.classList.add('active');
+        notes.classList.remove('active');
+        lecturesBtn.classList.add('active');
+        notesBtn.classList.remove('active');
+      } else {
+        notes.classList.add('active');
+        lectures.classList.remove('active');
+        notesBtn.classList.add('active');
+        lecturesBtn.classList.remove('active');
+      }
+      filterContent(); // Apply search again on toggle
+    }
+
+    function filterContent() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const activeGrid = document.querySelector('.content-grid.active');
+      const items = activeGrid.querySelectorAll('.content-item');
+
+      items.forEach(item => {
+        const text = item.innerText.toLowerCase();
+        item.style.display = text.includes(input) ? 'block' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>
