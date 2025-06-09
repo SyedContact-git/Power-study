@@ -2,155 +2,165 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Power Study - Free Education for All</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Power Study - Free Education</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
   <style>
-    #loadingScreen {
-      z-index: 9999;
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f0f1c, #000000, #1a002a);
+      color: white;
+      overflow-x: hidden;
+      position: relative;
     }
 
-    .dot-flashing {
-      width: 1rem;
-      height: 1rem;
-      border-radius: 50%;
-      background-color: white;
-      animation: dotFlashing 1s infinite linear alternate;
+    .neon-btn {
+      background: linear-gradient(135deg, #d1004c, #6b21a8);
+      box-shadow: 0 0 20px #ff005daa;
+      transition: all 0.3s ease;
     }
 
-    .dot-flashing.delay-200 { animation-delay: 0.2s; }
-    .dot-flashing.delay-400 { animation-delay: 0.4s; }
-
-    @keyframes dotFlashing {
-      0% { opacity: 0.2; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.3); }
-      100% { opacity: 0.2; transform: scale(1); }
+    .neon-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px #ff005d;
     }
 
-    @keyframes float {
-      0% { transform: translateY(0); opacity: 0.4; }
-      50% { transform: translateY(-10px); opacity: 0.8; }
-      100% { transform: translateY(0); opacity: 0.4; }
-    }
-
-    .glass-effect {
+    .glass {
       background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(15px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(25px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
     }
 
-    .particle {
-      position: absolute;
-      width: 6px;
-      height: 6px;
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 50%;
-      pointer-events: none;
+    .popup {
+      animation: popup-fall 1s ease-out forwards;
     }
 
-    /* Popup styling */
-    #telegramPopup {
-      z-index: 9998;
-      backdrop-filter: blur(10px);
-    }
-  </style>
-</head>
-<body class="bg-gray-900 text-white overflow-x-hidden relative">
-
-  <!-- Loading Screen -->
-  <div id="loadingScreen" class="fixed inset-0 bg-black flex flex-col justify-center items-center">
-    <div class="animate-spin rounded-full h-24 w-24 border-4 border-purple-500 border-t-transparent mb-6"></div>
-    <div class="flex space-x-3">
-      <div class="dot-flashing"></div>
-      <div class="dot-flashing delay-200"></div>
-      <div class="dot-flashing delay-400"></div>
-    </div>
-    <p class="mt-4 text-gray-300">Loading Power Study...</p>
-  </div>
-
-  <!-- Popup Notice -->
-  <div id="telegramPopup" class="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center hidden">
-    <div class="glass-effect p-6 rounded-xl max-w-md text-center border border-red-500 shadow-2xl">
-      <h2 class="text-xl font-bold text-red-400 mb-4">⚠️ Important Notice</h2>
-      <p class="text-sm mb-6 text-gray-200">You must join our official Telegram channel to continue using Power Study. Failure to do so may result in a permanent ban.</p>
-      <div class="flex justify-center space-x-4">
-        <a href="https://t.me/+c7KAULUbAJ9hYjI1" target="_blank" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-semibold">Join Telegram</a>
-        <button onclick="closePopup()" class="bg-gray-700 hover:bg-gray-800 text-white px-4 py-2 rounded-lg">Ignore Anyway</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Particle Background -->
-  <div id="particles" class="absolute inset-0 z-0"></div>
-
-  <!-- Main Content -->
-  <div class="relative z-10 min-h-screen flex flex-col justify-center items-center px-4 py-16">
-    <div class="text-center max-w-4xl">
-      <h1 class="text-4xl md:text-6xl font-extrabold mb-4 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-transparent bg-clip-text animate-pulse">Power Study</h1>
-      <p class="text-lg md:text-xl text-gray-300 mb-8">Free High-Quality Education for Everyone. Unlock notes, lectures, books, and classes—all in one place.</p>
-      <button id="getStartedBtn" class="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-pink-700">Get Started</button>
-    </div>
-
-    <!-- Feature Cards -->
-    <div class="mt-16 w-full max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
-      <div class="group p-6 glass-effect rounded-2xl hover:bg-white/10 transition duration-300 transform hover:-translate-y-2">
-        <svg class="w-10 h-10 text-yellow-400 mb-4 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 17l4-4 4 4m0-8l-4 4-4-4" />
-        </svg>
-        <h3 class="text-xl font-semibold text-white mb-2 text-center">Instant Access</h3>
-        <p class="text-sm text-gray-400 text-center">Download any book or lecture instantly.</p>
-      </div>
-
-      <div class="group p-6 glass-effect rounded-2xl hover:bg-white/10 transition duration-300 transform hover:-translate-y-2">
-        <svg class="w-10 h-10 text-green-400 mb-4 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-6h6v6m2 4H7a2 2 0 01-2-2V5a2 2 0 012-2h10a2 2 0 012 2v14a2 2 0 01-2 2z" />
-        </svg>
-        <h3 class="text-xl font-semibold text-white mb-2 text-center">Live Classes</h3>
-        <p class="text-sm text-gray-400 text-center">Learn from expert educators for free.</p>
-      </div>
-
-      <div class="group p-6 glass-effect rounded-2xl hover:bg-white/10 transition duration-300 transform hover:-translate-y-2">
-        <svg class="w-10 h-10 text-pink-400 mb-4 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-        </svg>
-        <h3 class="text-xl font-semibold text-white mb-2 text-center">Smart Notes</h3>
-        <p class="text-sm text-gray-400 text-center">Well-structured notes for quick revision.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Scripts -->
-  <script>
-    window.addEventListener("load", () => {
-      document.getElementById("loadingScreen").classList.add("hidden");
-      document.getElementById("telegramPopup").classList.remove("hidden");
-    });
-
-    document.getElementById("getStartedBtn").addEventListener("click", () => {
-      document.getElementById("loadingScreen").classList.remove("hidden");
-      setTimeout(() => {
-        window.location.href = "Choosecontent.html";
-      }, 1500);
-    });
-
-    function closePopup() {
-      document.getElementById("telegramPopup").classList.add("hidden");
-    }
-
-    function generateParticles(count = 80) {
-      const container = document.getElementById("particles");
-      for (let i = 0; i < count; i++) {
-        const p = document.createElement("div");
-        p.classList.add("particle");
-        p.style.left = `${Math.random() * 100}%`;
-        p.style.top = `${Math.random() * 100}%`;
-        p.style.animation = `float ${5 + Math.random() * 5}s ease-in-out infinite`;
-        p.style.animationDelay = `${Math.random() * 5}s`;
-        container.appendChild(p);
+    @keyframes popup-fall {
+      0% {
+        transform: translateY(-200%) scale(0.8);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
       }
     }
 
-    generateParticles();
-  </script>
+    .background-animation {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .background-animation::before,
+    .background-animation::after {
+      content: "";
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,0,150,0.1), transparent 70%),
+                  radial-gradient(circle, rgba(0,255,255,0.1), transparent 70%),
+                  radial-gradient(circle, rgba(255,255,0,0.05), transparent 70%);
+      animation: floatParticles 60s linear infinite;
+    }
+
+    .background-animation::after {
+      animation-delay: 30s;
+    }
+
+    @keyframes floatParticles {
+      0% { transform: translate(-25%, -25%) rotate(0deg); }
+      100% { transform: translate(-25%, -25%) rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Background Animation -->
+<div class="background-animation"></div>
+
+<!-- Centered Popup -->
+<div id="popup" class="popup fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-70">
+  <div class="glass p-6 md:p-10 rounded-2xl text-center shadow-xl max-w-lg w-full border border-purple-900 bg-black bg-opacity-30 relative">
+    <!-- Close Button -->
+    <button onclick="document.getElementById('popup').style.display='none'"
+      class="absolute top-4 right-4 text-white text-xl hover:text-red-500 transition">
+      &times;
+    </button>
+    <h2 class="text-2xl md:text-3xl font-bold text-purple-300 mb-3">🚨 Important Notice</h2>
+    <p class="text-gray-300 mb-4">Join our official Telegram to stay updated and avoid getting banned from Power Study!</p>
+    <a href="https://t.me/EDUPROCBSE" class="neon-btn inline-block px-6 py-3 rounded-full font-semibold mt-2">
+      🚀 Join Telegram
+    </a>
+  </div>
+</div>
+
+<!-- Hero -->
+<section class="text-center py-40 px-6" data-aos="fade-up">
+  <h1 class="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-transparent bg-clip-text mb-4">
+    Power Study
+  </h1>
+  <p class="text-xl text-gray-300 max-w-2xl mx-auto">India’s Most Stunning Free Education Platform with 10,000+ Students Learning Daily</p>
+  <div class="mt-10 flex flex-wrap justify-center gap-5">
+    <a href="Psbooks.html" class="neon-btn py-3 px-6 rounded-full">📚 Free Books</a>
+    <a href="Choosecontent.html" class="neon-btn py-3 px-6 rounded-full bg-gradient-to-br from-purple-700 to-indigo-800">🎓 Batches</a>
+    
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="max-w-6xl mx-auto px-4 py-20" data-aos="fade-up">
+  <h2 class="text-4xl font-bold text-center mb-12 text-white">Why Power Study?</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="glass p-6 rounded-xl text-center">
+      <h3 class="text-xl text-red-400 font-semibold mb-2">🎯 100% Free</h3>
+      <p>All books, batches & classes are completely free — forever.</p>
+    </div>
+    <div class="glass p-6 rounded-xl text-center">
+      <h3 class="text-xl text-purple-400 font-semibold mb-2">🎨 World-Class UI</h3>
+      <p>Looks like a premium app. Designed for smooth, modern learning.</p>
+    </div>
+    <div class="glass p-6 rounded-xl text-center">
+      <h3 class="text-xl text-yellow-400 font-semibold mb-2">⚡ Lightning Fast</h3>
+      <p>Loads in milliseconds. Mobile-optimized & responsive.</p>
+    </div>
+    <div class="glass p-6 rounded-xl text-center">
+      <h3 class="text-xl text-pink-400 font-semibold mb-2">🔄 Always Updated</h3>
+      <p>Fresh content added weekly. New books & classes every day.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Join Community -->
+<section class="py-20 text-center bg-opacity-5 rounded-xl max-w-4xl mx-auto glass" data-aos="zoom-in">
+  <h2 class="text-3xl font-bold mb-3 text-white">🌐 Join Our Telegram</h2>
+  <p class="text-gray-300 mb-6">Be part of 10,000+ learners. Get daily updates, premium content and support.</p>
+  <a href="https://t.me/+c7KAULUbAJ9hYjI1" class="neon-btn px-6 py-3 rounded-full inline-block">
+    💬 Join Telegram
+  </a>
+</section>
+
+<!-- Footer -->
+<footer class="text-center text-sm text-gray-500 py-10 mt-16">
+  &copy; 2025 Power Study. Crafted with ❤️ for Every Student.
+</footer>
+
+<!-- Floating Support -->
+<a href="@POWERSTUDYHELPBOT" class="fixed bottom-5 right-5 bg-red-600 text-white px-5 py-3 rounded-full neon-btn shadow-xl hover:scale-110 transition">
+  💬 Support
+</a>
+
+<script>
+  AOS.init();
+</script>
 </body>
 </html>
