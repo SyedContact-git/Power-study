@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Power Study Library</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <!-- Icons & Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #1a1a2e, #16213e, #3a0ca3, #7209b7);
+      color: white;
+      overflow-x: hidden;
+    }
+    header {
+      padding: 20px;
+      text-align: center;
+      background: #000000aa;
+      font-size: 28px;
+      font-weight: bold;
+      color: #f72585;
+    }
+    .search-container {
+      padding: 20px;
+      text-align: center;
+    }
+    .search-container input {
+      width: 90%;
+      max-width: 500px;
+      padding: 10px;
+      border-radius: 10px;
+      border: none;
+      font-size: 16px;
+    }
+    .books-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    .book-card {
+      background: #212121;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    }
+    .book-card:hover {
+      transform: translateY(-5px);
+    }
+    .book-img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      background: #333;
+    }
+    .book-info {
+      padding: 15px;
+    }
+    .book-title {
+      font-size: 18px;
+      margin: 10px 0 5px;
+      color: #ff4d6d;
+    }
+    .book-author {
+      color: #ccc;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+    .book-meta {
+      font-size: 14px;
+      margin-bottom: 10px;
+      color: #a9a9a9;
+    }
+    .download-btn {
+      padding: 10px 20px;
+      background: #f72585;
+      border: none;
+      color: white;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .download-btn:hover {
+      background: #b5179e;
+    }
+  </style>
+</head>
+<body>
+  <header>📚 Power Study Library</header>
+
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search books...">
+  </div>
+
+  <div class="books-grid" id="booksGrid"></div>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBNi6BHTKNd62VAY7q1oHQmxjZ3r0MUA9U",
+      authDomain: "edusparkk.xyz",
+      projectId: "eduspark-new",
+      storageBucket: "eduspark-new.appspot.com",
+      messagingSenderId: "564501033350",
+      appId: "1:564501033350:web:70c0f9873f96e9bd74fc07",
+      measurementId: "G-NM2SE3DE7J"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+    const booksGrid = document.getElementById("booksGrid");
+    const searchInput = document.getElementById("searchInput");
+
+    function createBookCard(book) {
+      const card = document.createElement("div");
+      card.className = "book-card";
+      card.innerHTML = `
+        <img src="${book.imageUrl || 'https://via.placeholder.com/200x280?text=No+Image'}" class="book-img" alt="${book.bookName}">
+        <div class="book-info">
+          <h3 class="book-title">${book.bookName}</h3>
+          <p class="book-author">${book.author || 'Unknown Author'}</p>
+          <div class="book-meta"><i class="fas fa-download"></i> ${book.downloads || 0} downloads</div>
+          <a href="${book.downloadUrl}" target="_blank">
+            <button class="download-btn"><i class="fas fa-arrow-down"></i> Download</button>
+          </a>
+        </div>
+      `;
+      return card;
+    }
+
+    function renderBooks(books) {
+      booksGrid.innerHTML = "";
+      books.forEach(book => {
+        booksGrid.appendChild(createBookCard(book));
+      });
+    }
+
+    function fetchBooks() {
+      db.collection("books").get().then(snapshot => {
+        const books = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        renderBooks(books);
+
+        searchInput.addEventListener("input", e => {
+          const keyword = e.target.value.toLowerCase();
+          const filtered = books.filter(b => b.bookName.toLowerCase().includes(keyword));
+          renderBooks(filtered);
+        });
+      }).catch(err => {
+        booksGrid.innerHTML = `<p style="color:red; text-align:center;">Failed to load books. Check Firebase config.</p>`;
+        console.error("Error fetching books:", err);
+      });
+    }
+
+    fetchBooks();
+  </script>
+</body>
+</html>
