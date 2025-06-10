@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Success</title>
+  <script src="/cookie-validator.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(120deg, #0a0a23, #1a0028, #220044, #0c0c30);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    .container {
+      background: rgba(18, 0, 30, 0.6);
+      backdrop-filter: blur(20px);
+      border-radius: 25px;
+      padding: 50px;
+      box-shadow: 0 0 50px rgba(255, 0, 150, 0.5), 0 0 30px rgba(0, 200, 255, 0.2);
+      text-align: center;
+      max-width: 600px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      animation: fadeIn 1.5s ease-out;
+      transition: all 0.3s ease;
+    }
+
+    .container:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 60px rgba(255, 0, 180, 0.6), 0 0 30px rgba(128, 0, 255, 0.4);
+    }
+
+    h2 {
+      font-size: 40px;
+      font-weight: 900;
+      background: linear-gradient(45deg, #ff004c, #9d00ff, #2a00b7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 25px;
+      text-shadow: 0 4px 20px rgba(255, 0, 100, 0.6);
+    }
+
+    p {
+      font-size: 20px;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 30px;
+      line-height: 1.8;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    }
+
+    .loading {
+      font-size: 22px;
+      color: #ff4da6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .loading span {
+      display: inline-block;
+      margin: 0 4px;
+      animation: bounce 1.2s infinite;
+      color: #ffffff;
+      text-shadow: 0 0 10px rgba(255, 0, 150, 0.8);
+    }
+
+    .loading span:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .loading span:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+  </style>
+  <script>
+    document.cookie = "🚀=success; path=/; Secure; expires=" + new Date(new Date().getTime() + 10 * 60 * 60 * 1000).toUTCString();
+
+    function getCookie(name) {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(';').shift();
+    }
+
+    const hasValidCookie = getCookie('server01KeyGenerated') ||
+      getCookie('server02KeyGenerated') ||
+      getCookie('server03KeyGenerated') ||
+      getCookie('recommendServerKeyGenerated');
+
+    if (!hasValidCookie) {
+      window.location.href = 'login.html';
+    } else {
+      setTimeout(() => {
+        window.location.hre = 'Choosecontent.html';
+      }, 10);
+    }
+  </script>
+</head>
+<body>
+  <div id="particles-js"></div>
+  <div class="container">
+    <h2>🎉 Success!</h2>
+    <p>Congratulations! Your login was successful. You are now logged in for the next 18 hours. Enjoy your session & study wisely.</p>
+    <div class="loading">
+      <span>.</span><span>.</span><span>.</span>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 90, density: { enable: true, value_area: 800 } },
+        color: { value: ["#ff004c", "#9d00ff", "#00ffe7"] },
+        shape: {
+          type: "circle",
+          stroke: { width: 0, color: "#000000" },
+          polygon: { nb_sides: 6 }
+        },
+        opacity: {
+          value: 0.5,
+          random: true,
+          anim: { enable: false }
+        },
+        size: {
+          value: 4,
+          random: true
+        },
+        line_linked: {
+          enable: true,
+          distance: 150,
+          color: "#ff00ff",
+          opacity: 0.4,
+          width: 1.5
+        },
+        move: {
+          enable: true,
+          speed: 3,
+          direction: "none",
+          random: false,
+          straight: false,
+          out_mode: "out",
+          attract: { enable: false }
+        }
+      },
+      interactivity: {
+        detect_on: "canvas",
+        events: {
+          onhover: { enable: true, mode: "grab" },
+          onclick: { enable: true, mode: "push" },
+          resize: true
+        },
+        modes: {
+          grab: { distance: 140, line_linked: { opacity: 1 } },
+          bubble: { distance: 400, size: 40, duration: 2, opacity: 8, speed: 3 },
+          repulse: { distance: 200, duration: 0.4 },
+          push: { particles_nb: 4 },
+          remove: { particles_nb: 2 }
+        }
+      },
+      retina_detect: true
+    });
+  </script>
+</body>
+</html>

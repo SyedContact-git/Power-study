@@ -1,171 +1,168 @@
-<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Power Key Generator</title>
+  <title>Power Study | Access Key</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
-
     * {
-      margin: 0; padding: 0;
+      margin: 0;
+      padding: 0;
       box-sizing: border-box;
-      font-family: 'Orbitron', sans-serif;
     }
 
     body {
-      background: #0f0c29;
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top, #0d0221, #1e003a, #2a0d53);
+      color: #fff;
       overflow: hidden;
       height: 100vh;
     }
 
-    header {
-      width: 100%;
-      background: #9333ea;
-      color: white;
-      text-align: center;
-      padding: 12px 0;
-      font-size: 1.4em;
-      font-weight: bold;
-      position: absolute;
-      top: 0;
-      z-index: 10;
-      box-shadow: 0 0 10px #9333ea;
-    }
-
-    canvas {
+    #tsparticles {
       position: fixed;
       top: 0;
       left: 0;
-      z-index: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
     }
 
     .container {
-      position: relative;
-      z-index: 2;
-      height: 110vh;
+      max-width: 700px;
+      margin: 0 auto;
+      height: 100vh;
+      padding: 30px;
       display: flex;
-      align-items: center;
+      flex-direction: column;
       justify-content: center;
-    }
-
-    .card {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(20px);
-      padding: 30px 50px;
-      border-radius: 50px;
+      align-items: center;
+      background: rgba(15, 15, 30, 0.9);
+      border-radius: 20px;
+      box-shadow: 0 0 40px rgba(255, 0, 128, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(8px);
       text-align: center;
-      width: 350px;
-      box-shadow: 0 0 50px rgba(168, 85, 247, 0.4);
     }
 
-    .lock-animation {
-      width: 80px;
-      margin: 0 auto 10px;
-      filter: drop-shadow(0 0 10px #a855f7);
+    .container h2 {
+      font-size: 1.7rem;
+      margin-bottom: 15px;
+      color: #ff63b1;
+      text-shadow: 0 0 12px rgba(255, 99, 177, 0.6);
+    }
+
+    video {
+      width: 100%;
+      border-radius: 12px;
+      border: 2px solid #ff4db8;
+      box-shadow: 0 0 20px rgba(255, 77, 184, 0.4);
+      margin-bottom: 20px;
     }
 
     .card h1 {
-      font-size: 1.4em;
-      background: linear-gradient(90deg, #d946ef, #ffffff);
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      background: linear-gradient(to right, #ff416c, #8a2be2, #00c6ff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 15px;
     }
 
-    .btn {
+    .validity {
+      margin-bottom: 15px;
+      font-size: 1rem;
+      color: #ff4d4d;
+      text-shadow: 0 0 10px rgba(255, 77, 77, 0.4);
+    }
+
+    .button-row {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
       width: 100%;
-      padding: 12px;
-      margin: 8px 0;
+    }
+
+    button {
+      padding: 14px;
+      font-size: 1rem;
+      font-weight: 600;
       border: none;
-      border-radius: 30px;
-      font-size: 0.95em;
-      color: #fff;
-      background: linear-gradient(135deg, #9333ea, #6b21a8);
-      box-shadow: 0 0 20px rgba(147, 51, 234, 0.4);
+      border-radius: 14px;
+      background: linear-gradient(135deg, #1e3a8a, #6d28d9);
+      color: white;
       cursor: pointer;
       transition: all 0.3s ease;
+      box-shadow: 0 0 18px rgba(121, 40, 202, 0.5);
     }
 
-    .btn:hover {
+    button:hover {
       transform: scale(1.03);
-      box-shadow: 0 0 30px rgba(147, 51, 234, 0.7);
+      box-shadow: 0 0 20px rgba(255, 0, 128, 0.7);
     }
 
-    .tutorial-btn {
-      background: linear-gradient(135deg, #ffffff, #d946ef);
-      color: #0f0c29;
-      font-weight: bold;
-      box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
+    #recommendServer {
+      background: linear-gradient(135deg, #ff0080, #7928ca);
+      box-shadow: 0 0 22px rgba(255, 0, 128, 0.6);
     }
 
     #loadingMessage {
-      display: none;
-      color: #e879f9;
       margin-top: 12px;
-      font-size: 0.9em;
-      animation: blink 1s infinite;
+      font-size: 0.9rem;
+      color: #ff8080;
+      display: none;
     }
 
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
-    }
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px;
+      }
 
-    #musicControl {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      z-index: 3;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: #fff;
-      padding: 6px 12px;
-      border-radius: 10px;
-      cursor: pointer;
-      backdrop-filter: blur(10px);
-      font-size: 0.8em;
+      .card h1 {
+        font-size: 1.4rem;
+      }
+
+      video {
+        height: auto;
+      }
     }
   </style>
 </head>
 <body>
 
-  <header>Power Study - Key Generator</header>
-  <canvas id="meteorCanvas"></canvas>
-  <div id="musicControl" onclick="toggleMusic()">Mute</div>
+  <div id="tsparticles"></div>
 
   <div class="container">
+    <h2>📽️ Watch First - How to Access All Content</h2>
+    <video controls>
+      <source src="https://ik.imagekit.io/frwzww85g/screen-capture%20(1).webm/ik-video.mp4?updatedAt=1749561599199" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+
     <div class="card">
-      <div class="lock-animation">
-        <svg viewBox="0 0 24 24" fill="none" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
-          <g>
-            <path d="M17 11V8A5 5 0 0 0 7 8v3" stroke="#d946ef" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <rect x="5" y="11" width="14" height="10" rx="2" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="12" cy="16" r="1.5" fill="#ffffff">
-              <animate attributeName="r" values="1.5;3;1.5" dur="1.5s" repeatCount="indefinite" />
-            </circle>
-          </g>
-        </svg>
+      <h1>🔓 Access All Power Study Content</h1>
+      <div class="validity">Key Valid For: <span id="keyTimer">18h 01m</span></div>
+
+      <div class="button-row">
+        <button id="recommendServer"> 🚀 Server 01 </button>
+        <button id="server02">🌐 Server 02</button>
+        <button id="server03Url">🛰️ Server 03</button>
       </div>
-      <h1>Create Your Permant  Key</h1>
-      <button class="btn" id="server02">Access Server 01</button>
-      <button class="btn" id="server03Url">Access Server 02</button>
-      <button class="btn" id="recommendServer">Recommended Server</button>
-      <button class="btn tutorial-btn" onclick="window.location.href='https://t.me/EDUPROCBSE/41?single'"> How To Create Permanent Key </button>
-      <div id="loadingMessage">Generating Key... Please Wait</div>
+
+      <p id="loadingMessage">⏳ Please wait, preparing your access key...</p>
     </div>
   </div>
 
-  <audio id="bgMusic" autoplay loop>
-    <source src="https://files.catbox.moe/9yap5x.mp3" type="audio/mpeg" />
+  <audio id="bgMusic" autoplay loop hidden>
+    <source src="https://files.catbox.moe/jl2sh3.mp3" type="audio/mpeg" />
   </audio>
 
   <script>
     const urls = {
-      server02: 'https://linkcents.com/kpplnp',
-      server03: 'https://linkcents.com/kpplnp',
-      recommendServer: 'https://linkcents.com/kpplnp'
+      server02: 'https://linkcents.com/pa1q35Q',
+      server03: 'https://linkcents.com/pa1q35Q',
+      recommendServer: 'https://linkcents.com/pa1q35Q'
     };
 
     function setTemporaryCookieAndRedirect(cookieName, url) {
@@ -187,49 +184,58 @@
       setTemporaryCookieAndRedirect('recommendServerKeyGenerated', urls.recommendServer)
     );
 
-    function toggleMusic() {
-      const music = document.getElementById("bgMusic");
-      music.muted = !music.muted;
-      document.getElementById("musicControl").textContent = music.muted ? "Unmute" : "Mute";
-    }
-
-    const canvas = document.getElementById('meteorCanvas');
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    class Meteor {
-      constructor() { this.reset(); }
-      reset() {
-        this.x = Math.random() * canvas.width;
-        this.y = -20;
-        this.length = Math.random() * 80 + 10;
-        this.speed = Math.random() * 4 + 2;
-        this.alpha = Math.random() * 0.5 + 0.3;
-        this.angle = Math.PI / 3;
+    // Countdown Timer for 18h
+    const endTime = Date.now() + 18 * 60 * 60 * 1000;
+    const timerElement = document.getElementById("keyTimer");
+    function updateCountdown() {
+      const now = Date.now();
+      const diff = endTime - now;
+      if (diff <= 0) {
+        timerElement.textContent = "Expired";
+        return;
       }
-      update() {
-        this.x += this.speed * Math.cos(this.angle);
-        this.y += this.speed * Math.sin(this.angle);
-        if (this.y > canvas.height || this.x > canvas.width) this.reset();
-      }
-      draw() {
-        ctx.beginPath();
-        ctx.moveTo(this.x, this.y);
-        ctx.lineTo(this.x - this.length * Math.cos(this.angle), this.y - this.length * Math.sin(this.angle));
-        ctx.strokeStyle = `rgba(168,85,247,${this.alpha})`;
-        ctx.lineWidth = 2;
-        ctx.stroke();
-      }
+      const hours = Math.floor(diff / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      timerElement.textContent = `${hours}h ${minutes}m`;
+      requestAnimationFrame(updateCountdown);
     }
+    updateCountdown();
 
-    const meteors = Array.from({ length: 50 }, () => new Meteor());
-    function animateMeteors() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      meteors.forEach(m => { m.update(); m.draw(); });
-      requestAnimationFrame(animateMeteors);
-    }
-    animateMeteors();
+    // tsParticles animation
+    tsParticles.load("tsparticles", {
+      fullScreen: { enable: false },
+      background: { color: "#0d0221" },
+      particles: {
+        number: { value: 80 },
+        color: { value: ["#ff0055", "#7928ca", "#1e3a8a", "#ffffff"] },
+        shape: { type: "circle" },
+        opacity: { value: 0.6 },
+        size: { value: { min: 1, max: 4 } },
+        move: {
+          enable: true,
+          speed: 1.5,
+          direction: "none",
+          outMode: "bounce"
+        },
+        links: {
+          enable: true,
+          distance: 120,
+          color: "#ff0077",
+          opacity: 0.3,
+          width: 1
+        }
+      },
+      interactivity: {
+        events: {
+          onHover: { enable: true, mode: "repulse" },
+          onClick: { enable: true, mode: "push" }
+        },
+        modes: {
+          repulse: { distance: 100 },
+          push: { quantity: 4 }
+        }
+      }
+    });
   </script>
 </body>
 </html>
